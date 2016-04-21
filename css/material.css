@@ -1,0 +1,21 @@
+/**********************************
+Material design effects styles
+**********************************/
+.clear-fix::after,
+.clear-fix::before {
+	clear: both;
+	display: table;
+	content: '';
+}
+
+.top-fixed {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	width: 100%;
+}
+
+.card {
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+}

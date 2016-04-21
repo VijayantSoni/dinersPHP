@@ -1,0 +1,309 @@
+@media all and (max-width: 768px) {
+	.nav-up {
+		top: -8.5em;
+	}
+
+	nav:first-of-type > div > a{
+		display: flex;
+		justify-content: center;
+	}
+
+	#main-nav {
+		justify-content: space-around;
+	}
+
+	#main-nav > li{
+		margin: 0.3em;
+		margin-top: 0;
+	}
+
+	#main-nav > li:first-child {
+		margin-left: 0;
+	}
+
+	#main-nav > li:last-child {
+		margin-right: 0;
+	}
+
+	#main-nav > li:last-child {
+		margin-top: -.8em;
+	}
+
+	header.marginate {
+		margin-top: 8.3em;
+	}
+	header.marginate div {
+		width: 100%;
+	}
+	header.marginate > div > div:last-child > .card > h3 {
+		font-size: 1em;
+	}
+	header.marginate > div > div:first-child {
+		height: auto;
+		margin-top: 4em;
+	}
+	header.marginate > div > div:last-child {
+		height: auto;
+	}
+	header.marginate > div > div:last-child > .card > form input[type="text"]::-webkit-input-placeholder {
+		font-size: 0.85em;
+	}
+	header.marginate > div > div:last-child > .card > form input[type="text"]::-moz-placeholder {
+		font-size: 0.85em;
+	}
+
+
+	/**********************************
+	Search Page Results styles
+	**********************************/
+	.banner section.marginate hgroup h3 {
+		color: #fff;
+		font-size: 1.8em;
+		margin-top: 1.85em;
+		font-weight: 600;
+		letter-spacing: .1em;
+		font-family: 'Simplifica';
+	}
+
+	.banner section marginate hgroup h4 {
+		font-size: 0.8em;
+		margin-top: 0.5em;
+		color: rgba(0,0,0,0.6);
+	}
+
+	.filter-row-fixed {
+		top: 8.5em;
+		width: 100%;
+		padding: 1em 0;
+		position: fixed;
+		/*background: rgba(255,255,255,0.1) !important;*/
+		background: #f2f2f2;
+		transition: all 0.2s ease-in;
+	}
+	.aside-fixed {
+		top: 188px;
+		position: fixed !important;
+	}
+
+	/****************************************
+	Style for profile.html
+	****************************************/
+	.profile .marginate{
+		width: 100%;
+		padding: 1em 1em;
+		margin: 0 auto;
+		margin-top: 8.4em;
+		/*background: #f2f2f2;*/
+		box-shadow: 0 0 2px rgba(0,0,0,0.2), 0 0 4px #f2f2f2;
+	}
+
+	.profile .marginate > div.about:not(:nth-of-type(1)) div div{
+	  width: 100%;
+	  float: left;
+	  margin: 0 auto;
+	  padding: 0.75em 0;
+	  color: rgba(0,0,0,0.6);
+	  border-bottom: 1px solid rgba(0,0,0,0.4);
+
+	  transition: all 0.3s ease-in;
+	}
+
+	.profile .marginate > div:last-of-type {
+	  margin-top: 1em;
+	}
+
+	.profile .marginate > div:last-of-type div {
+	  border: 0;
+	  width: 100%;
+	  text-align: right;
+	}
+
+	.profile .marginate > div:last-of-type div input {
+	  color: #fff;
+	  width: 100%;
+	  border: none;
+	  padding: 0.75em 2em;
+	  font-size: 1.2em;
+	  background: #f07762;
+	  box-shadow: 0 0 2px rgba(0,0,0,0.6), 0 0 10px rgba(0,0,0,0.2);
+	}
+
+
+	/*************************************
+	Style for cart.html goes here
+	*************************************/
+	.cart .marginate{
+		width: 100%;
+		margin: 0 auto;
+		padding: 1em 1em;
+		margin-top: 8.4em;
+	}
+	.cart .marginate > form.row table thead tr td,
+	.cart .marginate > form.row table tbody tr td {
+		font-size: 0.7em;
+	}
+
+	.cart .marginate > form.row table thead tr td:nth-of-type(1),
+	.cart .marginate > form.row table tbody tr td:nth-of-type(1) {
+	  width: 30% !important;
+	  padding-right: 0;
+	}
+
+	.cart .marginate > form.row table thead tr td:nth-of-type(2),
+	.cart .marginate > form.row table tbody tr td:nth-of-type(2) {
+	  width: 30% !important;
+	  display: none;
+	  padding-left: 0;
+	  padding-right: 0;
+	}
+
+	.cart .marginate > form.row table thead tr td:nth-of-type(3),
+	.cart .marginate > form.row table tbody tr td:nth-of-type(3) {
+	  width: 10% !important;
+	  padding-left: 0;
+	  padding-right: 0;
+	}
+
+	.cart .marginate > form.row table thead tr td:nth-of-type(4),
+	.cart .marginate > form.row table tbody tr td:nth-of-type(4) {
+	  width: 30% !important;
+	  text-align: right;
+	  padding-left: 0;
+	}
+
+	/**************************************
+	Styles for orders.html
+	**************************************/
+
+	.orders .marginate{
+	  width: 100%;
+	  margin: 0 auto;
+	  padding: 1em 1em;
+	  margin-top: 8.4em;
+	}
+
+	.order-box section {
+	  text-align: center;
+	  border-bottom: 1px solid rgba(0,0,0,0.2);
+	}
+	.order-box section figure {
+		text-align: center;
+	}
+}
+
+@media all and (min-width: 769px) and (max-width: 1170px) {
+	.nav-up {
+		top: -8.5em;
+	}
+
+	nav:first-of-type > div > a{
+		display: flex;
+		justify-content: center;
+	}
+
+	#main-nav {
+		justify-content: space-around;
+	}
+	#main-nav > li {
+		margin: 0;
+	}
+
+	#main-nav > li:last-child {
+		margin-top: -.8em;
+	}
+
+	header.marginate {
+		margin-top: 8.3em;
+	}
+	header.marginate > div {
+		width: 100%;
+	}
+
+	header.marginate > div > div:last-child > .card > h3 {
+		font-size: 1em;
+	}
+
+	/**********************************
+	Search Page Results styles
+	**********************************/
+	.banner section.marginate hgroup h3 {
+		color: #fff;
+		font-size: 2em;
+		margin-top: 1.85em;
+		font-weight: 600;
+		letter-spacing: .1em;
+		font-family: 'Simplifica';
+	}
+
+	.banner section marginate hgroup h4 {
+		font-size: 1em;
+		margin-top: 0.5em;
+		color: rgba(0,0,0,0.6);
+	}
+
+	.filter-row-fixed {
+		top: 8.5em;
+		width: 100%;
+		padding: 1em 0;
+		position: fixed;
+		background: #f2f2f2;
+		transition: all 0.2s ease-in;
+	}
+	.aside-fixed {
+		top: 188px;
+		position: fixed !important;
+	}
+
+	/****************************************
+	Style for profile.html
+	****************************************/
+	.profile .marginate{
+		width: 80%;
+		padding: 1em 1em;
+		margin: 0 auto;
+		margin-top: 8.4em;
+		/*background: #f2f2f2;*/
+		box-shadow: 0 0 2px rgba(0,0,0,0.2), 0 0 4px #f2f2f2;
+	}
+
+	.profile .marginate > div:last-of-type {
+	  margin-top: 1.5em;
+	}
+
+	.profile .marginate > div:last-of-type div {
+	  border: 0;
+	  width: 30%;
+	  text-align: right;
+	}
+
+	.profile .marginate > div:last-of-type div input {
+	  color: #fff;
+	  width: 100%;
+	  border: none;
+	  padding: 0.75em 2em;
+	  font-size: 1.2em;
+	  background: #f07762;
+	  box-shadow: 0 0 2px rgba(0,0,0,0.6), 0 0 10px rgba(0,0,0,0.2);
+	}
+
+	/*************************************
+	Style for cart.html goes here
+	*************************************/
+	.cart .marginate{
+		width: 80%;
+		margin: 0 auto;
+		padding: 1em 1em;
+		margin-top: 8.4em;
+	}
+
+	/**************************************
+	Styles for orders.html
+	**************************************/
+	.orders .marginate{
+	  width: 90%;
+	  margin: 0 auto;
+	  padding: 1em 1em;
+	  margin-top: 8.4em;
+	}
+}
+

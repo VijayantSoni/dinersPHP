@@ -1,0 +1,39 @@
+@font-face{
+  font-family: 'Foo';
+  src: url('../fonts/foo.ttf') format('truetype');
+}
+
+@font-face{
+  font-family: 'Myriad-Pro-Regular';
+  src: url('../fonts/MyriadPro-Regular.otf') format('opentype');
+}
+
+@font-face{
+  font-family: 'Myriad-Pro-Cond';
+  src: url('../fonts/MyriadPro-Cond.otf') format('opentype');
+}
+
+@font-face{
+  font-family: 'Myriad-Pro-SemiBold';
+  src: url('../fonts/MyriadPro-Semibold.otf') format('opentype');
+}
+
+@font-face{
+  font-family: 'Gotham-Book';
+  src: url('../fonts/Gotham-Book.ttf') format('truetype');
+}
+
+@font-face{
+  font-family: 'Gotham-Light';
+  src: url('../fonts/GOTHAM-LIGHT.ttf') format('truetype');
+}
+
+@font-face{
+  font-family: 'Gotham-Medium';
+  src: url('../fonts/GOTHAM-MEDIUM.ttf') format('truetype');
+}
+
+@font-face{
+  font-family: 'Simplifica';
+  src: url('../fonts/SIMPLIFICA.ttf') format('truetype');
+}
