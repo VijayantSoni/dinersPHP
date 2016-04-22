@@ -1,0 +1,111 @@
+@media all and (max-width: 768px) {
+	/****************************************
+	Style for dashboard add-restaurant.html
+	****************************************/
+	main.dash-content-add-res > header.row > form.row figure {
+		text-align: center;
+	}
+
+	section.content main.dash-content-add-res > header.row {
+		width: 100%;
+		margin: 0 auto;
+	}
+
+	main.dash-content-add-res > header.row > form.row {
+		padding: 0;
+	}
+
+	main.dash-content-add-res > header.row > form.row div:last-of-type div {
+		width: 100%;
+	}
+
+	/****************************************
+	Style for dashboard add-cuisine.html
+	****************************************/
+	main.dash-content-add-cus > header.row > form.row figure {
+		text-align: center;
+	}
+
+	section.content main.dash-content-add-cus > header.row {
+		width: 100%;
+		margin: 0 auto;
+	}
+
+	main.dash-content-add-cus > header.row > form.row {
+		padding: 0;
+	}
+
+	main.dash-content-add-cus > header.row > form.row div:last-of-type div {
+		width: 100%;
+	}
+
+	/****************************************
+	Style for dashboard edit-cuisine.html
+	****************************************/
+	main.dash-content-edit-cus > header.row > form.row figure {
+		text-align: center;
+	}
+
+	section.content main.dash-content-edit-cus > header.row {
+		width: 100%;
+		margin: 0 auto;
+	}
+
+	main.dash-content-edit-cus > header.row > form.row {
+		padding: 0;
+	}
+
+	main.dash-content-edit-cus > header.row > form.row div:last-of-type div {
+		width: 100%;
+	}
+}
+
+@media all and (min-width: 769px) and (max-width: 1170px) {
+	/****************************************
+	Style for dashboard add-restaurant.html
+	****************************************/
+	section.content main.dash-content-add-res > header.row {
+		width: 70%;
+		margin: 0 auto;
+	}
+
+	main.dash-content-add-res > header.row > form.row {
+		padding: 0;
+	}
+
+	main.dash-content-add-res > header.row > form.row div:last-of-type div {
+		width: 100%;
+	}
+
+	/****************************************
+	Style for dashboard add-cuisine.html
+	****************************************/
+	section.content main.dash-content-add-cus > header.row {
+		width: 70%;
+		margin: 0 auto;
+	}
+
+	main.dash-content-add-cus > header.row > form.row {
+		padding: 0;
+	}
+
+	main.dash-content-add-cus > header.row > form.row div:last-of-type div {
+		width: 100%;
+	}
+
+	/****************************************
+	Style for dashboard edit-cuisine.html
+	****************************************/
+	section.content main.dash-content-edit-cus > header.row {
+		width: 70%;
+		margin: 0 auto;
+	}
+
+	main.dash-content-edit-cus > header.row > form.row {
+		padding: 0;
+	}
+
+	main.dash-content-edit-cus > header.row > form.row div:last-of-type div {
+		width: 100%;
+	}
+}

@@ -1,0 +1,586 @@
+/***************************************
+Styles for dashboard add-restaurant.html
+***************************************/
+body {
+	background: rgba(0,0,0,0.02);
+}
+
+.button-active {
+  color: #fff;
+  border: none;
+  line-height: 1.5em;
+  margin-top: 1.6em;
+  border-radius: 2px;
+  letter-spacing: 0.06em;
+  background: rgba(95, 207, 128, 0.7) !important;
+  transition: all 0.07s ease-in;
+  -webkit-transition: all 0.07s ease-in;
+  -moz-transition: all 0.07s ease-in;
+  -o-transition: all 0.07s ease-in;
+  -ms-transition: all 0.07s ease-in;
+}
+
+.errors {
+  font-size: 0.7em;
+  display: block;
+  width: 100%;
+}
+
+.errors.success {
+  color: #5fcf80;
+  font-size: 0.7em;
+  display: block;
+  width: 100%;
+}
+
+.errors.failed {
+  color: #f07762;
+  font-size: 0.7em;
+}
+nav.row {
+	padding: 0.2em 1em;
+	background: #fff;
+	border-bottom: 1px solid rgba(0,0,0,0.2);
+}
+
+nav.row span {
+	width: 30px;
+	float: left;
+	padding-top: 0.8em;
+}
+
+nav.row span label i {
+	cursor: pointer;
+	transform: none;
+	color: rgba(0,0,0,0.6);
+	transition: all 0.18s ease-in;
+}
+
+nav.row span input:checked ~ label i.fa-times {
+	transform: rotate(90deg);
+}
+
+nav.row span input[type="checkbox"] {
+	display: none;
+}
+
+nav.row figure {
+	width: auto;
+	float: left;
+	padding-left: 1em;
+}
+
+section.content aside.show{
+	width: 240px;
+	height: 100vh;
+	position: fixed;
+	background: #fff;
+	transition: all 0.2s ease-in;
+	box-shadow: 5px 10px 15px 5px rgba(0,0,0,.1);
+}
+
+section.content aside.hide {
+	width: 0;
+	height: 100vh;
+	position: fixed;
+	background: #fff;
+	box-shadow: none;
+	transition: all 0.2s ease-in;
+}
+
+section.content aside.hide ul {
+	opacity: 0;
+	transition: all 0.1s ease-in;
+}
+
+section.content aside.show ul {
+	opacity: 1;
+	transition: all 0.6s ease-in;
+}
+
+section.content aside > ul:first-of-type {
+	width: 100%;
+	padding: 1.5em 1em;
+	list-style-type: none;
+}
+
+section.content aside > ul:first-of-type li {
+	text-align: center;
+	padding-bottom: 1em;
+}
+
+section.content aside > ul.aside-items li {
+	text-align: justify;
+	padding-left: 0.5em;
+	color: rgba(0,0,0,0.5);
+	transition: all 0.3s ease-in;
+	border-top: 1px solid #f2f2f2;
+	border-bottom: 1px solid #f2f2f2;
+}
+
+section.content aside > ul.aside-items li:last-of-type {
+	/*border-bottom: 1px solid rgba(0,0,0,0.3);*/
+}
+
+section.content aside > ul.aside-items li a {
+	width: 100%;
+	display: block;
+	color: inherit;
+	padding: 1em 0 1em 0.5em;
+}
+
+section.content aside > ul.aside-items li a span {
+	margin-left: 0.5em;
+	transition: margin-left 0.3s ease-in, padding-left 0.3s ease-in;
+}
+
+section.content aside > ul.aside-items li:hover {
+	color: #f07762;
+}
+
+section.content aside > ul.aside-items li:hover a span{
+	margin-left: 0.5em;
+	padding-left: 0.35em;
+}
+
+
+
+section.content main.dash-content-add-res {
+	/*padding: 2em 0;*/
+}
+
+section.content main.dash-content-add-res > header.row {
+	width: 50%;
+	height: 500px;
+	margin: 0 auto;
+	transition: all 0.3s ease-in;
+}
+
+main.dash-content-add-res > header.row > form.row {
+	padding: 0 2em;
+	background: #fff;
+	border: 1px solid #f2f2f2;
+	border-top: 0;
+}
+
+main.dash-content-add-res > header.row > form.row figure img {
+	width: 150px;
+	height: 150px;
+	box-shadow: none;
+	border: 1px solid rgba(0,0,0,0.2);
+}
+
+main.dash-content-add-res > header.row > form.row div div {
+	border-bottom: 1px solid rgba(0,0,0,0.2);
+	transition: all 0.3s ease-in;
+}
+
+main.dash-content-add-res > header.row > form.row div div:hover {
+	border-bottom: 1px solid #f07762;
+}
+
+main.dash-content-add-res > header.row > form.row div div:hover i {
+	color: #f07762;
+}
+
+main.dash-content-add-res > header.row > form.row div i {
+	width: 5%;
+	float: left;
+	color: rgba(0,0,0,0.6);
+	padding-top: 0.5em;
+	display: inline-block;
+	transition: all 0.3s ease-in;
+}
+
+main.dash-content-add-res > header.row > form.row div input,
+main.dash-content-add-res > header.row > form.row div textarea {
+	width: 90%;
+	float: left;
+	border: none;
+	display: inline-block;
+	padding: 0.5em;
+	resize: none;
+	color: rgba(0,0,0,0.6);
+
+	transition: all 0.2s ease-in;
+}
+
+main.dash-content-add-res > header.row > form.row div select {
+	width: 95%;
+	float: left;
+	border: none;
+	display: inline-block;
+	padding: 0.5em;
+	color: rgba(0,0,0,0.6);
+	transition: all 0.2s ease-in;
+}
+
+main.dash-content-add-res > header.row > form.row div i[class="fa fa-globe"] {
+	padding: 1.5em 0;
+}
+
+main.dash-content-add-res > header.row > form.row div textarea {
+	padding: 1.5em 0;
+}
+
+main.dash-content-add-res > header.row > form.row div div:not(:first-of-type) {
+	margin-top: 0.75em;
+}
+
+main.dash-content-add-res > header.row > form.row div:last-of-type div {
+	width: 70%;
+	float: right;
+	border: none;
+}
+
+main.dash-content-add-res > header.row > form.row div:last-of-type div button {
+	width: 100%;
+	margin: 0 auto;
+	font-weight: 700;
+	padding: 0.75em 0;
+	margin-bottom: 0.5em;
+	color: rgba(0,0,0,0.6);
+	border: 1px solid rgba(0,0,0,0.4);
+
+	transition: all 0.3s ease-in;
+}
+
+main.dash-content-add-res > header.row > form.row div:last-of-type div button:hover {
+	color: #fff;
+	background: #f07762;
+	border: 1px solid #f07762;
+}
+
+/***************************************
+Styles for dashboard add-cuisine.html
+***************************************/
+section.content main.dash-content-add-cus {
+	/*padding: 2em 0;*/
+}
+
+section.content main.dash-content-add-cus > header.row {
+	width: 50%;
+	height: 500px;
+	margin: 0 auto;
+	transition: all 0.3s ease-in;
+}
+
+main.dash-content-add-cus > header.row > form.row {
+	padding: 0 2em;
+	background: #fff;
+	border: 1px solid #f2f2f2;
+	border-top: 0;
+}
+
+main.dash-content-add-cus > header.row > form.row header select{
+	width: 100%;
+	border: none;
+	padding: 0 0.75em;
+	-moz-appearance: none;
+	-webkit-appearance: none;
+	border-bottom: 1px solid rgba(0,0,0,0.6);
+}
+
+main.dash-content-add-cus > header.row > form.row header select option {
+	padding: 0.75em 0.75em;
+}
+
+main.dash-content-add-cus > header.row > form.row > .main-hide {
+	display: none;
+}
+
+main.dash-content-add-cus > header.row > form.row > .main-show {
+	display: block;
+}
+
+main.dash-content-add-cus > header.row > form.row figure img {
+	width: 150px;
+	height: 150px;
+	box-shadow: none;
+	border: 1px solid rgba(0,0,0,0.2);
+}
+
+main.dash-content-add-cus > header.row > form.row div div {
+	border-bottom: 1px solid rgba(0,0,0,0.2);
+	transition: all 0.3s ease-in;
+}
+
+main.dash-content-add-cus > header.row > form.row div div:hover {
+	border-bottom: 1px solid #f07762;
+}
+
+main.dash-content-add-cus > header.row > form.row div div:hover i {
+	color: #f07762;
+}
+
+main.dash-content-add-cus > header.row > form.row div i {
+	width: 5%;
+	float: left;
+	color: rgba(0,0,0,0.6);
+	padding-top: 0.5em;
+	display: inline-block;
+	transition: all 0.3s ease-in;
+}
+
+main.dash-content-add-cus > header.row > form.row div input,
+main.dash-content-add-cus > header.row > form.row div textarea {
+	width: 90%;
+	float: left;
+	border: none;
+	display: inline-block;
+	padding: 0.5em;
+	resize: none;
+	color: rgba(0,0,0,0.6);
+
+	transition: all 0.2s ease-in;
+}
+
+main.dash-content-add-cus > header.row > form.row div i[class="fa fa-bars"] {
+	padding: 1.5em 0;
+}
+
+main.dash-content-add-cus > header.row > form.row div textarea {
+	padding: 1.5em 0;
+}
+
+main.dash-content-add-cus > header.row > form.row div div:not(:first-of-type) {
+	margin-top: 0.75em;
+}
+
+main.dash-content-add-cus > header.row > form.row div.radios div {
+	border: none;
+}
+
+main.dash-content-add-cus > header.row > form.row div.radios div input[type="radio"] {
+	display: none;
+}
+
+main.dash-content-add-cus > header.row > form.row div.radios div label {
+	cursor: pointer;
+	text-align: center;
+	background: #f2f2f2;
+	color: rgba(0,0,0,0.4);
+	border: 1px solid rgba(0,0,0,0.4);
+
+	transition: all 0.3s ease-in;
+}
+
+main.dash-content-add-cus > header.row > form.row div.radios input[id="veg"]:checked ~ label[for="veg"],
+main.dash-content-add-cus > header.row > form.row div.radios input[id="non-veg"]:checked ~ label[for="non-veg"],
+main.dash-content-add-cus > header.row > form.row div.radios input[id="spicy"]:checked ~ label[for="spicy"],
+main.dash-content-add-cus > header.row > form.row div.radios input[id="non-spicy"]:checked ~ label[for="non-spicy"],
+main.dash-content-add-cus > header.row > form.row div.radios input[id="yes_delivery"]:checked ~ label[for="yes_delivery"],
+main.dash-content-add-cus > header.row > form.row div.radios input[id="no_delivery"]:checked ~ label[for="no_delivery"] {
+	color: #fff;
+	background: #5fcf80;
+}
+
+main.dash-content-add-cus > header.row > form.row div.radios div label:first-of-type {
+	border-right: none;
+}
+
+main.dash-content-add-cus > header.row > form.row div:last-of-type div {
+	width: 70%;
+	float: right;
+	border: none;
+}
+
+main.dash-content-add-cus > header.row > form.row div:last-of-type div button {
+	width: 100%;
+	margin: 0 auto;
+	font-weight: 700;
+	padding: 0.75em 0;
+	color: rgba(0,0,0,0.6);
+	border: 1px solid rgba(0,0,0,0.4);
+
+	transition: all 0.3s ease-in;
+}
+
+main.dash-content-add-cus > header.row > form.row div:last-of-type div button:hover {
+	color: #fff;
+	background: #f07762;
+	border: 1px solid #f07762;
+}
+
+/***************************************
+Styles for dashboard edit-cuisine.html
+***************************************/
+section.content main.dash-content-edit-cus {
+	/*padding: 2em 0;*/
+}
+
+section.content main.dash-content-edit-cus > header.row {
+	width: 50%;
+	height: 500px;
+	margin: 0 auto;
+	transition: all 0.3s ease-in;
+}
+
+main.dash-content-edit-cus > header.row > form.row {
+	padding: 0 2em;
+	background: #fff;
+	border: 1px solid #f2f2f2;
+	border-top: 0;
+}
+
+main.dash-content-edit-cus > header.row > form.row header select{
+	width: 100%;
+	border: none;
+	padding: 0 0.75em;
+	-moz-appearance: none;
+	-webkit-appearance: none;
+	border-bottom: 1px solid rgba(0,0,0,0.6);
+}
+
+main.dash-content-edit-cus > header.row > form.row header select option {
+	padding: 0.75em 0.75em;
+}
+
+main.dash-content-edit-cus > header.row > form.row > .main-hide {
+	display: none;
+}
+
+main.dash-content-edit-cus > header.row > form.row > .main-show {
+	display: block;
+}
+
+main.dash-content-edit-cus > header.row > form.row figure img {
+	width: 150px;
+	height: 150px;
+	box-shadow: none;
+	border: 1px solid rgba(0,0,0,0.2);
+}
+
+main.dash-content-edit-cus > header.row > form.row div div {
+	border-bottom: 1px solid rgba(0,0,0,0.2);
+	transition: all 0.3s ease-in;
+}
+
+main.dash-content-edit-cus > header.row > form.row div div:hover {
+	border-bottom: 1px solid #f07762;
+}
+
+main.dash-content-edit-cus > header.row > form.row div div:hover i {
+	color: #f07762;
+}
+
+main.dash-content-edit-cus > header.row > form.row div i {
+	width: 5%;
+	float: left;
+	color: rgba(0,0,0,0.6);
+	padding-top: 0.5em;
+	display: inline-block;
+	transition: all 0.3s ease-in;
+}
+
+main.dash-content-edit-cus > header.row > form.row div input,
+main.dash-content-edit-cus > header.row > form.row div textarea {
+	width: 90%;
+	float: left;
+	border: none;
+	display: inline-block;
+	padding: 0.5em;
+	resize: none;
+	color: rgba(0,0,0,0.6);
+
+	transition: all 0.2s ease-in;
+}
+
+main.dash-content-edit-cus > header.row > form.row div i[class="fa fa-bars"] {
+	padding: 1.5em 0;
+}
+
+main.dash-content-edit-cus > header.row > form.row div textarea {
+	padding: 1.5em 0;
+}
+
+main.dash-content-edit-cus > header.row > form.row div div:not(:first-of-type) {
+	margin-top: 0.75em;
+}
+
+main.dash-content-edit-cus > header.row > form.row div.radios div {
+	border: none;
+}
+
+main.dash-content-edit-cus > header.row > form.row div.radios div input[type="radio"] {
+	display: none;
+}
+
+main.dash-content-edit-cus > header.row > form.row div.radios div label {
+	cursor: pointer;
+	text-align: center;
+	background: #f2f2f2;
+	color: rgba(0,0,0,0.4);
+	border: 1px solid rgba(0,0,0,0.4);
+
+	transition: all 0.3s ease-in;
+}
+
+main.dash-content-edit-cus > header.row > form.row div.radios input[id="veg"]:checked ~ label[for="veg"],
+main.dash-content-edit-cus > header.row > form.row div.radios input[id="non-veg"]:checked ~ label[for="non-veg"],
+main.dash-content-edit-cus > header.row > form.row div.radios input[id="spicy"]:checked ~ label[for="spicy"],
+main.dash-content-edit-cus > header.row > form.row div.radios input[id="non-spicy"]:checked ~ label[for="non-spicy"],
+main.dash-content-edit-cus > header.row > form.row div.radios input[id="yes_delivery"]:checked ~ label[for="yes_delivery"],
+main.dash-content-edit-cus > header.row > form.row div.radios input[id="no_delivery"]:checked ~ label[for="no_delivery"] {
+	color: #fff;
+	background: #5fcf80;
+}
+
+main.dash-content-edit-cus > header.row > form.row div.radios div label:first-of-type {
+	border-right: none;
+}
+
+main.dash-content-edit-cus > header.row > form.row div:last-of-type div {
+	width: 70%;
+	float: right;
+	border: none;
+}
+
+main.dash-content-edit-cus > header.row > form.row div:last-of-type div input[type="submit"] {
+	width: 100%;
+	margin: 0 auto;
+	font-weight: 700;
+	padding: 0.75em 0;
+	color: rgba(0,0,0,0.6);
+	border: 1px solid rgba(0,0,0,0.4);
+
+	transition: all 0.3s ease-in;
+}
+
+main.dash-content-edit-cus > header.row > form.row div:last-of-type div input[type="submit"]:hover {
+	color: #fff;
+	background: #f07762;
+	border: 1px solid #f07762;
+}
+
+
+main.dash-content-edit-cus > header.row > form.row > main table thead{
+	background: #f2f2f2;
+	border: 1px solid #f2f2f2;
+}
+
+main.dash-content-edit-cus > header.row > form.row > main table thead td {
+	color: rgba(0,0,0,0.6);
+	padding: 1em 0.7em;
+}
+
+main.dash-content-edit-cus > header.row > form.row > main table tbody{
+	background: #fff;
+	border: 1px solid #f2f2f2;
+}
+
+main.dash-content-edit-cus > header.row > form.row > main table tbody td {
+	color: rgba(0,0,0,0.6);
+	padding: 0.75em;
+}
+
+main.dash-content-edit-cus > header.row > form.row > main table tbody td a {
+	margin-right: 2em;
+	color: rgba(0,0,0,0.6);
+
+	transition: all 0.2s ease-in;
+}
+
+main.dash-content-edit-cus > header.row > form.row > main table tbody td a:hover {
+	color: #f07762;
+}
