@@ -6,14 +6,6 @@ class DashboardController extends Controller
 {
 	public $layout = 'dashboardlayout';
 
-	public function accessRules() {
-		return array(
-           array('deny',
-       					 'users'=>array('*'),
-           ),
-   	);
-	}
-
 	public function beforeAction ($action){
 		if(Yii::app()->user->role == 2) {
 			$this->layout = 'indexlayout';

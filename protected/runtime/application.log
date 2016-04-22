@@ -12673,3 +12673,57 @@ Stack trace:
 #4 {main}
 REQUEST_URI=/dinersPHP/index.php/site/index
 ---
+2016/04/22 12:30:45 [error] [php] Undefined variable: error (C:\xampp\htdocs\dinersPHP\protected\controllers\SiteController.php:177)
+Stack trace:
+#0 C:\xampp\yii\framework\web\filters\CFilterChain.php(133): SiteController->runAction()
+#1 C:\xampp\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#2 C:\xampp\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#3 C:\xampp\yii\framework\web\filters\CInlineFilter.php(58): SiteController->filterAccessControl()
+#4 C:\xampp\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#5 C:\xampp\yii\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\yii\framework\web\CController.php(265): SiteController->runActionWithFilters()
+#7 C:\xampp\yii\framework\web\CWebApplication.php(282): SiteController->run()
+#8 C:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#9 C:\xampp\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\dinersPHP\index.php(13): CWebApplication->run()
+REQUEST_URI=/dinersPHP/index.php/site/verify
+in C:\xampp\htdocs\dinersPHP\protected\controllers\SiteController.php (177)
+in C:\xampp\htdocs\dinersPHP\index.php (13)
+2016/04/22 12:31:02 [error] [exception.CException] CException: SiteController cannot find the requested view "error". in C:\xampp\yii\framework\web\CController.php:878
+Stack trace:
+#0 C:\xampp\yii\framework\web\CController.php(782): CController->renderPartial('error', NULL, true)
+#1 C:\xampp\htdocs\dinersPHP\protected\controllers\SiteController.php(177): CController->render('error')
+#2 C:\xampp\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionVerify()
+#3 C:\xampp\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#4 C:\xampp\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#5 C:\xampp\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#6 C:\xampp\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#7 C:\xampp\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#8 C:\xampp\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#9 C:\xampp\yii\framework\web\CController.php(291): CFilterChain->run()
+#10 C:\xampp\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 C:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('verify')
+#12 C:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/verify')
+#13 C:\xampp\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#14 C:\xampp\htdocs\dinersPHP\index.php(13): CApplication->run()
+#15 {main}
+REQUEST_URI=/dinersPHP/index.php/site/verify
+---
+2016/04/22 12:36:48 [error] [exception.CHttpException.403] CHttpException: Login Required in C:\xampp\yii\framework\web\auth\CWebUser.php:394
+Stack trace:
+#0 C:\xampp\yii\framework\web\auth\CAccessControlFilter.php(180): CWebUser->loginRequired()
+#1 C:\xampp\yii\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#2 C:\xampp\yii\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#3 C:\xampp\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 C:\xampp\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 C:\xampp\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 C:\xampp\yii\framework\web\CController.php(291): CFilterChain->run()
+#7 C:\xampp\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 C:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('Signup')
+#9 C:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/Signup')
+#10 C:\xampp\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#11 C:\xampp\htdocs\dinersPHP\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/dinersPHP/index.php/site/Signup
+HTTP_REFERER=http://localhost/dinersPHP/index.php
+---

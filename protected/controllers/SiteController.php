@@ -4,20 +4,6 @@ class SiteController extends Controller
 	/**
 	 * Declares class-based actions.
 	 */
-
-	public function filters() {
-    return array( 'accessControl' ); // perform access control for CRUD operations
-  }
-
-  public function accessRules() {
-    return array(
-        array('deny', // allow authenticated users to access all actions
-            'actions'=>array('login','signup'),
-            'users'=>array('?'),
-        ),
-    );
-  }
-
 	public function actions()
 	{
 		return array(
