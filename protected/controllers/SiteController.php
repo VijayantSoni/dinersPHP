@@ -83,7 +83,7 @@ class SiteController extends Controller
 			$model->password = base64_encode($_POST['password']);
 			// validate user input and redirect to the previous page if valid
 			if($model->validate() && $model->login())
-				echo json_encode(array('status'=>1,'msg'=>'Logged in successfully'));
+				echo json_encode(array('status'=>1,'role'=>Yii::app()->user->role,'msg'=>'Logged in successfully'));
 			else
 				echo json_encode(array('status'=>2,'msg'=>'Unsuccessfull attempt'));
 		}

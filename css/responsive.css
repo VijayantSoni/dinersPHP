@@ -29,6 +29,76 @@
 		margin-top: -.8em;
 	}
 
+	.modal .modal-overlay {
+	  top: 7em;
+	  left: 0;
+	  right: 0;
+	  height: 28em;
+	  opacity: 0;
+	  z-index: -900;
+	  position: fixed;
+	  background: red;
+	  transform: scale(0);
+	  box-shadow: 0 0 12px rgba(0,0,0,0.5), 0 0 30px rgba(0,0,0,0.3);
+
+	  transition: all 0.3s cubic-bezier(.88,.74,.39,.52);
+	  -webkit-transition: all 0.3s cubic-bezier(.88,.74,.39,.52);
+	  -moz-transition: all 0.3s cubic-bezier(.88,.74,.39,.52);
+	  -o-transition: all 0.3s cubic-bezier(.88,.74,.39,.52);
+	  -ms-transition: all 0.3s cubic-bezier(.88,.74,.39,.52);
+	}
+
+	.modal-wrap .modal-wrap-banner {
+	  height: auto;
+	  text-align: center;
+	  background: #f07762;
+	}
+	.modal-wrap .modal-wrap-banner i {
+	  color: #fff;
+	  display: inline;
+	  text-align: center;
+	}
+	.modal-wrap .modal-wrap-banner h4 {
+	  display: inline;
+	  color: #fff;
+	  padding-left: 0.5em;
+	  font-weight: 600;
+	  font-family: 'Simplifica';
+	  font-size: 1.4em;
+	  text-align: center;
+	  letter-spacing: 0.1em;
+	}
+	.modal-wrap .modal-wrap-banner h4 br {
+		display: none;
+	}
+	.modal-wrap .modal-wrap-banner h4:last-of-type {
+		display: none;
+	}
+	.modal-wrap .modal-wrap-banner h5 {
+	  display: none;
+	}
+	.modal-wrap .modal-wrap-form {
+	  padding: 0;
+	  height: 100%;
+	  overflow: auto;
+	  background: #fff;
+	  border: 1px solid #f07762;
+	}
+
+	.tabs .tab-content {
+		padding: 0 10px !important;
+	}
+
+	#tab-content2 {
+		padding: 0 10px;
+		top: 5em !important;
+	}
+
+	#tab-content2 input[name="email"] {
+		width: 100% !important;
+	  float: right !important;
+	}
+
 	header.marginate {
 		margin-top: 8.3em;
 	}
@@ -210,6 +280,31 @@
 
 	#main-nav > li:last-child {
 		margin-top: -.8em;
+	}
+
+	.modal .modal-overlay {
+	  top: 7em;
+	  left: 10vw;
+	  right: 10vw;
+	  height: 29em;
+	  opacity: 0;
+	  z-index: -900;
+	  position: fixed;
+	  background: #fff;
+	  transform: scale(0);
+	  box-shadow: 0 0 12px rgba(0,0,0,0.5), 0 0 30px rgba(0,0,0,0.3);
+
+	  transition: all 0.3s cubic-bezier(.88,.74,.39,.52);
+	  -webkit-transition: all 0.3s cubic-bezier(.88,.74,.39,.52);
+	  -moz-transition: all 0.3s cubic-bezier(.88,.74,.39,.52);
+	  -o-transition: all 0.3s cubic-bezier(.88,.74,.39,.52);
+	  -ms-transition: all 0.3s cubic-bezier(.88,.74,.39,.52);
+	}
+
+
+	#tab-content2 input[name="email"] {
+		width: 100% !important;
+	  float: right !important;
 	}
 
 	header.marginate {
