@@ -12664,3 +12664,12 @@ Stack trace:
 #7 {main}
 REQUEST_URI=/dinersPHP/index.php/dashboard/index
 ---
+2016/04/22 12:21:44 [error] [exception.ParseError] ParseError: syntax error, unexpected ';', expecting ')' in C:\xampp\htdocs\dinersPHP\protected\controllers\SiteController.php:11
+Stack trace:
+#0 C:\xampp\yii\framework\web\CWebApplication.php(276): CWebApplication->createController('index/')
+#1 C:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/index')
+#2 C:\xampp\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#3 C:\xampp\htdocs\dinersPHP\index.php(13): CApplication->run()
+#4 {main}
+REQUEST_URI=/dinersPHP/index.php/site/index
+---

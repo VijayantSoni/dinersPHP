@@ -4,6 +4,20 @@ class SiteController extends Controller
 	/**
 	 * Declares class-based actions.
 	 */
+
+	public function filters() {
+    return array( 'accessControl' ); // perform access control for CRUD operations
+  }
+
+  public function accessRules() {
+    return array(
+        array('deny', // allow authenticated users to access all actions
+            'actions'=>array('login','signup'),
+            'users'=>array('?'),
+        ),
+    );
+  }
+
 	public function actions()
 	{
 		return array(
@@ -159,6 +173,8 @@ class SiteController extends Controller
 			} else {
 				$this->render('verifications',array('status'=>2));
 			}
+		} else {
+			$this->render('error', $error);
 		}
 	}
 
