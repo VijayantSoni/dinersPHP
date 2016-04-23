@@ -20,20 +20,22 @@ body {
   -ms-transition: all 0.07s ease-in;
 }
 
-.errors {
+.errors,#errors {
   font-size: 0.7em;
   display: block;
   width: 100%;
 }
 
-.errors.success {
+.errors.success,
+#errors.success {
   color: #5fcf80;
   font-size: 0.7em;
   display: block;
   width: 100%;
 }
 
-.errors.failed {
+.errors.failed,
+#errors.failed {
   color: #f07762;
   font-size: 0.7em;
 }

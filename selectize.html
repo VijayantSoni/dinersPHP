@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+</head>
+<style>
+	div.row {
+		margin: 15px;
+		width: 200px;
+		position: relative;
+	}
+	input {
+		width: 100%;
+	}
+	ul {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+	}
+	ul li {
+		border: 1px solid #f2f2f2;
+	}
+	ul.hider {
+		left: 0;
+		right: 0;
+		height: auto;
+		display: block;
+		position: absolute;
+		display: none !important;
+	}
+	ul.shower {
+		left: 0;
+		right: 0;
+		display: block;
+		position: absolute;
+		max-height: 200px;
+		overflow-y: scroll;
+	}
+	li.no-disp {
+		display: none!important;
+	}
+</style>
+<body>
+	<div class="row" id="control">
+		<input type="text" id="auto-pop">
+		<ul class="list-select hide">
+			<li>Hello</li>
+			<li>Himanshu</li>
+			<li>Gabbar</li>
+			<li>Sambha</li>
+			<li>India</li>
+			<li>Africa</li>
+			<li>America</li>
+		</ul>
+	</div>
+	<script src="https://code.jquery.com/jquery-2.2.3.min.js" integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo=" crossorigin="anonymous"></script>
+	<script type="text/javascript">
+
+		$(document).ready(function() {
+			$("#auto-pop").on('focus', function(){
+				$('ul').removeClass('hide').addClass('shower');
+			});
+
+			$("#auto-pop").keyup(function(){
+				$('ul li').each(function(){
+					if($(this).text().search($("#auto-pop").val()) == -1) {
+						$(this).addClass('no-disp');
+					} else {
+						$(this).removeClass('no-disp');
+					}
+				});
+			});
+
+			$(document).on('click', function(e){
+				var container = $('#auto-pop, .list-select');
+				if(!container.is(e.target) && container.has(e.target).length === 0) {
+					$('ul').removeClass('shower').addClass('hide');
+				}
+				var targetList = $("li:hover");
+				if(targetList.is(e.target)) {
+					$("#auto-pop").val(targetList.text());
+					$('ul').removeClass('shower').addClass('hide');
+				}
+			});
+		});
+
+	</script>
+</body>
+</html>

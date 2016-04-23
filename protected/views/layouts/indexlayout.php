@@ -60,6 +60,7 @@
 													 <p class="forgot-password"><a href="<?php echo Yii::app()->createUrl('site/ForgotPassword'); ?>">Forgot Password ?</a></p>
 													<button id="login" name="login" class="colGLG-6">Login</button>
 													<label for="modal-trigger" class="colGLG-6 closeLabel"><i class="fa fa-times-circle fa-2x"></i></label>
+													<p id="form-error1"></p>
 												</form>
 											</li>
 
@@ -78,6 +79,7 @@
 													</div>
 													<button id="signup" name="signup" class="colGLG-6">Signup</button>
 													<label for="modal-trigger" class="colGLG-6 closeLabel"><i class="fa fa-times-circle fa-2x"></i></label>
+													<p id="form-error"></p>
 												</form>
 											</li>
 										</ul>
