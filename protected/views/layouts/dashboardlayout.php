@@ -19,12 +19,14 @@
 			<label for="aside-trigger"><i class="fa fa-bars fa-2x"></i></label>
 		</span>
 		<figure><img src="<?php echo Yii::app()->request->baseUrl; ?>/img/logo.png"></figure>
+		<a href="<?php echo Yii::app()->createUrl('site/logout');?>">Logout</a>
 	</nav>
 	<section class="content">
 		<aside class="hide">
 			<ul>
 				<li><i class="fa fa-user fa-5x"></i></li>
-				<li><p>Hey Vendor !</p></li>
+				<?php $user = User::model()->findByPk(Yii::app()->user->id); ?>
+				<li><p>Hey <?php echo ($user->first_name != NULL)?$user->first_name:"Vendor"; ?>!</p></li>
 			</ul>
 			<ul class="aside-items">
 				<li><a href="<?php echo Yii::app()->createUrl('dashboard/index');?>"><i class="fa fa-home"></i><span>Dashboard</span></a></li>
@@ -33,6 +35,7 @@
 				<li><a href="<?php echo Yii::app()->createUrl('dashboard/editCuisine');?>"><i class="fa fa-pencil"></i><span>Edit&nbsp;Cuisine</span></a></li>
 				<li><a href="<?php echo Yii::app()->createUrl('dashboard/editRestaurant');?>"><i class="fa fa-pencil"></i><span>Edit&nbsp;Restaurant</span></a></li>
 				<li><a href="<?php echo Yii::app()->createUrl('dashboard/userAccountSettings');?>"><i class="fa fa-cogs"></i><span>Account&nbsp;Settings</span></a></li>
+				<li><a href="<?php echo Yii::app()->createUrl('site/logout');?>"><i class="fa fa-sign-out"></i><span>Logout</span></a></li>
 			</ul>
 		</aside>
 

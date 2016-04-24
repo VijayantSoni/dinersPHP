@@ -5,6 +5,10 @@
 class DashboardController extends Controller {
 	public $layout = 'dashboardlayout';
 
+	public function filters() {
+		return array('accessControl');
+	}
+
 	public function beforeAction ($action){
 		if(Yii::app()->user->role == 2) {
 			$this->layout = 'indexlayout';
@@ -81,12 +85,30 @@ class DashboardController extends Controller {
 	}
 
 	public function actionEditRestaurant() {
-		$this->render('add-restaurant');
+		if(isset($_POST['restId'])) {
+			$restaurant = Restaurant::model()->with('location','location.parentLocation')->findByAttributes(array('id'=>$_POST['restId']));
+			echo json_encode(array('id'=>$restaurant->id,'name'=>$restaurant->name,'parent_location_id'=>$restaurant->location->parentLocation->id,'parent_location_name'=>$restaurant->location->parentLocation->name,'sub_location_id'=>$restaurant->location->id,'sub_location_name'=>$restaurant->location->name,'contact'=>$restaurant->mobile_number,'address'=>$restaurant->street_address));
+
+		} else if(isset($_POST['restaurant-option'])) {
+			$res = Restaurant::model()->findByAttributes(array('id'=>$_POST['restaurant-option']));
+			$res->name = $_POST['restaurant_name'];
+			$res->mobile_number = $_POST['mobile'];
+			$res->street_address = $_POST['street_addr'];
+			$res->modify_date = new CDbExpression('NOW()');
+			if($res->validate()) {
+				$res->save();
+				echo json_encode(array('status'=>1,'msg'=>'Restaurant details updated'));
+			}
+
+		} else {
+			$restaurant = Restaurant::model()->with('location')->findAllByAttributes(array('vendor_id'=>Yii::app()->user->id,'status'=>1));
+			$this->render('edit-restaurant-home',array('restaurant'=>$restaurant));
+		}
 	}
 
 	public function actionEditCuisine() {
 		if(isset($_POST['restid'])) {
-			$items = Item::model()->findAllByAttributes(array('restaurant_id'=>$_POST['restid']));
+			$items = Item::model()->findAllByAttributes(array('restaurant_id'=>$_POST['restid'],'status'=>1));
 			$response = array();
 			$key = 0;
 			foreach ($items as $item) {
@@ -101,15 +123,61 @@ class DashboardController extends Controller {
 			$item->update();
 			echo json_encode(array('status'=>2,'msg'=>'Item deleted successfully'));
 		} else if(isset($_POST['itemEditId'])) {
-			$item = Item::model()->findByPk($_POST['itemEditId']);
-			$this->render('edit-cuisine',array('item'=>$item));
+			echo json_encode(array('url'=>Yii::app()->createUrl('dashboard/editCuisineForm',array('id'=>$_POST['itemEditId']))));
 		} else {
 			$restaurant = Restaurant::model()->findAll(array('condition'=>'vendor_id=:id','params'=>array(':id'=>Yii::app()->user->id)));
 			$this->render('edit-cuisine-home',array('restaurant'=>$restaurant));
 		}
 	}
 
+	public function actionEditCuisineForm($id=0) {
+		if(isset($_POST['cuisine_name']) && $id != 0) {
+			$item = Item::model()->findByPk($id);
+			if(!empty($item)) {
+				$item->name = $_POST['cuisine_name'];
+				$item->price = $_POST['cuisine_price'];
+				$item->serving_time = $_POST['cuisine_time'];
+				$item->details = $_POST['cuisine_details'];
+				$item->pricing_detail = $_POST['cuisine_price_details'];
+				$item->is_veg = $_POST['veg'];
+				$item->is_spicy = $_POST['spicy'];
+				$item->delivery_available = $_POST['delivery'];
+				$item->modify_date = new CDbExpression('NOW()');
+				if($item->validate()) {
+					$item->update();
+					echo json_encode(array('status'=>1,'msg'=>'Item updated'));
+				} else {
+					echo json_encode(array('status'=>2,'msg'=>'Form filled incorrectly'));
+				}
+			} else {
+				json_encode(array('status'=>2,'msg'=>'Item not found'));
+			}
+		} else if ($id != 0) {
+			$item = Item::model()->findByPk($_GET['id']);
+			$this->render('edit-cuisine',array('item'=>$item));
+		}
+	}
+
 	public function actionUserAccountSettings() {
-		$this->render('user-account-setting');
+		if(isset($_POST['user_email'])) {
+			$user = User::model()->findByPk(Yii::app()->user->id);
+			$user->first_name = $_POST['first_name'];
+			$user->last_name = $_POST['last_name'];
+			$user->email = $_POST['user_email'];
+			$user->mobile_number = $_POST['user_mobile'];
+			if(isset($_POST['user_pass']) && isset($_POST['user_confirm_pass'])) {
+				$user->password = base64_encode($_POST['user_confirm_pass']);
+			}
+			if($user->validate()) {
+				$user->update();
+				echo json_encode(array('status'=>1,'msg'=>'Profile updated'));
+			} else {
+				echo json_encode(array('status'=>2,'msg'=>'Incorrect data'));
+			}
+
+		} else {
+			$user = User::model()->findByPk(Yii::app()->user->id);
+			$this->render('user-account-setting',array('user'=>$user));
+		}
 	}
 }

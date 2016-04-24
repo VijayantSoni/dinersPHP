@@ -1,0 +1,833 @@
+2016/04/24 10:37:26 [error] [exception.Error] Error: Call to undefined function createUrl() in C:\xampp\htdocs\dinersPHP\protected\views\dashboard\edit-cuisine-home.php:65
+Stack trace:
+#0 C:\xampp\yii\framework\web\CBaseController.php(126): require()
+#1 C:\xampp\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\xampp\\htdocs...', Array, true)
+#2 C:\xampp\yii\framework\web\CController.php(869): CBaseController->renderFile('C:\\xampp\\htdocs...', Array, true)
+#3 C:\xampp\yii\framework\web\CController.php(782): CController->renderPartial('edit-cuisine-ho...', Array, true)
+#4 C:\xampp\htdocs\dinersPHP\protected\controllers\DashboardController.php(108): CController->render('edit-cuisine-ho...', Array)
+#5 C:\xampp\yii\framework\web\actions\CInlineAction.php(49): DashboardController->actionEditCuisine()
+#6 C:\xampp\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#7 C:\xampp\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#8 C:\xampp\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#9 C:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('editCuisine')
+#10 C:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('dashboard/editC...')
+#11 C:\xampp\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#12 C:\xampp\htdocs\dinersPHP\index.php(13): CApplication->run()
+#13 {main}
+REQUEST_URI=/dinersPHP/index.php/dashboard/editCuisine
+---
+2016/04/24 10:49:19 [error] [php] Undefined variable: item (C:\xampp\htdocs\dinersPHP\protected\views\dashboard\edit-cuisine.php:14)
+Stack trace:
+#0 C:\xampp\yii\framework\web\CController.php(869): DashboardController->renderFile()
+#1 C:\xampp\yii\framework\web\CController.php(782): DashboardController->renderPartial()
+#2 C:\xampp\htdocs\dinersPHP\protected\controllers\DashboardController.php(105): DashboardController->render()
+#3 C:\xampp\yii\framework\web\actions\CInlineAction.php(49): DashboardController->actionEditCuisine()
+#4 C:\xampp\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#5 C:\xampp\yii\framework\web\CController.php(286): DashboardController->runAction()
+#6 C:\xampp\yii\framework\web\CController.php(265): DashboardController->runActionWithFilters()
+#7 C:\xampp\yii\framework\web\CWebApplication.php(282): DashboardController->run()
+#8 C:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#9 C:\xampp\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\dinersPHP\index.php(13): CWebApplication->run()
+REQUEST_URI=/dinersPHP/index.php/dashboard/editCuisine
+in C:\xampp\htdocs\dinersPHP\protected\views\dashboard\edit-cuisine.php (14)
+in C:\xampp\htdocs\dinersPHP\protected\controllers\DashboardController.php (105)
+in C:\xampp\htdocs\dinersPHP\index.php (13)
+2016/04/24 10:50:15 [error] [exception.Error] Error: Call to undefined function createUrl() in C:\xampp\htdocs\dinersPHP\protected\views\dashboard\edit-cuisine-home.php:65
+Stack trace:
+#0 C:\xampp\yii\framework\web\CBaseController.php(126): require()
+#1 C:\xampp\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\xampp\\htdocs...', Array, true)
+#2 C:\xampp\yii\framework\web\CController.php(869): CBaseController->renderFile('C:\\xampp\\htdocs...', Array, true)
+#3 C:\xampp\yii\framework\web\CController.php(782): CController->renderPartial('edit-cuisine-ho...', Array, true)
+#4 C:\xampp\htdocs\dinersPHP\protected\controllers\DashboardController.php(108): CController->render('edit-cuisine-ho...', Array)
+#5 C:\xampp\yii\framework\web\actions\CInlineAction.php(49): DashboardController->actionEditCuisine()
+#6 C:\xampp\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#7 C:\xampp\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#8 C:\xampp\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#9 C:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('editCuisine')
+#10 C:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('dashboard/editC...')
+#11 C:\xampp\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#12 C:\xampp\htdocs\dinersPHP\index.php(13): CApplication->run()
+#13 {main}
+REQUEST_URI=/dinersPHP/index.php/dashboard/editCuisine
+---
+2016/04/24 11:04:59 [error] [exception.CHttpException.400] CHttpException: Your request is invalid. in C:\xampp\yii\framework\web\CController.php:336
+Stack trace:
+#0 C:\xampp\yii\framework\web\CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 C:\xampp\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#2 C:\xampp\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#3 C:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('editCuisineForm')
+#4 C:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('dashboard/editC...')
+#5 C:\xampp\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#6 C:\xampp\htdocs\dinersPHP\index.php(13): CApplication->run()
+#7 {main}
+REQUEST_URI=/dinersPHP/index.php/dashboard/editCuisineForm
+HTTP_REFERER=http://localhost/dinersPHP/index.php/dashboard/editCuisineForm/1
+---
+2016/04/24 11:05:32 [error] [exception.CHttpException.400] CHttpException: Your request is invalid. in C:\xampp\yii\framework\web\CController.php:336
+Stack trace:
+#0 C:\xampp\yii\framework\web\CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 C:\xampp\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#2 C:\xampp\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#3 C:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('editCuisineForm')
+#4 C:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('dashboard/editC...')
+#5 C:\xampp\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#6 C:\xampp\htdocs\dinersPHP\index.php(13): CApplication->run()
+#7 {main}
+REQUEST_URI=/dinersPHP/index.php/dashboard/editCuisineForm
+HTTP_REFERER=http://localhost/dinersPHP/index.php/dashboard/editCuisineForm/1
+---
+2016/04/24 11:08:14 [error] [php] Undefined index: id (C:\xampp\htdocs\dinersPHP\protected\controllers\DashboardController.php:112)
+Stack trace:
+#0 C:\xampp\yii\framework\web\actions\CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#1 C:\xampp\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#2 C:\xampp\yii\framework\web\CController.php(286): DashboardController->runAction()
+#3 C:\xampp\yii\framework\web\CController.php(265): DashboardController->runActionWithFilters()
+#4 C:\xampp\yii\framework\web\CWebApplication.php(282): DashboardController->run()
+#5 C:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#6 C:\xampp\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#7 C:\xampp\htdocs\dinersPHP\index.php(13): CWebApplication->run()
+REQUEST_URI=/dinersPHP/index.php/dashboard/editCuisineForm
+in C:\xampp\htdocs\dinersPHP\protected\controllers\DashboardController.php (112)
+in C:\xampp\htdocs\dinersPHP\index.php (13)
+2016/04/24 11:19:00 [error] [exception.ParseError] ParseError: syntax error, unexpected '}', expecting ',' or ';' in C:\xampp\htdocs\dinersPHP\protected\controllers\DashboardController.php:129
+Stack trace:
+#0 C:\xampp\yii\framework\web\CWebApplication.php(276): CWebApplication->createController('editCuisineForm...')
+#1 C:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('dashboard/editC...')
+#2 C:\xampp\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#3 C:\xampp\htdocs\dinersPHP\index.php(13): CApplication->run()
+#4 {main}
+REQUEST_URI=/dinersPHP/index.php/dashboard/editCuisineForm/1
+---
+2016/04/24 11:21:00 [error] [php] Undefined variable: majorLoc (C:\xampp\htdocs\dinersPHP\protected\views\dashboard\add-restaurant.php:16)
+Stack trace:
+#0 C:\xampp\yii\framework\web\CController.php(869): DashboardController->renderFile()
+#1 C:\xampp\yii\framework\web\CController.php(782): DashboardController->renderPartial()
+#2 C:\xampp\htdocs\dinersPHP\protected\controllers\DashboardController.php(84): DashboardController->render()
+#3 C:\xampp\yii\framework\web\actions\CInlineAction.php(49): DashboardController->actionEditRestaurant()
+#4 C:\xampp\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#5 C:\xampp\yii\framework\web\CController.php(286): DashboardController->runAction()
+#6 C:\xampp\yii\framework\web\CController.php(265): DashboardController->runActionWithFilters()
+#7 C:\xampp\yii\framework\web\CWebApplication.php(282): DashboardController->run()
+#8 C:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#9 C:\xampp\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\dinersPHP\index.php(13): CWebApplication->run()
+REQUEST_URI=/dinersPHP/index.php/dashboard/editRestaurant
+in C:\xampp\htdocs\dinersPHP\protected\views\dashboard\add-restaurant.php (16)
+in C:\xampp\htdocs\dinersPHP\protected\controllers\DashboardController.php (84)
+in C:\xampp\htdocs\dinersPHP\index.php (13)
+2016/04/24 11:22:18 [error] [php] Undefined variable: majorLoc (C:\xampp\htdocs\dinersPHP\protected\views\dashboard\edit-restaurant.php:16)
+Stack trace:
+#0 C:\xampp\yii\framework\web\CController.php(869): DashboardController->renderFile()
+#1 C:\xampp\yii\framework\web\CController.php(782): DashboardController->renderPartial()
+#2 C:\xampp\htdocs\dinersPHP\protected\controllers\DashboardController.php(84): DashboardController->render()
+#3 C:\xampp\yii\framework\web\actions\CInlineAction.php(49): DashboardController->actionEditRestaurant()
+#4 C:\xampp\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#5 C:\xampp\yii\framework\web\CController.php(286): DashboardController->runAction()
+#6 C:\xampp\yii\framework\web\CController.php(265): DashboardController->runActionWithFilters()
+#7 C:\xampp\yii\framework\web\CWebApplication.php(282): DashboardController->run()
+#8 C:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#9 C:\xampp\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\dinersPHP\index.php(13): CWebApplication->run()
+REQUEST_URI=/dinersPHP/index.php/dashboard/editRestaurant
+in C:\xampp\htdocs\dinersPHP\protected\views\dashboard\edit-restaurant.php (16)
+in C:\xampp\htdocs\dinersPHP\protected\controllers\DashboardController.php (84)
+in C:\xampp\htdocs\dinersPHP\index.php (13)
+2016/04/24 11:53:02 [error] [php] Undefined variable: majorLoc (C:\xampp\htdocs\dinersPHP\protected\views\dashboard\edit-restaurant-home.php:27)
+Stack trace:
+#0 C:\xampp\yii\framework\web\CController.php(869): DashboardController->renderFile()
+#1 C:\xampp\yii\framework\web\CController.php(782): DashboardController->renderPartial()
+#2 C:\xampp\htdocs\dinersPHP\protected\controllers\DashboardController.php(85): DashboardController->render()
+#3 C:\xampp\yii\framework\web\actions\CInlineAction.php(49): DashboardController->actionEditRestaurant()
+#4 C:\xampp\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#5 C:\xampp\yii\framework\web\CController.php(286): DashboardController->runAction()
+#6 C:\xampp\yii\framework\web\CController.php(265): DashboardController->runActionWithFilters()
+#7 C:\xampp\yii\framework\web\CWebApplication.php(282): DashboardController->run()
+#8 C:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#9 C:\xampp\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\dinersPHP\index.php(13): CWebApplication->run()
+REQUEST_URI=/dinersPHP/index.php/dashboard/editRestaurant
+in C:\xampp\htdocs\dinersPHP\protected\views\dashboard\edit-restaurant-home.php (27)
+in C:\xampp\htdocs\dinersPHP\protected\controllers\DashboardController.php (85)
+in C:\xampp\htdocs\dinersPHP\index.php (13)
+2016/04/24 12:01:31 [error] [php] Undefined variable: majorLoc (C:\xampp\htdocs\dinersPHP\protected\views\dashboard\edit-restaurant-home.php:16)
+Stack trace:
+#0 C:\xampp\yii\framework\web\CController.php(869): DashboardController->renderFile()
+#1 C:\xampp\yii\framework\web\CController.php(782): DashboardController->renderPartial()
+#2 C:\xampp\htdocs\dinersPHP\protected\controllers\DashboardController.php(85): DashboardController->render()
+#3 C:\xampp\yii\framework\web\actions\CInlineAction.php(49): DashboardController->actionEditRestaurant()
+#4 C:\xampp\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#5 C:\xampp\yii\framework\web\CController.php(286): DashboardController->runAction()
+#6 C:\xampp\yii\framework\web\CController.php(265): DashboardController->runActionWithFilters()
+#7 C:\xampp\yii\framework\web\CWebApplication.php(282): DashboardController->run()
+#8 C:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#9 C:\xampp\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\dinersPHP\index.php(13): CWebApplication->run()
+REQUEST_URI=/dinersPHP/index.php/dashboard/editRestaurant
+in C:\xampp\htdocs\dinersPHP\protected\views\dashboard\edit-restaurant-home.php (16)
+in C:\xampp\htdocs\dinersPHP\protected\controllers\DashboardController.php (85)
+in C:\xampp\htdocs\dinersPHP\index.php (13)
+2016/04/24 12:04:22 [error] [php] Undefined variable: majorLoc (C:\xampp\htdocs\dinersPHP\protected\views\dashboard\edit-restaurant-home.php:16)
+Stack trace:
+#0 C:\xampp\yii\framework\web\CController.php(869): DashboardController->renderFile()
+#1 C:\xampp\yii\framework\web\CController.php(782): DashboardController->renderPartial()
+#2 C:\xampp\htdocs\dinersPHP\protected\controllers\DashboardController.php(85): DashboardController->render()
+#3 C:\xampp\yii\framework\web\actions\CInlineAction.php(49): DashboardController->actionEditRestaurant()
+#4 C:\xampp\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#5 C:\xampp\yii\framework\web\CController.php(286): DashboardController->runAction()
+#6 C:\xampp\yii\framework\web\CController.php(265): DashboardController->runActionWithFilters()
+#7 C:\xampp\yii\framework\web\CWebApplication.php(282): DashboardController->run()
+#8 C:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#9 C:\xampp\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\dinersPHP\index.php(13): CWebApplication->run()
+REQUEST_URI=/dinersPHP/index.php/dashboard/editRestaurant
+in C:\xampp\htdocs\dinersPHP\protected\views\dashboard\edit-restaurant-home.php (16)
+in C:\xampp\htdocs\dinersPHP\protected\controllers\DashboardController.php (85)
+in C:\xampp\htdocs\dinersPHP\index.php (13)
+2016/04/24 12:21:01 [error] [exception.CDbException] CDbException: The value for the column "id" is not supplied when querying the table "restaurant". in C:\xampp\yii\framework\db\schema\CDbCommandBuilder.php:816
+Stack trace:
+#0 C:\xampp\yii\framework\db\schema\CDbCommandBuilder.php(624): CDbCommandBuilder->createInCondition(Object(CMysqlTableSchema), Array, Array, '`t`.')
+#1 C:\xampp\yii\framework\db\ar\CActiveRecord.php(1490): CDbCommandBuilder->createPkCriteria(Object(CMysqlTableSchema), Array, '', Array, '`t`.')
+#2 C:\xampp\htdocs\dinersPHP\protected\controllers\DashboardController.php(85): CActiveRecord->findByPk('1')
+#3 C:\xampp\yii\framework\web\actions\CInlineAction.php(49): DashboardController->actionEditRestaurant()
+#4 C:\xampp\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\xampp\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#6 C:\xampp\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('editRestaurant')
+#8 C:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('dashboard/editR...')
+#9 C:\xampp\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\dinersPHP\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/dinersPHP/index.php/dashboard/editRestaurant
+HTTP_REFERER=http://localhost/dinersPHP/index.php/dashboard/editRestaurant
+---
+2016/04/24 12:21:53 [error] [exception.CDbException] CDbException: The value for the column "id" is not supplied when querying the table "restaurant". in C:\xampp\yii\framework\db\schema\CDbCommandBuilder.php:816
+Stack trace:
+#0 C:\xampp\yii\framework\db\schema\CDbCommandBuilder.php(624): CDbCommandBuilder->createInCondition(Object(CMysqlTableSchema), Array, Array, '`t`.')
+#1 C:\xampp\yii\framework\db\ar\CActiveRecord.php(1490): CDbCommandBuilder->createPkCriteria(Object(CMysqlTableSchema), Array, '', Array, '`t`.')
+#2 C:\xampp\htdocs\dinersPHP\protected\controllers\DashboardController.php(85): CActiveRecord->findByPk(1)
+#3 C:\xampp\yii\framework\web\actions\CInlineAction.php(49): DashboardController->actionEditRestaurant()
+#4 C:\xampp\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\xampp\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#6 C:\xampp\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('editRestaurant')
+#8 C:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('dashboard/editR...')
+#9 C:\xampp\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\dinersPHP\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/dinersPHP/index.php/dashboard/editRestaurant
+HTTP_REFERER=http://localhost/dinersPHP/index.php/dashboard/editRestaurant
+---
+2016/04/24 12:22:06 [error] [exception.ParseError] ParseError: syntax error, unexpected '=', expecting ',' or ')' in C:\xampp\htdocs\dinersPHP\protected\controllers\DashboardController.php:85
+Stack trace:
+#0 C:\xampp\yii\framework\web\CWebApplication.php(276): CWebApplication->createController('editRestaurant/')
+#1 C:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('dashboard/editR...')
+#2 C:\xampp\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#3 C:\xampp\htdocs\dinersPHP\index.php(13): CApplication->run()
+#4 {main}
+REQUEST_URI=/dinersPHP/index.php/dashboard/editRestaurant
+---
+2016/04/24 12:22:11 [error] [exception.ParseError] ParseError: syntax error, unexpected '=', expecting ',' or ')' in C:\xampp\htdocs\dinersPHP\protected\controllers\DashboardController.php:85
+Stack trace:
+#0 C:\xampp\yii\framework\web\CWebApplication.php(276): CWebApplication->createController('editRestaurant/')
+#1 C:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('dashboard/editR...')
+#2 C:\xampp\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#3 C:\xampp\htdocs\dinersPHP\index.php(13): CApplication->run()
+#4 {main}
+REQUEST_URI=/dinersPHP/index.php/dashboard/editRestaurant
+---
+2016/04/24 12:22:12 [error] [exception.ParseError] ParseError: syntax error, unexpected '=', expecting ',' or ')' in C:\xampp\htdocs\dinersPHP\protected\controllers\DashboardController.php:85
+Stack trace:
+#0 C:\xampp\yii\framework\web\CWebApplication.php(276): CWebApplication->createController('editRestaurant/')
+#1 C:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('dashboard/editR...')
+#2 C:\xampp\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#3 C:\xampp\htdocs\dinersPHP\index.php(13): CApplication->run()
+#4 {main}
+REQUEST_URI=/dinersPHP/index.php/dashboard/editRestaurant
+---
+2016/04/24 12:22:24 [error] [exception.CDbException] CDbException: The value for the column "location_id" is not supplied when querying the table "restaurant". in C:\xampp\yii\framework\db\schema\CDbCommandBuilder.php:816
+Stack trace:
+#0 C:\xampp\yii\framework\db\schema\CDbCommandBuilder.php(624): CDbCommandBuilder->createInCondition(Object(CMysqlTableSchema), Array, Array, '`t`.')
+#1 C:\xampp\yii\framework\db\ar\CActiveRecord.php(1490): CDbCommandBuilder->createPkCriteria(Object(CMysqlTableSchema), Array, '', Array, '`t`.')
+#2 C:\xampp\htdocs\dinersPHP\protected\controllers\DashboardController.php(85): CActiveRecord->findByPk(Array)
+#3 C:\xampp\yii\framework\web\actions\CInlineAction.php(49): DashboardController->actionEditRestaurant()
+#4 C:\xampp\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\xampp\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#6 C:\xampp\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('editRestaurant')
+#8 C:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('dashboard/editR...')
+#9 C:\xampp\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\dinersPHP\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/dinersPHP/index.php/dashboard/editRestaurant
+HTTP_REFERER=http://localhost/dinersPHP/index.php/dashboard/editRestaurant
+---
+2016/04/24 12:23:43 [error] [php] Undefined variable: rest (C:\xampp\htdocs\dinersPHP\protected\controllers\DashboardController.php:86)
+Stack trace:
+#0 C:\xampp\yii\framework\web\CController.php(286): DashboardController->runAction()
+#1 C:\xampp\yii\framework\web\CController.php(265): DashboardController->runActionWithFilters()
+#2 C:\xampp\yii\framework\web\CWebApplication.php(282): DashboardController->run()
+#3 C:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#4 C:\xampp\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#5 C:\xampp\htdocs\dinersPHP\index.php(13): CWebApplication->run()
+REQUEST_URI=/dinersPHP/index.php/dashboard/editRestaurant
+in C:\xampp\htdocs\dinersPHP\protected\controllers\DashboardController.php (86)
+in C:\xampp\htdocs\dinersPHP\index.php (13)
+2016/04/24 12:26:48 [error] [exception.CDbException] CDbException: Relation "location" is not defined in active record class "AvailableInLocation". in C:\xampp\yii\framework\db\ar\CActiveFinder.php:226
+Stack trace:
+#0 C:\xampp\yii\framework\db\ar\CActiveFinder.php(299): CActiveFinder->buildJoinTree(Object(CJoinElement), 'location')
+#1 C:\xampp\yii\framework\db\ar\CActiveFinder.php(48): CActiveFinder->buildJoinTree(Object(CJoinElement), Array)
+#2 C:\xampp\yii\framework\db\ar\CActiveRecord.php(912): CActiveFinder->__construct(Object(Restaurant), Array)
+#3 C:\xampp\yii\framework\db\ar\CActiveRecord.php(1360): CActiveRecord->getActiveFinder(Array)
+#4 C:\xampp\yii\framework\db\ar\CActiveRecord.php(1541): CActiveRecord->query(Object(CDbCriteria), true)
+#5 C:\xampp\htdocs\dinersPHP\protected\controllers\DashboardController.php(20): CActiveRecord->findAllByAttributes(Array)
+#6 C:\xampp\yii\framework\web\actions\CInlineAction.php(49): DashboardController->actionIndex()
+#7 C:\xampp\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#8 C:\xampp\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#9 C:\xampp\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#10 C:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('')
+#11 C:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('dashboard')
+#12 C:\xampp\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#13 C:\xampp\htdocs\dinersPHP\index.php(13): CApplication->run()
+#14 {main}
+REQUEST_URI=/dinersPHP/index.php/dashboard
+---
+2016/04/24 12:28:16 [error] [php] Trying to get property of non-object (C:\xampp\htdocs\dinersPHP\protected\controllers\DashboardController.php:21)
+Stack trace:
+#0 C:\xampp\yii\framework\web\CController.php(286): DashboardController->runAction()
+#1 C:\xampp\yii\framework\web\CController.php(265): DashboardController->runActionWithFilters()
+#2 C:\xampp\yii\framework\web\CWebApplication.php(282): DashboardController->run()
+#3 C:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#4 C:\xampp\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#5 C:\xampp\htdocs\dinersPHP\index.php(13): CWebApplication->run()
+REQUEST_URI=/dinersPHP/index.php/dashboard
+in C:\xampp\htdocs\dinersPHP\protected\controllers\DashboardController.php (21)
+in C:\xampp\htdocs\dinersPHP\index.php (13)
+2016/04/24 12:28:42 [error] [php] Trying to get property of non-object (C:\xampp\htdocs\dinersPHP\protected\controllers\DashboardController.php:21)
+Stack trace:
+#0 C:\xampp\yii\framework\web\CController.php(286): DashboardController->runAction()
+#1 C:\xampp\yii\framework\web\CController.php(265): DashboardController->runActionWithFilters()
+#2 C:\xampp\yii\framework\web\CWebApplication.php(282): DashboardController->run()
+#3 C:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#4 C:\xampp\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#5 C:\xampp\htdocs\dinersPHP\index.php(13): CWebApplication->run()
+REQUEST_URI=/dinersPHP/index.php/dashboard
+in C:\xampp\htdocs\dinersPHP\protected\controllers\DashboardController.php (21)
+in C:\xampp\htdocs\dinersPHP\index.php (13)
+2016/04/24 12:29:22 [error] [php] Trying to get property of non-object (C:\xampp\htdocs\dinersPHP\protected\controllers\DashboardController.php:21)
+Stack trace:
+#0 C:\xampp\yii\framework\web\CController.php(286): DashboardController->runAction()
+#1 C:\xampp\yii\framework\web\CController.php(265): DashboardController->runActionWithFilters()
+#2 C:\xampp\yii\framework\web\CWebApplication.php(282): DashboardController->run()
+#3 C:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#4 C:\xampp\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#5 C:\xampp\htdocs\dinersPHP\index.php(13): CWebApplication->run()
+REQUEST_URI=/dinersPHP/index.php/dashboard
+in C:\xampp\htdocs\dinersPHP\protected\controllers\DashboardController.php (21)
+in C:\xampp\htdocs\dinersPHP\index.php (13)
+2016/04/24 12:29:36 [error] [php] Trying to get property of non-object (C:\xampp\htdocs\dinersPHP\protected\controllers\DashboardController.php:21)
+Stack trace:
+#0 C:\xampp\yii\framework\web\CController.php(286): DashboardController->runAction()
+#1 C:\xampp\yii\framework\web\CController.php(265): DashboardController->runActionWithFilters()
+#2 C:\xampp\yii\framework\web\CWebApplication.php(282): DashboardController->run()
+#3 C:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#4 C:\xampp\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#5 C:\xampp\htdocs\dinersPHP\index.php(13): CWebApplication->run()
+REQUEST_URI=/dinersPHP/index.php/dashboard
+in C:\xampp\htdocs\dinersPHP\protected\controllers\DashboardController.php (21)
+in C:\xampp\htdocs\dinersPHP\index.php (13)
+2016/04/24 12:29:41 [error] [php] Trying to get property of non-object (C:\xampp\htdocs\dinersPHP\protected\controllers\DashboardController.php:21)
+Stack trace:
+#0 C:\xampp\yii\framework\web\CController.php(286): DashboardController->runAction()
+#1 C:\xampp\yii\framework\web\CController.php(265): DashboardController->runActionWithFilters()
+#2 C:\xampp\yii\framework\web\CWebApplication.php(282): DashboardController->run()
+#3 C:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#4 C:\xampp\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#5 C:\xampp\htdocs\dinersPHP\index.php(13): CWebApplication->run()
+REQUEST_URI=/dinersPHP/index.php/dashboard
+in C:\xampp\htdocs\dinersPHP\protected\controllers\DashboardController.php (21)
+in C:\xampp\htdocs\dinersPHP\index.php (13)
+2016/04/24 12:30:06 [error] [php] Trying to get property of non-object (C:\xampp\htdocs\dinersPHP\protected\controllers\DashboardController.php:21)
+Stack trace:
+#0 C:\xampp\yii\framework\web\CController.php(286): DashboardController->runAction()
+#1 C:\xampp\yii\framework\web\CController.php(265): DashboardController->runActionWithFilters()
+#2 C:\xampp\yii\framework\web\CWebApplication.php(282): DashboardController->run()
+#3 C:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#4 C:\xampp\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#5 C:\xampp\htdocs\dinersPHP\index.php(13): CWebApplication->run()
+REQUEST_URI=/dinersPHP/index.php/dashboard
+in C:\xampp\htdocs\dinersPHP\protected\controllers\DashboardController.php (21)
+in C:\xampp\htdocs\dinersPHP\index.php (13)
+2016/04/24 12:30:22 [error] [exception.CDbException] CDbException: The value for the column "location_id" is not supplied when querying the table "restaurant". in C:\xampp\yii\framework\db\schema\CDbCommandBuilder.php:816
+Stack trace:
+#0 C:\xampp\yii\framework\db\schema\CDbCommandBuilder.php(624): CDbCommandBuilder->createInCondition(Object(CMysqlTableSchema), Array, Array, '`t`.')
+#1 C:\xampp\yii\framework\db\ar\CActiveRecord.php(1490): CDbCommandBuilder->createPkCriteria(Object(CMysqlTableSchema), Array, '', Array, '`t`.')
+#2 C:\xampp\htdocs\dinersPHP\protected\controllers\DashboardController.php(20): CActiveRecord->findByPk(Array)
+#3 C:\xampp\yii\framework\web\actions\CInlineAction.php(49): DashboardController->actionIndex()
+#4 C:\xampp\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\xampp\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#6 C:\xampp\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('')
+#8 C:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('dashboard')
+#9 C:\xampp\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\dinersPHP\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/dinersPHP/index.php/dashboard
+---
+2016/04/24 12:30:39 [error] [exception.CException] CException: Property "Restaurant.availableInLocation" is not defined. in C:\xampp\yii\framework\base\CComponent.php:130
+Stack trace:
+#0 C:\xampp\yii\framework\db\ar\CActiveRecord.php(145): CComponent->__get('availableInLoca...')
+#1 C:\xampp\htdocs\dinersPHP\protected\controllers\DashboardController.php(21): CActiveRecord->__get('availableInLoca...')
+#2 C:\xampp\yii\framework\web\actions\CInlineAction.php(49): DashboardController->actionIndex()
+#3 C:\xampp\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#4 C:\xampp\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#5 C:\xampp\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#6 C:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('')
+#7 C:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('dashboard')
+#8 C:\xampp\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#9 C:\xampp\htdocs\dinersPHP\index.php(13): CApplication->run()
+#10 {main}
+REQUEST_URI=/dinersPHP/index.php/dashboard
+---
+2016/04/24 12:31:58 [error] [php] Trying to get property of non-object (C:\xampp\htdocs\dinersPHP\protected\controllers\DashboardController.php:21)
+Stack trace:
+#0 C:\xampp\yii\framework\web\CController.php(286): DashboardController->runAction()
+#1 C:\xampp\yii\framework\web\CController.php(265): DashboardController->runActionWithFilters()
+#2 C:\xampp\yii\framework\web\CWebApplication.php(282): DashboardController->run()
+#3 C:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#4 C:\xampp\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#5 C:\xampp\htdocs\dinersPHP\index.php(13): CWebApplication->run()
+REQUEST_URI=/dinersPHP/index.php/dashboard
+in C:\xampp\htdocs\dinersPHP\protected\controllers\DashboardController.php (21)
+in C:\xampp\htdocs\dinersPHP\index.php (13)
+2016/04/24 12:32:05 [error] [php] Undefined offset: 0 (C:\xampp\htdocs\dinersPHP\protected\controllers\DashboardController.php:21)
+Stack trace:
+#0 C:\xampp\yii\framework\web\CController.php(286): DashboardController->runAction()
+#1 C:\xampp\yii\framework\web\CController.php(265): DashboardController->runActionWithFilters()
+#2 C:\xampp\yii\framework\web\CWebApplication.php(282): DashboardController->run()
+#3 C:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#4 C:\xampp\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#5 C:\xampp\htdocs\dinersPHP\index.php(13): CWebApplication->run()
+REQUEST_URI=/dinersPHP/index.php/dashboard
+in C:\xampp\htdocs\dinersPHP\protected\controllers\DashboardController.php (21)
+in C:\xampp\htdocs\dinersPHP\index.php (13)
+2016/04/24 12:32:17 [error] [exception.CException] CException: Property "Restaurant.availableInLocations" is not defined. in C:\xampp\yii\framework\base\CComponent.php:130
+Stack trace:
+#0 C:\xampp\yii\framework\db\ar\CActiveRecord.php(145): CComponent->__get('availableInLoca...')
+#1 C:\xampp\htdocs\dinersPHP\protected\controllers\DashboardController.php(21): CActiveRecord->__get('availableInLoca...')
+#2 C:\xampp\yii\framework\web\actions\CInlineAction.php(49): DashboardController->actionIndex()
+#3 C:\xampp\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#4 C:\xampp\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#5 C:\xampp\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#6 C:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('')
+#7 C:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('dashboard')
+#8 C:\xampp\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#9 C:\xampp\htdocs\dinersPHP\index.php(13): CApplication->run()
+#10 {main}
+REQUEST_URI=/dinersPHP/index.php/dashboard
+---
+2016/04/24 13:09:52 [error] [exception.ParseError] ParseError: syntax error, unexpected '=>' (T_DOUBLE_ARROW), expecting ',' or ')' in C:\xampp\htdocs\dinersPHP\protected\controllers\DashboardController.php:88
+Stack trace:
+#0 C:\xampp\yii\framework\web\CWebApplication.php(276): CWebApplication->createController('editRestaurant/')
+#1 C:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('dashboard/editR...')
+#2 C:\xampp\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#3 C:\xampp\htdocs\dinersPHP\index.php(13): CApplication->run()
+#4 {main}
+REQUEST_URI=/dinersPHP/index.php/dashboard/editRestaurant
+---
+2016/04/24 13:09:52 [error] [exception.ParseError] ParseError: syntax error, unexpected '=>' (T_DOUBLE_ARROW), expecting ',' or ')' in C:\xampp\htdocs\dinersPHP\protected\controllers\DashboardController.php:88
+Stack trace:
+#0 C:\xampp\yii\framework\web\CWebApplication.php(276): CWebApplication->createController('editRestaurant/')
+#1 C:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('dashboard/editR...')
+#2 C:\xampp\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#3 C:\xampp\htdocs\dinersPHP\index.php(13): CApplication->run()
+#4 {main}
+REQUEST_URI=/dinersPHP/index.php/dashboard/editRestaurant
+---
+2016/04/24 13:09:52 [error] [exception.ParseError] ParseError: syntax error, unexpected '=>' (T_DOUBLE_ARROW), expecting ',' or ')' in C:\xampp\htdocs\dinersPHP\protected\controllers\DashboardController.php:88
+Stack trace:
+#0 C:\xampp\yii\framework\web\CWebApplication.php(276): CWebApplication->createController('editRestaurant/')
+#1 C:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('dashboard/editR...')
+#2 C:\xampp\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#3 C:\xampp\htdocs\dinersPHP\index.php(13): CApplication->run()
+#4 {main}
+REQUEST_URI=/dinersPHP/index.php/dashboard/editRestaurant
+---
+2016/04/24 13:09:52 [error] [exception.ParseError] ParseError: syntax error, unexpected '=>' (T_DOUBLE_ARROW), expecting ',' or ')' in C:\xampp\htdocs\dinersPHP\protected\controllers\DashboardController.php:88
+Stack trace:
+#0 C:\xampp\yii\framework\web\CWebApplication.php(276): CWebApplication->createController('editRestaurant/')
+#1 C:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('dashboard/editR...')
+#2 C:\xampp\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#3 C:\xampp\htdocs\dinersPHP\index.php(13): CApplication->run()
+#4 {main}
+REQUEST_URI=/dinersPHP/index.php/dashboard/editRestaurant
+---
+2016/04/24 13:09:52 [error] [exception.ParseError] ParseError: syntax error, unexpected '=>' (T_DOUBLE_ARROW), expecting ',' or ')' in C:\xampp\htdocs\dinersPHP\protected\controllers\DashboardController.php:88
+Stack trace:
+#0 C:\xampp\yii\framework\web\CWebApplication.php(276): CWebApplication->createController('editRestaurant/')
+#1 C:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('dashboard/editR...')
+#2 C:\xampp\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#3 C:\xampp\htdocs\dinersPHP\index.php(13): CApplication->run()
+#4 {main}
+REQUEST_URI=/dinersPHP/index.php/dashboard/editRestaurant
+---
+2016/04/24 13:09:52 [error] [exception.ParseError] ParseError: syntax error, unexpected '=>' (T_DOUBLE_ARROW), expecting ',' or ')' in C:\xampp\htdocs\dinersPHP\protected\controllers\DashboardController.php:88
+Stack trace:
+#0 C:\xampp\yii\framework\web\CWebApplication.php(276): CWebApplication->createController('editRestaurant/')
+#1 C:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('dashboard/editR...')
+#2 C:\xampp\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#3 C:\xampp\htdocs\dinersPHP\index.php(13): CApplication->run()
+#4 {main}
+REQUEST_URI=/dinersPHP/index.php/dashboard/editRestaurant
+---
+2016/04/24 13:09:52 [error] [exception.ParseError] ParseError: syntax error, unexpected '=>' (T_DOUBLE_ARROW), expecting ',' or ')' in C:\xampp\htdocs\dinersPHP\protected\controllers\DashboardController.php:88
+Stack trace:
+#0 C:\xampp\yii\framework\web\CWebApplication.php(276): CWebApplication->createController('editRestaurant/')
+#1 C:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('dashboard/editR...')
+#2 C:\xampp\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#3 C:\xampp\htdocs\dinersPHP\index.php(13): CApplication->run()
+#4 {main}
+REQUEST_URI=/dinersPHP/index.php/dashboard/editRestaurant
+---
+2016/04/24 13:09:52 [error] [exception.ParseError] ParseError: syntax error, unexpected '=>' (T_DOUBLE_ARROW), expecting ',' or ')' in C:\xampp\htdocs\dinersPHP\protected\controllers\DashboardController.php:88
+Stack trace:
+#0 C:\xampp\yii\framework\web\CWebApplication.php(276): CWebApplication->createController('editRestaurant/')
+#1 C:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('dashboard/editR...')
+#2 C:\xampp\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#3 C:\xampp\htdocs\dinersPHP\index.php(13): CApplication->run()
+#4 {main}
+REQUEST_URI=/dinersPHP/index.php/dashboard/editRestaurant
+---
+2016/04/24 13:09:52 [error] [exception.ParseError] ParseError: syntax error, unexpected '=>' (T_DOUBLE_ARROW), expecting ',' or ')' in C:\xampp\htdocs\dinersPHP\protected\controllers\DashboardController.php:88
+Stack trace:
+#0 C:\xampp\yii\framework\web\CWebApplication.php(276): CWebApplication->createController('editRestaurant/')
+#1 C:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('dashboard/editR...')
+#2 C:\xampp\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#3 C:\xampp\htdocs\dinersPHP\index.php(13): CApplication->run()
+#4 {main}
+REQUEST_URI=/dinersPHP/index.php/dashboard/editRestaurant
+---
+2016/04/24 13:09:52 [error] [exception.ParseError] ParseError: syntax error, unexpected '=>' (T_DOUBLE_ARROW), expecting ',' or ')' in C:\xampp\htdocs\dinersPHP\protected\controllers\DashboardController.php:88
+Stack trace:
+#0 C:\xampp\yii\framework\web\CWebApplication.php(276): CWebApplication->createController('editRestaurant/')
+#1 C:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('dashboard/editR...')
+#2 C:\xampp\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#3 C:\xampp\htdocs\dinersPHP\index.php(13): CApplication->run()
+#4 {main}
+REQUEST_URI=/dinersPHP/index.php/dashboard/editRestaurant
+---
+2016/04/24 13:11:57 [error] [php] Undefined index: restaurant_option (C:\xampp\htdocs\dinersPHP\protected\controllers\DashboardController.php:88)
+Stack trace:
+#0 C:\xampp\yii\framework\web\CController.php(286): DashboardController->runAction()
+#1 C:\xampp\yii\framework\web\CController.php(265): DashboardController->runActionWithFilters()
+#2 C:\xampp\yii\framework\web\CWebApplication.php(282): DashboardController->run()
+#3 C:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#4 C:\xampp\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#5 C:\xampp\htdocs\dinersPHP\index.php(13): CWebApplication->run()
+REQUEST_URI=/dinersPHP/index.php/dashboard/editRestaurant
+in C:\xampp\htdocs\dinersPHP\protected\controllers\DashboardController.php (88)
+in C:\xampp\htdocs\dinersPHP\index.php (13)
+2016/04/24 13:14:45 [error] [exception.CDbException] CDbException: The value for the column "id" is not supplied when querying the table "restaurant". in C:\xampp\yii\framework\db\schema\CDbCommandBuilder.php:816
+Stack trace:
+#0 C:\xampp\yii\framework\db\schema\CDbCommandBuilder.php(624): CDbCommandBuilder->createInCondition(Object(CMysqlTableSchema), Array, Array, '`t`.')
+#1 C:\xampp\yii\framework\db\ar\CActiveRecord.php(1490): CDbCommandBuilder->createPkCriteria(Object(CMysqlTableSchema), Array, '', Array, '`t`.')
+#2 C:\xampp\htdocs\dinersPHP\protected\controllers\DashboardController.php(88): CActiveRecord->findByPk('2')
+#3 C:\xampp\yii\framework\web\actions\CInlineAction.php(49): DashboardController->actionEditRestaurant()
+#4 C:\xampp\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\xampp\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#6 C:\xampp\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('editRestaurant')
+#8 C:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('dashboard/editR...')
+#9 C:\xampp\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\dinersPHP\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/dinersPHP/index.php/dashboard/editRestaurant
+HTTP_REFERER=http://localhost/dinersPHP/index.php/dashboard/editRestaurant
+---
+2016/04/24 13:43:13 [error] [exception.ParseError] ParseError: syntax error, unexpected '=>' (T_DOUBLE_ARROW), expecting ',' or ')' in C:\xampp\htdocs\dinersPHP\protected\controllers\DashboardController.php:109
+Stack trace:
+#0 C:\xampp\yii\framework\web\CWebApplication.php(276): CWebApplication->createController('editRestaurant/')
+#1 C:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('dashboard/editR...')
+#2 C:\xampp\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#3 C:\xampp\htdocs\dinersPHP\index.php(13): CApplication->run()
+#4 {main}
+REQUEST_URI=/dinersPHP/index.php/dashboard/editRestaurant
+---
+2016/04/24 13:43:14 [error] [exception.ParseError] ParseError: syntax error, unexpected '=>' (T_DOUBLE_ARROW), expecting ',' or ')' in C:\xampp\htdocs\dinersPHP\protected\controllers\DashboardController.php:109
+Stack trace:
+#0 C:\xampp\yii\framework\web\CWebApplication.php(276): CWebApplication->createController('editRestaurant/')
+#1 C:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('dashboard/editR...')
+#2 C:\xampp\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#3 C:\xampp\htdocs\dinersPHP\index.php(13): CApplication->run()
+#4 {main}
+REQUEST_URI=/dinersPHP/index.php/dashboard/editRestaurant
+---
+2016/04/24 13:43:14 [error] [exception.ParseError] ParseError: syntax error, unexpected '=>' (T_DOUBLE_ARROW), expecting ',' or ')' in C:\xampp\htdocs\dinersPHP\protected\controllers\DashboardController.php:109
+Stack trace:
+#0 C:\xampp\yii\framework\web\CWebApplication.php(276): CWebApplication->createController('editRestaurant/')
+#1 C:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('dashboard/editR...')
+#2 C:\xampp\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#3 C:\xampp\htdocs\dinersPHP\index.php(13): CApplication->run()
+#4 {main}
+REQUEST_URI=/dinersPHP/index.php/dashboard/editRestaurant
+---
+2016/04/24 13:43:14 [error] [exception.ParseError] ParseError: syntax error, unexpected '=>' (T_DOUBLE_ARROW), expecting ',' or ')' in C:\xampp\htdocs\dinersPHP\protected\controllers\DashboardController.php:109
+Stack trace:
+#0 C:\xampp\yii\framework\web\CWebApplication.php(276): CWebApplication->createController('editRestaurant/')
+#1 C:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('dashboard/editR...')
+#2 C:\xampp\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#3 C:\xampp\htdocs\dinersPHP\index.php(13): CApplication->run()
+#4 {main}
+REQUEST_URI=/dinersPHP/index.php/dashboard/editRestaurant
+---
+2016/04/24 13:43:14 [error] [exception.ParseError] ParseError: syntax error, unexpected '=>' (T_DOUBLE_ARROW), expecting ',' or ')' in C:\xampp\htdocs\dinersPHP\protected\controllers\DashboardController.php:109
+Stack trace:
+#0 C:\xampp\yii\framework\web\CWebApplication.php(276): CWebApplication->createController('editRestaurant/')
+#1 C:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('dashboard/editR...')
+#2 C:\xampp\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#3 C:\xampp\htdocs\dinersPHP\index.php(13): CApplication->run()
+#4 {main}
+REQUEST_URI=/dinersPHP/index.php/dashboard/editRestaurant
+---
+2016/04/24 13:43:14 [error] [exception.ParseError] ParseError: syntax error, unexpected '=>' (T_DOUBLE_ARROW), expecting ',' or ')' in C:\xampp\htdocs\dinersPHP\protected\controllers\DashboardController.php:109
+Stack trace:
+#0 C:\xampp\yii\framework\web\CWebApplication.php(276): CWebApplication->createController('editRestaurant/')
+#1 C:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('dashboard/editR...')
+#2 C:\xampp\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#3 C:\xampp\htdocs\dinersPHP\index.php(13): CApplication->run()
+#4 {main}
+REQUEST_URI=/dinersPHP/index.php/dashboard/editRestaurant
+---
+2016/04/24 13:43:14 [error] [exception.ParseError] ParseError: syntax error, unexpected '=>' (T_DOUBLE_ARROW), expecting ',' or ')' in C:\xampp\htdocs\dinersPHP\protected\controllers\DashboardController.php:109
+Stack trace:
+#0 C:\xampp\yii\framework\web\CWebApplication.php(276): CWebApplication->createController('editRestaurant/')
+#1 C:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('dashboard/editR...')
+#2 C:\xampp\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#3 C:\xampp\htdocs\dinersPHP\index.php(13): CApplication->run()
+#4 {main}
+REQUEST_URI=/dinersPHP/index.php/dashboard/editRestaurant
+---
+2016/04/24 14:00:44 [error] [exception.ParseError] ParseError: syntax error, unexpected 'status' (T_STRING), expecting ']' in C:\xampp\htdocs\dinersPHP\protected\controllers\DashboardController.php:102
+Stack trace:
+#0 C:\xampp\yii\framework\web\CWebApplication.php(276): CWebApplication->createController('editRestaurant/')
+#1 C:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('dashboard/editR...')
+#2 C:\xampp\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#3 C:\xampp\htdocs\dinersPHP\index.php(13): CApplication->run()
+#4 {main}
+REQUEST_URI=/dinersPHP/index.php/dashboard/editRestaurant
+---
+2016/04/24 14:02:51 [error] [exception.ParseError] ParseError: syntax error, unexpected 'public' (T_PUBLIC) in C:\xampp\htdocs\dinersPHP\protected\controllers\DashboardController.php:104
+Stack trace:
+#0 C:\xampp\yii\framework\web\CWebApplication.php(276): CWebApplication->createController('editRestaurant/')
+#1 C:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('dashboard/editR...')
+#2 C:\xampp\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#3 C:\xampp\htdocs\dinersPHP\index.php(13): CApplication->run()
+#4 {main}
+REQUEST_URI=/dinersPHP/index.php/dashboard/editRestaurant
+---
+2016/04/24 14:09:02 [error] [php] Undefined variable: user (C:\xampp\htdocs\dinersPHP\protected\controllers\DashboardController.php:160)
+Stack trace:
+#0 C:\xampp\yii\framework\web\CController.php(286): DashboardController->runAction()
+#1 C:\xampp\yii\framework\web\CController.php(265): DashboardController->runActionWithFilters()
+#2 C:\xampp\yii\framework\web\CWebApplication.php(282): DashboardController->run()
+#3 C:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#4 C:\xampp\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#5 C:\xampp\htdocs\dinersPHP\index.php(13): CWebApplication->run()
+REQUEST_URI=/dinersPHP/index.php/dashboard/userAccountSettings
+in C:\xampp\htdocs\dinersPHP\protected\controllers\DashboardController.php (160)
+in C:\xampp\htdocs\dinersPHP\index.php (13)
+2016/04/24 14:32:13 [error] [php] Undefined variable: user (C:\xampp\htdocs\dinersPHP\protected\views\layouts\dashboardlayout.php:28)
+Stack trace:
+#0 C:\xampp\yii\framework\web\CController.php(784): DashboardController->renderFile()
+#1 C:\xampp\htdocs\dinersPHP\protected\controllers\DashboardController.php(23): DashboardController->render()
+#2 C:\xampp\yii\framework\web\actions\CInlineAction.php(49): DashboardController->actionIndex()
+#3 C:\xampp\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#4 C:\xampp\yii\framework\web\filters\CFilterChain.php(133): DashboardController->runAction()
+#5 C:\xampp\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#6 C:\xampp\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#7 C:\xampp\yii\framework\web\filters\CInlineFilter.php(58): DashboardController->filterAccessControl()
+#8 C:\xampp\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#9 C:\xampp\yii\framework\web\CController.php(291): CFilterChain->run()
+#10 C:\xampp\yii\framework\web\CController.php(265): DashboardController->runActionWithFilters()
+#11 C:\xampp\yii\framework\web\CWebApplication.php(282): DashboardController->run()
+#12 C:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#13 C:\xampp\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#14 C:\xampp\htdocs\dinersPHP\index.php(13): CWebApplication->run()
+REQUEST_URI=/dinersPHP/index.php/dashboard/index
+in C:\xampp\htdocs\dinersPHP\protected\views\layouts\dashboardlayout.php (28)
+in C:\xampp\htdocs\dinersPHP\protected\controllers\DashboardController.php (23)
+in C:\xampp\htdocs\dinersPHP\index.php (13)
+2016/04/24 14:32:31 [error] [exception.CException] CException: Property "User.name" is not defined. in C:\xampp\yii\framework\base\CComponent.php:130
+Stack trace:
+#0 C:\xampp\yii\framework\db\ar\CActiveRecord.php(145): CComponent->__get('name')
+#1 C:\xampp\htdocs\dinersPHP\protected\views\layouts\dashboardlayout.php(28): CActiveRecord->__get('name')
+#2 C:\xampp\yii\framework\web\CBaseController.php(126): require('C:\\xampp\\htdocs...')
+#3 C:\xampp\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\xampp\\htdocs...', Array, true)
+#4 C:\xampp\yii\framework\web\CController.php(784): CBaseController->renderFile('C:\\xampp\\htdocs...', Array, true)
+#5 C:\xampp\htdocs\dinersPHP\protected\controllers\DashboardController.php(23): CController->render('dashboardindex')
+#6 C:\xampp\yii\framework\web\actions\CInlineAction.php(49): DashboardController->actionIndex()
+#7 C:\xampp\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#8 C:\xampp\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#9 C:\xampp\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#10 C:\xampp\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#11 C:\xampp\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#12 C:\xampp\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#13 C:\xampp\yii\framework\web\CController.php(291): CFilterChain->run()
+#14 C:\xampp\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#15 C:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('index')
+#16 C:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('dashboard/index')
+#17 C:\xampp\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#18 C:\xampp\htdocs\dinersPHP\index.php(13): CApplication->run()
+#19 {main}
+REQUEST_URI=/dinersPHP/index.php/dashboard/index
+HTTP_REFERER=http://localhost/dinersPHP/index.php
+---
+2016/04/24 14:32:41 [error] [exception.CException] CException: Property "User.name" is not defined. in C:\xampp\yii\framework\base\CComponent.php:130
+Stack trace:
+#0 C:\xampp\yii\framework\db\ar\CActiveRecord.php(145): CComponent->__get('name')
+#1 C:\xampp\htdocs\dinersPHP\protected\views\layouts\dashboardlayout.php(28): CActiveRecord->__get('name')
+#2 C:\xampp\yii\framework\web\CBaseController.php(126): require('C:\\xampp\\htdocs...')
+#3 C:\xampp\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\xampp\\htdocs...', Array, true)
+#4 C:\xampp\yii\framework\web\CController.php(784): CBaseController->renderFile('C:\\xampp\\htdocs...', Array, true)
+#5 C:\xampp\htdocs\dinersPHP\protected\controllers\DashboardController.php(23): CController->render('dashboardindex')
+#6 C:\xampp\yii\framework\web\actions\CInlineAction.php(49): DashboardController->actionIndex()
+#7 C:\xampp\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#8 C:\xampp\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#9 C:\xampp\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#10 C:\xampp\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#11 C:\xampp\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#12 C:\xampp\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#13 C:\xampp\yii\framework\web\CController.php(291): CFilterChain->run()
+#14 C:\xampp\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#15 C:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('index')
+#16 C:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('dashboard/index')
+#17 C:\xampp\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#18 C:\xampp\htdocs\dinersPHP\index.php(13): CApplication->run()
+#19 {main}
+REQUEST_URI=/dinersPHP/index.php/dashboard/index
+HTTP_REFERER=http://localhost/dinersPHP/index.php
+---
+2016/04/24 14:32:42 [error] [exception.CException] CException: Property "User.name" is not defined. in C:\xampp\yii\framework\base\CComponent.php:130
+Stack trace:
+#0 C:\xampp\yii\framework\db\ar\CActiveRecord.php(145): CComponent->__get('name')
+#1 C:\xampp\htdocs\dinersPHP\protected\views\layouts\dashboardlayout.php(28): CActiveRecord->__get('name')
+#2 C:\xampp\yii\framework\web\CBaseController.php(126): require('C:\\xampp\\htdocs...')
+#3 C:\xampp\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\xampp\\htdocs...', Array, true)
+#4 C:\xampp\yii\framework\web\CController.php(784): CBaseController->renderFile('C:\\xampp\\htdocs...', Array, true)
+#5 C:\xampp\htdocs\dinersPHP\protected\controllers\DashboardController.php(23): CController->render('dashboardindex')
+#6 C:\xampp\yii\framework\web\actions\CInlineAction.php(49): DashboardController->actionIndex()
+#7 C:\xampp\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#8 C:\xampp\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#9 C:\xampp\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#10 C:\xampp\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#11 C:\xampp\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#12 C:\xampp\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#13 C:\xampp\yii\framework\web\CController.php(291): CFilterChain->run()
+#14 C:\xampp\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#15 C:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('index')
+#16 C:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('dashboard/index')
+#17 C:\xampp\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#18 C:\xampp\htdocs\dinersPHP\index.php(13): CApplication->run()
+#19 {main}
+REQUEST_URI=/dinersPHP/index.php/dashboard/index
+HTTP_REFERER=http://localhost/dinersPHP/index.php
+---
+2016/04/24 14:32:42 [error] [exception.CException] CException: Property "User.name" is not defined. in C:\xampp\yii\framework\base\CComponent.php:130
+Stack trace:
+#0 C:\xampp\yii\framework\db\ar\CActiveRecord.php(145): CComponent->__get('name')
+#1 C:\xampp\htdocs\dinersPHP\protected\views\layouts\dashboardlayout.php(28): CActiveRecord->__get('name')
+#2 C:\xampp\yii\framework\web\CBaseController.php(126): require('C:\\xampp\\htdocs...')
+#3 C:\xampp\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\xampp\\htdocs...', Array, true)
+#4 C:\xampp\yii\framework\web\CController.php(784): CBaseController->renderFile('C:\\xampp\\htdocs...', Array, true)
+#5 C:\xampp\htdocs\dinersPHP\protected\controllers\DashboardController.php(23): CController->render('dashboardindex')
+#6 C:\xampp\yii\framework\web\actions\CInlineAction.php(49): DashboardController->actionIndex()
+#7 C:\xampp\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#8 C:\xampp\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#9 C:\xampp\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#10 C:\xampp\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#11 C:\xampp\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#12 C:\xampp\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#13 C:\xampp\yii\framework\web\CController.php(291): CFilterChain->run()
+#14 C:\xampp\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#15 C:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('index')
+#16 C:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('dashboard/index')
+#17 C:\xampp\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#18 C:\xampp\htdocs\dinersPHP\index.php(13): CApplication->run()
+#19 {main}
+REQUEST_URI=/dinersPHP/index.php/dashboard/index
+HTTP_REFERER=http://localhost/dinersPHP/index.php
+---
+2016/04/24 14:32:42 [error] [exception.CException] CException: Property "User.name" is not defined. in C:\xampp\yii\framework\base\CComponent.php:130
+Stack trace:
+#0 C:\xampp\yii\framework\db\ar\CActiveRecord.php(145): CComponent->__get('name')
+#1 C:\xampp\htdocs\dinersPHP\protected\views\layouts\dashboardlayout.php(28): CActiveRecord->__get('name')
+#2 C:\xampp\yii\framework\web\CBaseController.php(126): require('C:\\xampp\\htdocs...')
+#3 C:\xampp\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\xampp\\htdocs...', Array, true)
+#4 C:\xampp\yii\framework\web\CController.php(784): CBaseController->renderFile('C:\\xampp\\htdocs...', Array, true)
+#5 C:\xampp\htdocs\dinersPHP\protected\controllers\DashboardController.php(23): CController->render('dashboardindex')
+#6 C:\xampp\yii\framework\web\actions\CInlineAction.php(49): DashboardController->actionIndex()
+#7 C:\xampp\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#8 C:\xampp\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#9 C:\xampp\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#10 C:\xampp\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#11 C:\xampp\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#12 C:\xampp\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#13 C:\xampp\yii\framework\web\CController.php(291): CFilterChain->run()
+#14 C:\xampp\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#15 C:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('index')
+#16 C:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('dashboard/index')
+#17 C:\xampp\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#18 C:\xampp\htdocs\dinersPHP\index.php(13): CApplication->run()
+#19 {main}
+REQUEST_URI=/dinersPHP/index.php/dashboard/index
+HTTP_REFERER=http://localhost/dinersPHP/index.php
+---
+2016/04/24 14:32:42 [error] [exception.CException] CException: Property "User.name" is not defined. in C:\xampp\yii\framework\base\CComponent.php:130
+Stack trace:
+#0 C:\xampp\yii\framework\db\ar\CActiveRecord.php(145): CComponent->__get('name')
+#1 C:\xampp\htdocs\dinersPHP\protected\views\layouts\dashboardlayout.php(28): CActiveRecord->__get('name')
+#2 C:\xampp\yii\framework\web\CBaseController.php(126): require('C:\\xampp\\htdocs...')
+#3 C:\xampp\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\xampp\\htdocs...', Array, true)
+#4 C:\xampp\yii\framework\web\CController.php(784): CBaseController->renderFile('C:\\xampp\\htdocs...', Array, true)
+#5 C:\xampp\htdocs\dinersPHP\protected\controllers\DashboardController.php(23): CController->render('dashboardindex')
+#6 C:\xampp\yii\framework\web\actions\CInlineAction.php(49): DashboardController->actionIndex()
+#7 C:\xampp\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#8 C:\xampp\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#9 C:\xampp\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#10 C:\xampp\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#11 C:\xampp\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#12 C:\xampp\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#13 C:\xampp\yii\framework\web\CController.php(291): CFilterChain->run()
+#14 C:\xampp\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#15 C:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('index')
+#16 C:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('dashboard/index')
+#17 C:\xampp\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#18 C:\xampp\htdocs\dinersPHP\index.php(13): CApplication->run()
+#19 {main}
+REQUEST_URI=/dinersPHP/index.php/dashboard/index
+HTTP_REFERER=http://localhost/dinersPHP/index.php
+---
+2016/04/24 15:45:31 [error] [exception.ParseError] ParseError: syntax error, unexpected '=', expecting ')' in C:\xampp\htdocs\dinersPHP\protected\controllers\SiteController.php:31
+Stack trace:
+#0 C:\xampp\yii\framework\web\CWebApplication.php(276): CWebApplication->createController('')
+#1 C:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('')
+#2 C:\xampp\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#3 C:\xampp\htdocs\dinersPHP\index.php(13): CApplication->run()
+#4 {main}
+REQUEST_URI=/dinersPHP/index.php
+---
+2016/04/24 15:45:38 [error] [exception.CDbException] CDbException: Table "available_in_location" does not have a column named "parent_id". in C:\xampp\yii\framework\db\schema\CDbCommandBuilder.php:697
+Stack trace:
+#0 C:\xampp\yii\framework\db\ar\CActiveRecord.php(1540): CDbCommandBuilder->createColumnCriteria(Object(CMysqlTableSchema), Array, '', Array, '`t`.')
+#1 C:\xampp\htdocs\dinersPHP\protected\controllers\SiteController.php(31): CActiveRecord->findAllByAttributes(Array)
+#2 C:\xampp\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionIndex()
+#3 C:\xampp\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#4 C:\xampp\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#5 C:\xampp\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#6 C:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('')
+#7 C:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('')
+#8 C:\xampp\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#9 C:\xampp\htdocs\dinersPHP\index.php(13): CApplication->run()
+#10 {main}
+REQUEST_URI=/dinersPHP/index.php
+---
