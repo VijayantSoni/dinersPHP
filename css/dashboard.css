@@ -345,6 +345,18 @@ main.dash-content-add-cus > header.row > form.row div i {
 	display: inline-block;
 	transition: all 0.3s ease-in;
 }
+main.dash-content-add-cus > header.row > form.row select,
+main.dash-content-add-cus > header.row > form.row select option,
+main.dash-content-edit-cus > header.row > form.row select,
+main.dash-content-edit-cus > header.row > form.row select option {
+	border: 0;
+	width: 95%;
+}
+
+main.dash-content-add-cus > header.row > form.row select,
+main.dash-content-edit-cus > header.row > form.row select {
+	padding: 0.5em 0;
+}
 
 main.dash-content-add-cus > header.row > form.row div input,
 main.dash-content-add-cus > header.row > form.row div textarea {

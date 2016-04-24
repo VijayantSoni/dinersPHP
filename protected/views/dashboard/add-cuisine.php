@@ -30,14 +30,25 @@
 				</div>
 				<div class="colGLG-12 colGSM-12">
 					<div class="row">
-						<i class="fa fa-bars"></i>
-						<textarea name="cuisine_details" placeholder="Cuisine Details | Example: 12 Piece/Plate" required></textarea>
+						<i class="fa fa-codiepie"></i>
+						<select name="category" id="category">
+							<option value="NULL">Select a category</option>
+						<?php foreach ($categories as $category): ?>
+							<option value="<?php echo $category->id; ?>"><?php echo $category->name; ?></option>
+						<?php endforeach; ?>
+						</select>
 					</div>
 				</div>
 				<div class="colGLG-12 colGSM-12">
 					<div class="row">
 						<i class="fa fa-bars"></i>
-						<textarea name="cuisine_price_details" placeholder="Pricing Details | Example: 35 Small Plate, 40 Medium Plate" required></textarea>
+						<textarea name="cuisine_details" placeholder="Cuisine Details | Example: 12 Piece/Plate"></textarea>
+					</div>
+				</div>
+				<div class="colGLG-12 colGSM-12">
+					<div class="row">
+						<i class="fa fa-bars"></i>
+						<textarea name="cuisine_price_details" placeholder="Pricing Details | Example: 35 Small Plate, 40 Medium Plate"></textarea>
 					</div>
 				</div>
 				<div class="colGLG-6 colGSM-12 radios">
@@ -99,6 +110,7 @@
 					$("#errors").html(response.msg).addClass('success');
 					$("input[type='text']").val("");
 					$("textarea").html("");
+					$("#category option[value='NULL']").prop('selected',true);
 				},
 				complete:function(){
 					$("#addCuisine").html("Add").addClass('success');

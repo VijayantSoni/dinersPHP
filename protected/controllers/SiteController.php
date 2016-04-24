@@ -32,11 +32,19 @@ class SiteController extends Controller
 		$this->render('index',array('locations'=>$locations));
 	}
 
+	public function actionSearch() {
+		if(isset($_GET['query'])) {
+			$criteria = new CDbCriteria;
+			$criteria->condition = "name like '%".$_GET["query"]."%' or details like '%".$_GET["query"]."%' AND status=1";
+			$items = Item::model()->findAll($criteria);
+			$this->render('searchresults',array('items'=>$items,'query'=>$_GET['query'],'location'=>$_GET['location']));
+		}
+	}
+
 	/**
 	 * This is the action to handle external exceptions.
 	 */
-	public function actionError()
-	{
+	public function actionError() {
 		if($error=Yii::app()->errorHandler->error)
 		{
 			if(Yii::app()->request->isAjaxRequest)
@@ -49,8 +57,7 @@ class SiteController extends Controller
 	/**
 	 * Displays the contact page
 	 */
-	public function actionContact()
-	{
+	public function actionContact() {
 		$model=new ContactForm;
 		if(isset($_POST['ContactForm']))
 		{
@@ -75,7 +82,7 @@ class SiteController extends Controller
 	/**
 	 * Displays the login page
 	 */
-	public function actionLogin(){
+	public function actionLogin() {
 		$model=new LoginForm;
 		// collect user input data
 		if(isset($_POST['username']) && isset($_POST['password']))
@@ -90,7 +97,7 @@ class SiteController extends Controller
 		}
 	}
 
-	public function actionSignup(){
+	public function actionSignup() {
 		$newUser = new User;
 		if(isset($_POST['mobile'])) {
 			$newUser->mobile_number = $_POST['mobile'];
@@ -192,7 +199,7 @@ class SiteController extends Controller
 			$this->render('forgotpassword');
 	}
 
-	public function sendVerificationEmailOnReset($user){
+	public function sendVerificationEmailOnReset($user) {
 		$to=$user->email;
 		$from="himanshu.singh@venturepact.com";
 		$from_name="Admin DinersMeet";
@@ -208,7 +215,7 @@ class SiteController extends Controller
 		$this->mailsend($to,$from,$from_name,$subject,$message);
 	}
 
-	public function actionResetPassword(){
+	public function actionResetPassword() {
 		if(isset($_GET['email']) && isset($_GET['hash'])) {
 			$user = User::model()->find(array('condition'=>'email=:email','params'=>array(':email'=>$_GET['email'])));
 			if($user->email_verification_hash == $_GET['hash']) {
@@ -227,7 +234,7 @@ class SiteController extends Controller
 	/**
 	 * Logs out the current user and redirect to homepage.
 	 */
-	public function actionLogout(){
+	public function actionLogout() {
 		Yii::app()->user->logout();
 		$this->redirect(Yii::app()->homeUrl);
 	}

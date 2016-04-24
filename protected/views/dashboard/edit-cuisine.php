@@ -22,6 +22,18 @@
 						<input type="text" name="cuisine_time" placeholder="Serving Time" value="<?php echo $item->serving_time; ?>">
 					</div>
 				</div>
+				<?php $categories = Category::model()->findAllByAttributes(array('status'=>1));?>
+				<div class="colGLG-12 colGSM-12">
+					<div class="row">
+						<i class="fa fa-codiepie"></i>
+						<select name="category" id="category">
+							<option value="NULL">Select a category</option>
+							<?php foreach ($categories as $category): ?>
+							<option <?php echo $category->id == $item->category_id?"selected":""; ?> value="<?php echo $category->id; ?>"><?php echo $category->name; ?></option>
+							<?php endforeach; ?>
+						</select>
+					</div>
+				</div>
 				<div class="colGLG-12 colGSM-12">
 					<div class="row">
 						<i class="fa fa-bars"></i>

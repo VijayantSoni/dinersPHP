@@ -61,6 +61,7 @@ class DashboardController extends Controller {
 		if (isset($_POST['cuisine_name'])) {
 			$item = new Item;
 			$item->restaurant_id = $_POST['restaurant-option'];
+			$item->category_id = $_POST['category'];
 			$item->name = $_POST['cuisine_name'];
 			$item->price = $_POST['cuisine_price'];
 			$item->serving_time = $_POST['cuisine_time'];
@@ -80,7 +81,8 @@ class DashboardController extends Controller {
 			}
 		} else {
 			$restaurant = Restaurant::model()->with('location')->findAllByAttributes(array('vendor_id'=>Yii::app()->user->id));
-			$this->render('add-cuisine',array('restaurant'=>$restaurant));
+			$categories = Category::model()->findAllByAttributes(array('status'=>1));
+			$this->render('add-cuisine',array('restaurant'=>$restaurant,'categories'=>$categories));
 		}
 	}
 
@@ -135,6 +137,7 @@ class DashboardController extends Controller {
 			$item = Item::model()->findByPk($id);
 			if(!empty($item)) {
 				$item->name = $_POST['cuisine_name'];
+				$item->category_id = $_POST['category'];
 				$item->price = $_POST['cuisine_price'];
 				$item->serving_time = $_POST['cuisine_time'];
 				$item->details = $_POST['cuisine_details'];

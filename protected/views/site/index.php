@@ -7,7 +7,7 @@
 		<div class="colGLG-6">
 			<div class="card">
 				<h3>Place your first order today</h3>
-				<form method="post" action="#">
+				<form method="GET" action="<?php echo Yii::app()->createUrl('site/search'); ?>">
 					<div class="query">
 						<input type="text" name="location" placeholder="Enter your location" id="auto-pop">
 						<ul class="list-select hider">
@@ -85,8 +85,10 @@
 		});
 
 		$("#auto-pop").keyup(function(){
+			var string = $("#auto-pop").val();
+			var expression = new RegExp(string,"gi");
 			$('ul li').each(function(){
-				if($(this).text().test($("#auto-pop").val()) == false) {
+				if($(this).text().search(expression) == -1) {
 					$(this).addClass('no-disp');
 				} else {
 					$(this).removeClass('no-disp');

@@ -1180,6 +1180,7 @@ Style for search results.html
 	padding: 1em 1em;
 	position: absolute;
 	border-radius: 2px;
+	overflow-y: scroll;
 	box-shadow: 0 2px 4px rgba(0,0,0,0.4), 0 2px 10px rgba(0,0,0,0.3);
 
 	transition: all 0.3s ease-in;
@@ -1198,6 +1199,8 @@ Style for search results.html
 
 .aside-fixed {
 	top: 141px;
+	max-height: 400px;
+	overflow-y: scroll;
 	position: fixed !important;
 }
 
@@ -1237,8 +1240,12 @@ Style for search results.html
 	/*padding: 0.5em 0;*/
 }
 
-.filter-wrapper div ul li input[type="radio"] {
+.filter-wrapper div ul li input[type="checkbox"] {
 	display: none;
+}
+
+.label-active {
+	color: #f07762;
 }
 
 .filter-wrapper div ul li label {

@@ -63,8 +63,10 @@
 			});
 
 			$("#auto-pop").keyup(function(){
+				var string = $("#auto-pop").val();
+				var regexp = new RegExp(string,"gi");
 				$('ul li').each(function(){
-					if($(this).text().search($("#auto-pop").val()) == -1) {
+					if($(this).text().search(regexp) == -1) {
 						$(this).addClass('no-disp');
 					} else {
 						$(this).removeClass('no-disp');
