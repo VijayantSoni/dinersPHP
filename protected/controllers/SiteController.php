@@ -159,6 +159,8 @@ class SiteController extends Controller
 			} else {
 				$this->render('verifications',array('status'=>2));
 			}
+		} else {
+			$this->render('error', $error);
 		}
 	}
 

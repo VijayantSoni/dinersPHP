@@ -17,9 +17,9 @@
  * @property string $modify_date
  *
  * The followings are the available model relations:
+ * @property Item[] $items
  * @property AvailableInLocation $location
  * @property User $vendor
- * @property Item[] $items
  */
 class Restaurant extends CActiveRecord
 {
@@ -58,9 +58,9 @@ class Restaurant extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'items' => array(self::HAS_MANY, 'Item', 'restaurant_id'),
 			'location' => array(self::BELONGS_TO, 'AvailableInLocation', 'location_id'),
 			'vendor' => array(self::BELONGS_TO, 'User', 'vendor_id'),
-			'items' => array(self::MANY_MANY, 'Item', 'restaurant_has_items(restaurant_id, item_id)'),
 		);
 	}
 

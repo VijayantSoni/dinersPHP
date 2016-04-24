@@ -35,6 +35,7 @@ return array(
 
 		'user'=>array(
 			// enable cookie-based authentication
+      'loginUrl'=>array('/'),
 			'allowAutoLogin'=>true,
 		),
 		'Smtpmail'=>array(
@@ -78,9 +79,9 @@ return array(
 				),
 				// uncomment the following to show log messages on web pages
 
-				array(
-					'class'=>'CWebLogRoute',
-				),
+				// array(
+				// 	'class'=>'CWebLogRoute',
+				// ),
 
 			),
 		),

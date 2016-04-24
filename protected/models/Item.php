@@ -5,6 +5,7 @@
  *
  * The followings are the available columns in table 'item':
  * @property integer $id
+ * @property integer $restaurant_id
  * @property string $name
  * @property string $details
  * @property string $logo
@@ -20,8 +21,8 @@
  * @property string $modify_date
  *
  * The followings are the available model relations:
+ * @property Restaurant $restaurant
  * @property Category[] $categories
- * @property Restaurant[] $restaurants
  * @property ShoppingCartHasItems[] $shoppingCartHasItems
  */
 class Item extends CActiveRecord
@@ -42,14 +43,14 @@ class Item extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('name', 'required'),
-			array('is_veg, is_spicy, serving_time, delivery_available, status', 'numerical', 'integerOnly'=>true),
+			array('restaurant_id, name', 'required'),
+			array('restaurant_id, is_veg, is_spicy, serving_time, delivery_available, status', 'numerical', 'integerOnly'=>true),
 			array('price', 'numerical'),
 			array('name, logo, pricing_detail', 'length', 'max'=>255),
 			array('details, admin_notes, add_date, modify_date', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, name, details, logo, is_veg, is_spicy, price, pricing_detail, serving_time, delivery_available, status, admin_notes, add_date, modify_date', 'safe', 'on'=>'search'),
+			array('id, restaurant_id, name, details, logo, is_veg, is_spicy, price, pricing_detail, serving_time, delivery_available, status, admin_notes, add_date, modify_date', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -61,8 +62,8 @@ class Item extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'restaurant' => array(self::BELONGS_TO, 'Restaurant', 'restaurant_id'),
 			'categories' => array(self::MANY_MANY, 'Category', 'item_has_categories(item_id, category_id)'),
-			'restaurants' => array(self::MANY_MANY, 'Restaurant', 'restaurant_has_items(item_id, restaurant_id)'),
 			'shoppingCartHasItems' => array(self::HAS_MANY, 'ShoppingCartHasItems', 'item_id'),
 		);
 	}
@@ -74,6 +75,7 @@ class Item extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
+			'restaurant_id' => 'Restaurant',
 			'name' => 'Name',
 			'details' => 'Details',
 			'logo' => 'Logo',
@@ -109,6 +111,7 @@ class Item extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id);
+		$criteria->compare('restaurant_id',$this->restaurant_id);
 		$criteria->compare('name',$this->name,true);
 		$criteria->compare('details',$this->details,true);
 		$criteria->compare('logo',$this->logo,true);

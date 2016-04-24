@@ -1,8 +1,8 @@
 <main class="dash-content-add-cus container-fluid">
 	<header class="row">
-		<form class="row" id="add-cuisine">
+		<form class="row" id="add-cuisines">
 			<header class="colGLG-12 colGSM-12">
-				<select id="restaurant-option" name="restaurant-option[opt]">
+				<select id="restaurant-option" name="restaurant-option">
 					<option value="NULL">Select Restaurant</option>
 					<?php foreach ($restaurant as $res): ?>
 						<option id="<?php echo $res->id;?>" value="<?php echo $res->id;?>"><?php echo $res->name;?>&nbsp;-&nbsp;<?php echo $res->location->name; ?></option>
@@ -17,56 +17,57 @@
 				<div class="colGLG-9 colGSM-12">
 					<div class="row">
 						<i class="fa fa-bookmark"></i>
-						<input type="text" name="cuisine_name" placeholder="Cuisine's Name">
+						<input type="text" name="cuisine_name" placeholder="Cuisine's Name" required>
 					</div>
 					<div class="row">
 						<i class="fa fa-inr"></i>
-						<input type="text" name="cuisine_price" placeholder="Cuisine's Price">
+						<input type="text" name="cuisine_price" placeholder="Cuisine's Price" required>
 					</div>
 					<div class="row">
 						<i class="fa fa-clock-o"></i>
-						<input type="text" name="cuisine_time" placeholder="Serving Time">
+						<input type="text" name="cuisine_time" placeholder="Serving Time" required>
 					</div>
 				</div>
 				<div class="colGLG-12 colGSM-12">
 					<div class="row">
 						<i class="fa fa-bars"></i>
-						<textarea name="cuisine_details" placeholder="Cuisine Details | Example: 12 Piece/Plate"></textarea>
+						<textarea name="cuisine_details" placeholder="Cuisine Details | Example: 12 Piece/Plate" required></textarea>
 					</div>
 				</div>
 				<div class="colGLG-12 colGSM-12">
 					<div class="row">
 						<i class="fa fa-bars"></i>
-						<textarea name="cuisine_price_details" placeholder="Pricing Details | Example: 35 Small Plate, 40 Medium Plate"></textarea>
+						<textarea name="cuisine_price_details" placeholder="Pricing Details | Example: 35 Small Plate, 40 Medium Plate" required></textarea>
 					</div>
 				</div>
 				<div class="colGLG-6 colGSM-12 radios">
 					<div class="row">
-						<input type="radio" name="veg" value="Veg" id="veg">
+						<input type="radio" name="veg" value=1 id="veg" required>
 						<label for="veg" class="colGLG-6">Veg</label>
-						<input type="radio" name="veg" value="Non-Veg" id="non-veg">
+						<input type="radio" name="veg" value=0 id="non-veg" required>
 						<label for="non-veg" class="colGLG-6">Non-Veg</label>
 					</div>
 				</div>
 				<div class="colGLG-6 colGSM-12 radios">
 					<div class="row">
-						<input type="radio" name="spicy" value="Spicy" id="spicy">
+						<input type="radio" name="spicy" value=1 id="spicy" required>
 						<label for="spicy" class="colGLG-6">Spicy</label>
-						<input type="radio" name="spicy" value="Non-Spicy" id="non-spicy">
+						<input type="radio" name="spicy" value=0 id="non-spicy" required>
 						<label for="non-spicy" class="colGLG-6">Non-Spicy</label>
 					</div>
 				</div>
 				<div class="colGLG-12 colGSM-12 radios">
 					<div class="row">
-						<input type="radio" name="delivery" id="yes_delivery" value="delivery">
+						<input type="radio" name="delivery" id="yes_delivery" value=1 required>
 						<label for="yes_delivery" class="colGLG-6">Deliverable</label>
-						<input type="radio" name="delivery" id="no_delivery" value="takeaway">
+						<input type="radio" name="delivery" id="no_delivery" value=0 required>
 						<label for="no_delivery" class="colGLG-6">Takeaway</label>
 					</div>
 				</div>
 				<div class="colGLG-6 colGSM-12 push-right">
 					<div class="row">
-						<button name="add-cuisine">Add</button>
+						<button id="addCuisine" name="addCuisine">Add</button>
+						<p id="errors"></p>
 					</div>
 				</div>
 			</main>
@@ -84,17 +85,27 @@
 		$('#yes_delivery').prop('checked',true);
 		$('label[for="aside-trigger"] > i').removeClass('fa-times').addClass('fa-bars');
 
-		$('#add-cuisine').submit(function(){
+		$('#add-cuisines').submit(function(){
 			$.ajax({
 				type:'POST',
-				url:"Yii::app()->createUrl('dashboard/AddCuisine')",
-				data: $('#add-cuisine').serialize(),
+				url:"<?php echo Yii::app()->createUrl('dashboard/addCuisine'); ?>",
+				data: $('#add-cuisines').serialize(),
+				beforeSend:function(){
+					$("#errors").html("").removeClass('failed').removeClass('success');
+					$("#addCuisine").html("Adding..");
+				},
 				success:function(data){
-					alert("Yes");
+					var response = $.parseJSON(data);
+					$("#errors").html(response.msg).addClass('success');
+					$("input[type='text']").val("");
+					$("textarea").html("");
+				},
+				complete:function(){
+					$("#addCuisine").html("Add").addClass('success');
 				},
 				error:function(data) {
-					alert("No");
-				}
+					$("#errors").html("There has been some errors.").addClass('failed');
+				},
 			});
 			return false;
 		});
