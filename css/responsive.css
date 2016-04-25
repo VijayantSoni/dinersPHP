@@ -3,6 +3,74 @@
 		top: -8.5em;
 	}
 
+	.errors {
+		font-size: 0.7em;
+		display: block;
+		width: 100%;
+	}
+
+	.errors.success {
+		color: #5fcf80;
+		font-size: 0.7em;
+		display: block;
+		width: 100%;
+	}
+
+	.errors.failed {
+		color: #f07762;
+		font-size: 0.7em;
+	}
+
+	#form-error1 {
+		font-size: 0.7em;
+		position: absolute;
+		top: 20em;
+		display: block;
+		width: 100%;
+	}
+
+	.login-success {
+		color: #5fcf80;
+		font-size: 0.7em;
+		position: absolute;
+		top: 20em;
+		display: block;
+		width: 100%;
+	}
+	.login-failed {
+		color: #f07762;
+		font-size: 0.7em;
+		position: absolute;
+		top: 20em;
+		display: block;
+		width: 100%;
+	}
+
+	#form-error {
+		font-size: 0.7em;
+		position: absolute;
+		top: 28em;
+		display: block;
+		width: 100%;
+	}
+
+	.signup-success {
+		color: #5fcf80;
+		font-size: 0.7em;
+		position: absolute;
+		top: 28em;
+		display: block;
+		width: 100%;
+	}
+	.signup-failed {
+		color: #f07762;
+		font-size: 0.7em;
+		position: absolute;
+		top: 28em;
+		display: block;
+		width: 100%;
+	}
+
 	nav:first-of-type > div > a{
 		display: flex;
 		justify-content: center;
@@ -30,43 +98,43 @@
 	}
 
 	.modal .modal-overlay {
-	  top: 7em;
-	  left: 0;
-	  right: 0;
-	  height: 28em;
-	  opacity: 0;
-	  z-index: -900;
-	  position: fixed;
-	  background: red;
-	  transform: scale(0);
-	  box-shadow: 0 0 12px rgba(0,0,0,0.5), 0 0 30px rgba(0,0,0,0.3);
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		opacity: 0;
+		z-index: -900;
+		position: fixed;
+		background: red;
+		transform: scale(0);
+		box-shadow: 0 0 12px rgba(0,0,0,0.5), 0 0 30px rgba(0,0,0,0.3);
 
-	  transition: all 0.3s cubic-bezier(.88,.74,.39,.52);
-	  -webkit-transition: all 0.3s cubic-bezier(.88,.74,.39,.52);
-	  -moz-transition: all 0.3s cubic-bezier(.88,.74,.39,.52);
-	  -o-transition: all 0.3s cubic-bezier(.88,.74,.39,.52);
-	  -ms-transition: all 0.3s cubic-bezier(.88,.74,.39,.52);
+		transition: all 0.3s cubic-bezier(.88,.74,.39,.52);
+		-webkit-transition: all 0.3s cubic-bezier(.88,.74,.39,.52);
+		-moz-transition: all 0.3s cubic-bezier(.88,.74,.39,.52);
+		-o-transition: all 0.3s cubic-bezier(.88,.74,.39,.52);
+		-ms-transition: all 0.3s cubic-bezier(.88,.74,.39,.52);
 	}
 
 	.modal-wrap .modal-wrap-banner {
-	  height: auto;
-	  text-align: center;
-	  background: #f07762;
+		height: auto;
+		text-align: center;
+		background: #f07762;
 	}
 	.modal-wrap .modal-wrap-banner i {
-	  color: #fff;
-	  display: inline;
-	  text-align: center;
+		color: #fff;
+		display: inline;
+		text-align: center;
 	}
 	.modal-wrap .modal-wrap-banner h4 {
-	  display: inline;
-	  color: #fff;
-	  padding-left: 0.5em;
-	  font-weight: 600;
-	  font-family: 'Simplifica';
-	  font-size: 1.4em;
-	  text-align: center;
-	  letter-spacing: 0.1em;
+		display: inline;
+		color: #fff;
+		padding-left: 0.5em;
+		font-weight: 600;
+		font-family: 'Simplifica';
+		font-size: 1.4em;
+		text-align: center;
+		letter-spacing: 0.1em;
 	}
 	.modal-wrap .modal-wrap-banner h4 br {
 		display: none;
@@ -75,17 +143,18 @@
 		display: none;
 	}
 	.modal-wrap .modal-wrap-banner h5 {
-	  display: none;
+		display: none;
 	}
 	.modal-wrap .modal-wrap-form {
-	  padding: 0;
-	  height: 100%;
-	  overflow: auto;
-	  background: #fff;
-	  border: 1px solid #f07762;
+		padding: 0;
+		height: 30em;
+		overflow: hidden;
+		background: #fff;
+		border: 1px solid #f07762;
 	}
 
 	.tabs .tab-content {
+		height: 100vh;
 		padding: 0 10px !important;
 	}
 
@@ -96,7 +165,7 @@
 
 	#tab-content2 input[name="email"] {
 		width: 100% !important;
-	  float: right !important;
+			float: right !important;
 	}
 
 	header.marginate {
@@ -168,34 +237,34 @@
 	}
 
 	.profile .marginate > div.about:not(:nth-of-type(1)) div div{
-	  width: 100%;
-	  float: left;
-	  margin: 0 auto;
-	  padding: 0.75em 0;
-	  color: rgba(0,0,0,0.6);
-	  border-bottom: 1px solid rgba(0,0,0,0.4);
+		width: 100%;
+		float: left;
+		margin: 0 auto;
+		padding: 0.75em 0;
+		color: rgba(0,0,0,0.6);
+		border-bottom: 1px solid rgba(0,0,0,0.4);
 
-	  transition: all 0.3s ease-in;
+		transition: all 0.3s ease-in;
 	}
 
 	.profile .marginate > div:last-of-type {
-	  margin-top: 1em;
+		margin-top: 1em;
 	}
 
 	.profile .marginate > div:last-of-type div {
-	  border: 0;
-	  width: 100%;
-	  text-align: right;
+		border: 0;
+		width: 100%;
+		text-align: right;
 	}
 
 	.profile .marginate > div:last-of-type div input {
-	  color: #fff;
-	  width: 100%;
-	  border: none;
-	  padding: 0.75em 2em;
-	  font-size: 1.2em;
-	  background: #f07762;
-	  box-shadow: 0 0 2px rgba(0,0,0,0.6), 0 0 10px rgba(0,0,0,0.2);
+		color: #fff;
+		width: 100%;
+		border: none;
+		padding: 0.75em 2em;
+		font-size: 1.2em;
+		background: #f07762;
+		box-shadow: 0 0 2px rgba(0,0,0,0.6), 0 0 10px rgba(0,0,0,0.2);
 	}
 
 
@@ -215,30 +284,30 @@
 
 	.cart .marginate > form.row table thead tr td:nth-of-type(1),
 	.cart .marginate > form.row table tbody tr td:nth-of-type(1) {
-	  width: 30% !important;
-	  padding-right: 0;
+		width: 30% !important;
+		padding-right: 0;
 	}
 
 	.cart .marginate > form.row table thead tr td:nth-of-type(2),
 	.cart .marginate > form.row table tbody tr td:nth-of-type(2) {
-	  width: 30% !important;
-	  display: none;
-	  padding-left: 0;
-	  padding-right: 0;
+		width: 30% !important;
+		display: none;
+		padding-left: 0;
+		padding-right: 0;
 	}
 
 	.cart .marginate > form.row table thead tr td:nth-of-type(3),
 	.cart .marginate > form.row table tbody tr td:nth-of-type(3) {
-	  width: 10% !important;
-	  padding-left: 0;
-	  padding-right: 0;
+		width: 10% !important;
+		padding-left: 0;
+		padding-right: 0;
 	}
 
 	.cart .marginate > form.row table thead tr td:nth-of-type(4),
 	.cart .marginate > form.row table tbody tr td:nth-of-type(4) {
-	  width: 30% !important;
-	  text-align: right;
-	  padding-left: 0;
+		width: 30% !important;
+		text-align: right;
+		padding-left: 0;
 	}
 
 	/**************************************
@@ -246,15 +315,15 @@
 	**************************************/
 
 	.orders .marginate{
-	  width: 100%;
-	  margin: 0 auto;
-	  padding: 1em 1em;
-	  margin-top: 8.4em;
+		width: 100%;
+		margin: 0 auto;
+		padding: 1em 1em;
+		margin-top: 8.4em;
 	}
 
 	.order-box section {
-	  text-align: center;
-	  border-bottom: 1px solid rgba(0,0,0,0.2);
+		text-align: center;
+		border-bottom: 1px solid rgba(0,0,0,0.2);
 	}
 	.order-box section figure {
 		text-align: center;
@@ -264,6 +333,31 @@
 @media all and (min-width: 769px) and (max-width: 1170px) {
 	.nav-up {
 		top: -8.5em;
+	}
+
+		#form-error {
+		font-size: 0.7em;
+		position: absolute;
+		top: 30em;
+		display: block;
+		width: 100%;
+	}
+
+	.signup-success {
+		color: #5fcf80;
+		font-size: 0.7em;
+		position: absolute;
+		top: 30em;
+		display: block;
+		width: 100%;
+	}
+	.signup-failed {
+		color: #f07762;
+		font-size: 0.7em;
+		position: absolute;
+		top: 30em;
+		display: block;
+		width: 100%;
 	}
 
 	nav:first-of-type > div > a{
@@ -283,28 +377,28 @@
 	}
 
 	.modal .modal-overlay {
-	  top: 7em;
-	  left: 10vw;
-	  right: 10vw;
-	  height: 29em;
-	  opacity: 0;
-	  z-index: -900;
-	  position: fixed;
-	  background: #fff;
-	  transform: scale(0);
-	  box-shadow: 0 0 12px rgba(0,0,0,0.5), 0 0 30px rgba(0,0,0,0.3);
+		top: 7em;
+		left: 10vw;
+		right: 10vw;
+		height: 29em;
+		opacity: 0;
+		z-index: -900;
+		position: fixed;
+		background: #fff;
+		transform: scale(0);
+		box-shadow: 0 0 12px rgba(0,0,0,0.5), 0 0 30px rgba(0,0,0,0.3);
 
-	  transition: all 0.3s cubic-bezier(.88,.74,.39,.52);
-	  -webkit-transition: all 0.3s cubic-bezier(.88,.74,.39,.52);
-	  -moz-transition: all 0.3s cubic-bezier(.88,.74,.39,.52);
-	  -o-transition: all 0.3s cubic-bezier(.88,.74,.39,.52);
-	  -ms-transition: all 0.3s cubic-bezier(.88,.74,.39,.52);
+		transition: all 0.3s cubic-bezier(.88,.74,.39,.52);
+		-webkit-transition: all 0.3s cubic-bezier(.88,.74,.39,.52);
+		-moz-transition: all 0.3s cubic-bezier(.88,.74,.39,.52);
+		-o-transition: all 0.3s cubic-bezier(.88,.74,.39,.52);
+		-ms-transition: all 0.3s cubic-bezier(.88,.74,.39,.52);
 	}
 
 
 	#tab-content2 input[name="email"] {
 		width: 100% !important;
-	  float: right !important;
+		float: right !important;
 	}
 
 	header.marginate {
@@ -362,23 +456,23 @@
 	}
 
 	.profile .marginate > div:last-of-type {
-	  margin-top: 1.5em;
+		margin-top: 1.5em;
 	}
 
 	.profile .marginate > div:last-of-type div {
-	  border: 0;
-	  width: 30%;
-	  text-align: right;
+		border: 0;
+		width: 30%;
+		text-align: right;
 	}
 
 	.profile .marginate > div:last-of-type div input {
-	  color: #fff;
-	  width: 100%;
-	  border: none;
-	  padding: 0.75em 2em;
-	  font-size: 1.2em;
-	  background: #f07762;
-	  box-shadow: 0 0 2px rgba(0,0,0,0.6), 0 0 10px rgba(0,0,0,0.2);
+		color: #fff;
+		width: 100%;
+		border: none;
+		padding: 0.75em 2em;
+		font-size: 1.2em;
+		background: #f07762;
+		box-shadow: 0 0 2px rgba(0,0,0,0.6), 0 0 10px rgba(0,0,0,0.2);
 	}
 
 	/*************************************
@@ -395,10 +489,10 @@
 	Styles for orders.html
 	**************************************/
 	.orders .marginate{
-	  width: 90%;
-	  margin: 0 auto;
-	  padding: 1em 1em;
-	  margin-top: 8.4em;
+		width: 90%;
+		margin: 0 auto;
+		padding: 1em 1em;
+		margin-top: 8.4em;
 	}
 }
 

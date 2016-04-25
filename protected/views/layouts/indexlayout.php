@@ -126,6 +126,21 @@
 		<!-- ALL Scripts goes here -->
 		<script src="<?php echo Yii::app()->request->baseUrl;?>/js/jquery-2.1.1.js"></script>
 		<script>
+			function callAjax(e,id) {
+				e.preventDefault();
+				$.ajax({
+					type:'GET',
+					url:'<?php echo Yii::app()->createUrl('site/verify');?>',
+					data:'verifyid='+id,
+					success:function(data) {
+						var response = $.parseJSON(data);
+						window.location.href = response.url;
+					},
+					error:function() {
+						alert("Sorry there has been some errors. Please verify by email");
+					}
+				});
+			}
 			$("document").ready(function(){
 				$('#tab-content2').submit(function(){
 					$.ajax({
@@ -144,7 +159,11 @@
 						success: function(data) {
 							var response = $.parseJSON(data);
 							if(response.status == '1') {
+								if(typeof response[0] === 'undefined') {
+									$('#form-error').html("Successully registered. Verify by email").removeClass('signup-failed').addClass('signup-success');
+								}
 								$('#form-error').html(response.msg).removeClass('signup-failed').addClass('signup-success');
+								$('#form-error').append('<a onClick="callAjax(event,'+response.id+')" href="#">Or by SMS</a>');
 							} else {
 								$('#form-error').html(response.msg).removeClass('signup-success').addClass('signup-failed');
 							}

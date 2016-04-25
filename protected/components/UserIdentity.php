@@ -24,7 +24,9 @@ class UserIdentity extends CUserIdentity
 		// );
 		$user = User::model()->find(array('condition'=>'email=:email','params'=>array(':email'=>$this->username)));
 		if(empty($user))
-			$this->errorCode=self::ERROR_USERNAME_INVALID;
+			$user = User::model()->find(array('condition'=>'mobile_number=:number','params'=>array(':number'=>$this->username)));
+			if(empty($user))
+				$this->errorCode=self::ERROR_USERNAME_INVALID;
 		elseif($user->password!==$this->password)
 			$this->errorCode=self::ERROR_PASSWORD_INVALID;
 		else{

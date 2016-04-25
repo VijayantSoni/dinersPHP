@@ -119,6 +119,7 @@ class SiteController extends Controller
 						$this->sendVerificationEmailOnSignUP($newUser);
 						$response['status'] = 1;
 						$response['msg'] = "User successfully registered. Please verify your email.";
+						$response['id'] = $newUser->id;
 						echo json_encode($response);
 					} else {
 						$response['status'] = 2;
@@ -169,14 +170,41 @@ class SiteController extends Controller
 			if(!empty($user)) {
 				$user->is_verified=1;
 				$user->email_verification_hash=null;
+				$user->otp_verification = null;
+				$user->modify_date = new CDbExpression('NOW()');
 				if($user->update()) {
 					$this->render('verifications',array('status'=>1));
 				}
 			} else {
 				$this->render('verifications',array('status'=>2));
 			}
+
+		} else if(isset($_GET['verifyid'])) {
+			echo json_encode(array('url'=>Yii::app()->createUrl('site/verify',array('sms'=>$_GET['verifyid']))));
+
+		} else if(isset($_GET['sms'])) {
+			$this->render('smsverify',array('id'=>$_GET['sms']));
+
+		} else if(isset($_POST['otp'])) {
+			$user = User::model()->findByPk($_POST['id']);
+			if(!empty($user)) {
+				if($user->otp_verification == $_POST['otp']) {
+					$user->is_verified=1;
+					$user->email_verification_hash=null;
+					$user->otp_verification = null;
+					$user->modify_date = new CDbExpression('NOW()');
+					if($user->update()) {
+						echo json_encode(array('status'=>1,'msg'=>'Verified','url'=>Yii::app()->createUrl('site/index')));
+					}
+				} else {
+					echo json_encode(array('status'=>2,'msg'=>'Wrong Otp Please try again'));
+				}
+			} else {
+				echo json_encode(array('status'=>2,'msg'=>'No such user found'));
+			}
+
 		} else {
-			$this->render('error', $error);
+			$this->render('badpage');
 		}
 	}
 

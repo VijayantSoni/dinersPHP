@@ -40,6 +40,7 @@ class Controller extends CController
 		}
 		catch (Exception $e) {
 			$error = $e->getMessage();
+			echo json_encode(array('sms-error'=>$error));
 		}
 	}
 
