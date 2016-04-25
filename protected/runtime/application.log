@@ -1439,3 +1439,31 @@ Stack trace:
 REQUEST_URI=/dinersPHP/index.php/site/search?location=LPU&query=cream&search=Search
 HTTP_REFERER=http://localhost/dinersPHP/index.php
 ---
+2016/04/25 11:06:09 [error] [php] Undefined variable: receiver_count (C:\xampp\htdocs\dinersPHP\protected\components\Controller.php:42)
+Stack trace:
+#0 C:\xampp\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionSignup()
+#1 C:\xampp\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#2 C:\xampp\yii\framework\web\CController.php(286): SiteController->runAction()
+#3 C:\xampp\yii\framework\web\CController.php(265): SiteController->runActionWithFilters()
+#4 C:\xampp\yii\framework\web\CWebApplication.php(282): SiteController->run()
+#5 C:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#6 C:\xampp\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#7 C:\xampp\htdocs\dinersPHP\index.php(13): CWebApplication->run()
+REQUEST_URI=/dinersPHP/index.php/site/Signup
+in C:\xampp\htdocs\dinersPHP\protected\components\Controller.php (42)
+in C:\xampp\htdocs\dinersPHP\protected\controllers\SiteController.php (160)
+in C:\xampp\htdocs\dinersPHP\protected\controllers\SiteController.php (118)
+2016/04/25 11:16:55 [error] [php] Undefined variable: receiver_count (C:\xampp\htdocs\dinersPHP\protected\components\Controller.php:42)
+Stack trace:
+#0 C:\xampp\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionSignup()
+#1 C:\xampp\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#2 C:\xampp\yii\framework\web\CController.php(286): SiteController->runAction()
+#3 C:\xampp\yii\framework\web\CController.php(265): SiteController->runActionWithFilters()
+#4 C:\xampp\yii\framework\web\CWebApplication.php(282): SiteController->run()
+#5 C:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#6 C:\xampp\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#7 C:\xampp\htdocs\dinersPHP\index.php(13): CWebApplication->run()
+REQUEST_URI=/dinersPHP/index.php/site/Signup
+in C:\xampp\htdocs\dinersPHP\protected\components\Controller.php (42)
+in C:\xampp\htdocs\dinersPHP\protected\controllers\SiteController.php (160)
+in C:\xampp\htdocs\dinersPHP\protected\controllers\SiteController.php (118)

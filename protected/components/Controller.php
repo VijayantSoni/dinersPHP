@@ -1,4 +1,8 @@
 <?php
+Yii::import('application.vendors.*');
+spl_autoload_unregister(array('YiiBase', 'autoload'));
+require_once('twilio/Services/Twilio.php');
+spl_autoload_register(array('YiiBase', 'autoload'));
 /**
  * Controller is the customized base controller class.
  * All controller classes for this application should extend from this base class.
@@ -21,7 +25,25 @@ class Controller extends CController
 	 */
 	public $breadcrumbs=array();
 
-	public function mailsend($to,$from,$from_name,$subject,$message)
+	protected function sendSMS($to, $textmessage) {
+		$sid = "AC683b6a55bc0f961e3b48c7963a6cef35";
+		$token = "e79424d7746235598e3a689353f9800a";
+		$from = '+12037796145';
+		$client = new Services_Twilio($sid, $token);
+		try {
+			$message = $client->account->sms_messages->create(
+			  $from, // From a valid Twilio number
+			  $to, // Text this number
+			  $textmessage //message
+			);
+			$twilioMessageResponse = $message->sid;
+		}
+		catch (Exception $e) {
+			$error = $e->getMessage();
+		}
+	}
+
+	protected function mailsend($to,$from,$from_name,$subject,$message)
 	{
 		$mail=Yii::app()->Smtpmail;
 		$mail->SetFrom($from, $from_name);

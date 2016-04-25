@@ -106,6 +106,7 @@ class SiteController extends Controller
 			$newUser->password = base64_encode($_POST['password']);
 			$newUser->is_verified = 0;
 			$newUser->email_verification_hash=md5(uniqid(rand(1,1000)));
+			$newUser->otp_verification = mt_rand(111111,999999);
 			$newUser->add_date = new CDbExpression('NOW()');
 			$newUser->modify_date = new CDbExpression('NOW()');
 
@@ -114,6 +115,7 @@ class SiteController extends Controller
 				$mobile_exist = User::model()->find(array('condition'=>'mobile_number=:mobile','params'=>array(':mobile'=>$newUser->mobile_number)));
 				if (empty($mobile_exist)) {
 					if($newUser->validate() && $newUser->save()) {
+						$this->sendVerificationSMSOnSignUp($newUser);
 						$this->sendVerificationEmailOnSignUP($newUser);
 						$response['status'] = 1;
 						$response['msg'] = "User successfully registered. Please verify your email.";
@@ -136,7 +138,7 @@ class SiteController extends Controller
 		}
 	}
 
-	public function sendVerificationEmailOnSignUP($newUser) {
+	protected function sendVerificationEmailOnSignUP($newUser) {
 		$to=$newUser->email;
 		$from="himanshu.singh@venturepact.com";
 		$from_name="Admin DinersMeet";
@@ -150,6 +152,12 @@ class SiteController extends Controller
 		$message.="Regards,<br>";
 		$message.="DinersMeet Support Team.";
 		$this->mailsend($to,$from,$from_name,$subject,$message);
+	}
+
+	protected function sendVerificationSMSOnSignUp($newUser) {
+		$to = '+91'.$newUser->mobile_number;
+		$text = "Please use ".$newUser->otp_verification." to verify your account. Regards Team DinersMeet";
+		$this->sendSMS($to,$text);
 	}
 
 	public function actionVerify() {
