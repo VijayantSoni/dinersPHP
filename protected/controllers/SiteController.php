@@ -29,10 +29,6 @@ class SiteController extends Controller
 		// renders the view file 'protected/views/site/index.php'
 		// using the default layout 'protected/views/layouts/main.php'
 		$locations = AvailableInLocation::model()->findAllByAttributes(array('status'=>1,'parent_location_id'=>NULL));
-
-		$user = User::model()->with('shoppingCarts')->findByPk(Yii::app()->user->id);
-		$cartItems = ShoppingCartHasItems::model()->with('item','item.restaurant')->findAllByAttributes(array('shopping_cart_id'=>$user->shoppingCarts[0]->id));
-		CVarDumper::dump($cartItems,10,1); die;
 		$this->render('index',array('locations'=>$locations));
 	}
 
