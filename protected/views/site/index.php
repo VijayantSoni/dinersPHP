@@ -9,14 +9,14 @@
 				<h3>Place your first order today</h3>
 				<form method="GET" action="<?php echo Yii::app()->createUrl('site/search'); ?>">
 					<div class="query">
-						<input type="text" name="location" placeholder="Enter your location" id="auto-pop">
+						<input type="text" name="location" placeholder="Enter your location" id="auto-pop" required>
 						<ul class="list-select hider">
 						<?php foreach($locations as $location): ?>
 							<li id="<?php echo $location->id; ?>"><?php echo $location->name; ?></li>
 						<?php endforeach; ?>
 						</ul>
 					</div>
-					<input type="text" name="query" placeholder="Search for cuisines, restaurants or chefs">
+					<input type="text" name="query" placeholder="Search for cuisines, restaurants or chefs" required>
 					<input type="submit" value="Search" name="search" class="colGLG-5 colGMD-6 colGSM-12">
 				</form>
 			</div>

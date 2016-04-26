@@ -1,8 +1,8 @@
 <header class="container-fluid profile">
-	<form class="marginate">
+	<form class="marginate" id="user-profile">
 		<div class="row">
 			<figure class="colGLG-12">
-				<img src="<?php Yii::app()->request->baseUrl;?>/img/pizza vector.png">
+				<?php echo $user->profile_image?'<img src="<?php Yii::app()->request->baseUrl;?>/img/pizza vector.png">':'<img src="<?php Yii::app()->request->baseUrl;?>/img/pizza vector.png">'; ?>
 			</figure>
 		</div>
 
@@ -27,10 +27,10 @@
 
 			<div class="row">
 				<div>
-					<i class="fa fa-key"></i><input type="password" name="password" id="password" placeholder="Password" required>
+					<i class="fa fa-key"></i><input value="<?php echo $user->password; ?>" type="password" name="password" id="password" placeholder="Password" required>
 				</div>
 				<div class="push-right">
-					<i class="fa fa-key"></i><input type="password" name="confirm_password" id="confirm-password" placeholder="Confirm Password" required>
+					<i class="fa fa-key"></i><input value="<?php echo $user->password; ?>" type="password" name="confirm_password" id="confirm-password" placeholder="Confirm Password" required>
 				</div>
 			</div>
 		</div>
@@ -118,18 +118,24 @@
 		$("#recipient_name").prop("disabled",true);
 		$("#recipient_mobile").prop("disabled",true);
 		$("#recipient_addr").prop("disabled",true);
+
+		$("#edit").click(function(){
+			if ($("#edit").is(":checked")) {
+				$("#recipient_name").addClass("enable");
+				$("#recipient_name").prop("disabled",false);
+
+				$("#recipient_mobile").addClass("enable");
+				$("#recipient_mobile").prop("disabled",false);
+
+				$("#recipient_addr").addClass("enable");
+				$("#recipient_addr").prop("disabled",false);
+			}
+		});
+
+		$("#user-profile").submit(function() {
+			alert("submit");
+			return false;
+		})
 	});
 
-	$("#edit").click(function(){
-		if ($("#edit").is(":checked")) {
-			$("#recipient_name").addClass("enable");
-			$("#recipient_name").prop("disabled",false);
-
-			$("#recipient_mobile").addClass("enable");
-			$("#recipient_mobile").prop("disabled",false);
-
-			$("#recipient_addr").addClass("enable");
-			$("#recipient_addr").prop("disabled",false);
-		}
-	});
 </script>

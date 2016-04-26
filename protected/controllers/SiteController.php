@@ -280,18 +280,26 @@ class SiteController extends Controller
 		if(isset($_POST['itemId'])) {
 			$item = Item::model()->with('restaurant')->findByPk($_POST['itemId']);
 			$user = User::model()->with('shoppingCarts')->findByPk(Yii::app()->user->id);
-			$cartItem = new ShoppingCartHasItems;
-			$cartItem->item_id = $item->id;
-			$cartItem->shopping_cart_id = $user->shoppingCarts[0]->id;
-			$cartItem->item_quantity = 1;
-			$cartItem->item_cost = $item->price;
-			$cartItem->add_date = new CDbExpression('NOW()');
-			$cartItem->modify_date = new CDbExpression('NOW()');
-			if($cartItem->validate()) {
-				$cartItem->save();
-				echo json_encode(array('status'=>1,'msg'=>'Added to cart'));
+			$prevItem = ShoppingCartHasItems::model()->findByAttributes(array('item_id'=>$item->id,'shopping_cart_id'=>$user->shoppingCarts[0]->id));
+			if(empty($prevItem)) {
+				$cartItem = new ShoppingCartHasItems;
+				$cartItem->item_id = $item->id;
+				$cartItem->shopping_cart_id = $user->shoppingCarts[0]->id;
+				$cartItem->item_quantity = 1;
+				$cartItem->item_cost = $item->price;
+				$cartItem->add_date = new CDbExpression('NOW()');
+				$cartItem->modify_date = new CDbExpression('NOW()');
+				if($cartItem->validate()) {
+					$cartItem->save();
+					echo json_encode(array('status'=>1,'msg'=>'Added to cart'));
+				} else {
+					echo json_encode(array('status'=>2,'msg'=>'Could not add'));
+				}
 			} else {
-				echo json_encode(array('status'=>2,'msg'=>'Could not add'));
+				$prevItem->item_quantity += 1;
+				$prevItem->item_cost = $item->price * $prevItem->item_quantity;
+				$prevItem->update();
+				echo json_encode(array('status'=>1,'msg'=>'Cart updated'));
 			}
 		}
 	}

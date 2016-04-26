@@ -23,7 +23,7 @@
 						<td><input type="number" value=<?php echo $cartItem->item_quantity;?>></td>
 						<td>
 							<i class="fa fa-inr"></i>
-							&nbsp;<?php echo $cartItem->item->price; ?>&nbsp;&nbsp;&nbsp;&nbsp;
+							&nbsp;<?php echo $cartItem->item_cost; ?>&nbsp;&nbsp;&nbsp;&nbsp;
 							<a onClick="trash($(this),event)" href="javascript:void(0);" id="<?php echo $cartItem->id; ?>">
 								<i class="fa fa-trash"></i>
 							</a>
