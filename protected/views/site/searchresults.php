@@ -25,10 +25,10 @@
 						<hr>
 						<ul class="row">
 							<li>
-								<input type="checkbox" name="sort-cuisine" id="sort-cuisine">&nbsp;<label for="sort-cuisine"><i class="fa fa-cutlery"></i>&nbsp;&nbsp;Cuisine</label>
+								<input type="checkbox" name="sort-cuisine" id="sort-cuisine" value="cuisine">&nbsp;<label for="sort-cuisine"><i class="fa fa-cutlery"></i>&nbsp;&nbsp;Cuisine</label>
 							</li>
 							<li>
-								<input type="checkbox" name="sort-restaurant" id="sort-restaurant">&nbsp;<label for="sort-restaurant"><i class="fa fa-h-square"></i>&nbsp;&nbsp;Restaurant</label>
+								<input type="checkbox" name="sort-restaurant" id="sort-restaurant" value="restaurant">&nbsp;<label for="sort-restaurant"><i class="fa fa-h-square"></i>&nbsp;&nbsp;Restaurant</label>
 							</li>
 						</ul>
 					</div>
@@ -52,10 +52,10 @@
 						<hr>
 						<ul class="row">
 							<li>
-								<input type="checkbox" name="filter" id="filter-price">&nbsp;<label for="filter-price"><i class="fa fa-inr"></i>&nbsp;&nbsp;&nbsp;Price</label>
+								<input type="checkbox" name="filter" id="filter-price" value="price">&nbsp;<label for="filter-price"><i class="fa fa-inr"></i>&nbsp;&nbsp;&nbsp;Price</label>
 							</li>
 							<li>
-								<input type="checkbox" name="filter" id="filter-time">&nbsp;<label for="filter-time"><i class="fa fa-clock-o"></i>&nbsp;&nbsp;Time</label>
+								<input type="checkbox" name="filter" id="filter-time" value="time">&nbsp;<label for="filter-time"><i class="fa fa-clock-o"></i>&nbsp;&nbsp;Time</label>
 							</li>
 						</ul>
 					</div>
@@ -82,8 +82,8 @@
 								<div class="row">
 									<p class="colGLG-8"><?php echo $item->name; ?></p>
 									<p class="colGLG-2"><i class="fa fa-inr"></i><?php echo $item->price; ?></p>
-									<a href="#" class="colGLG-1 cart-tip"><i class="fa fa-cart-plus" aria-hidden="true"></i></a>
-									<a href="#" class="colGLG-1 check-tip"><i class="fa fa-check"></i></a>
+									<span id="<?php echo $item->id;?>" class="cart colGLG-1 cart-tip" <?php echo Yii::app()->user->isGuest?"onClick='openModal()'":"onClick='callCart($(this),event)'" ?>><i class="fa fa-cart-plus" aria-hidden="true"></i></span>
+									<a id="checkout" href="#" class="colGLG-1 check-tip"><i class="fa fa-check"></i></a>
 								</div>
 								<div class="row">
 									<p class="colGLG-6"><?php echo $item->restaurant->name; ?></p>
@@ -109,58 +109,68 @@
 <script src="<?php echo Yii::app()->request->baseUrl;?>/js/jquery-2.1.1.js"></script>
 <!-- <script src="js/navup.js"></script> -->
 <script>
+	function callCart(elem,e) {
+		$.ajax({
+			data:'itemId='+elem.prop('id'),
+			type:'POST',
+			url:"<?php echo Yii::app()->createUrl('site/addToCart'); ?>",
+			success:function(data) {
+				var response = $.parseJSON(data);
+				alert(response.msg);
+			},
+			error:function() {
+				alert("Sorry could not add");
+			},
+		});
+	}
+	function openModal() {
+		$("#modal-trigger").prop('checked',true);
+	}
 	$("document").ready(function(){
 		$("#category-trigger").prop("checked",false);
 		$('#filter-trigger').prop('checked',true);
 			if($('#filter-trigger').is(':checked')) {
 				$('#filters').removeClass('aside-show').addClass('aside-hide');
 			}
-		$('li input[type="checkbox"]').change(function(){
-			if($(this).is(':checked')) {
-				$('label[for="'+$(this).prop('id')+'"]').addClass('label-active');
-			} else if($(this).not(':checked')) {
-				$('label[for="'+$(this).prop('id')+'"]').removeClass('label-active');
+		$('#category-trigger').change(function(){
+			if($('#category-trigger').is(':checked')) {
+				$('#category-trigger ~ label i').addClass('rotate-i');
+			} else {
+				$('#category-trigger ~ label i').removeClass('rotate-i');
 			}
 		});
-	});
+		$("#filter-trigger").change(function(){
+			if ($("#filter-trigger").is(':checked')) {
+				$("#filters").removeClass('aside-show').addClass('aside-hide');
+			} else {
+				$("#filters").removeClass('aside-hide').addClass('aside-show');
+			}
+		});
 
-	$('#category-trigger').change(function(){
-		if($('#category-trigger').is(':checked')) {
-			$('#category-trigger ~ label i').addClass('rotate-i');
-		} else {
-			$('#category-trigger ~ label i').removeClass('rotate-i');
+		var scroll;
+		var del = 150;
+		$(window).scroll(function(event) {
+		  scroll = true;
+		});
+
+		setInterval(function() {
+		  if (scroll) {
+		  	filterRowHasScrolled();
+		    scroll = false;
+		  }
+		}, 250);
+		function filterRowHasScrolled() {
+		  var st = $(this).scrollTop();
+		  // alert(st);
+		  if (st > del) {
+		    $('#filter-row').removeClass('filter-row-float').addClass('filter-row-fixed');
+		    $('#filters').addClass('aside-fixed');
+		  } else {
+	      $('#filter-row').removeClass('filter-row-fixed').addClass('filter-row-float');
+	      $('#filters').removeClass('aside-fixed');
+	    }
 		}
 	});
 
-	$("#filter-trigger").change(function(){
-		if ($("#filter-trigger").is(':checked')) {
-			$("#filters").removeClass('aside-show').addClass('aside-hide');
-		} else {
-			$("#filters").removeClass('aside-hide').addClass('aside-show');
-		}
-	});
 
-	var scroll;
-	var del = 150;
-	$(window).scroll(function(event) {
-	  scroll = true;
-	});
-
-	setInterval(function() {
-	  if (scroll) {
-	  	filterRowHasScrolled();
-	    scroll = false;
-	  }
-	}, 250);
-	function filterRowHasScrolled() {
-	  var st = $(this).scrollTop();
-	  // alert(st);
-	  if (st > del) {
-	    $('#filter-row').removeClass('filter-row-float').addClass('filter-row-fixed');
-	    $('#filters').addClass('aside-fixed');
-	  } else {
-      $('#filter-row').removeClass('filter-row-fixed').addClass('filter-row-float');
-      $('#filters').removeClass('aside-fixed');
-    }
-	}
 </script>

@@ -1404,13 +1404,15 @@ Style for search results.html
 	text-align: justify;
 }
 
-.item-details > div a {
+.item-details > div a,
+.item-details > div span {
 	color: #fff;
 	color: inherit;
 	position: relative;
 }
 
-.item-details > div a:after {
+.item-details > div a:after,
+.item-details > div span:after {
 	left: 0;
 	right: 0;
 	bottom: -2px;
@@ -1422,7 +1424,8 @@ Style for search results.html
 	transition: all 0.2s ease-in;
 }
 
-.item-details > div a:hover:after{
+.item-details > div a:hover:after,
+.item-details > div span:hover:after {
 	height: 2px;
 }
 

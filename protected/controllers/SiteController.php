@@ -29,6 +29,10 @@ class SiteController extends Controller
 		// renders the view file 'protected/views/site/index.php'
 		// using the default layout 'protected/views/layouts/main.php'
 		$locations = AvailableInLocation::model()->findAllByAttributes(array('status'=>1,'parent_location_id'=>NULL));
+
+		$user = User::model()->with('shoppingCarts')->findByPk(Yii::app()->user->id);
+		$cartItems = ShoppingCartHasItems::model()->with('item','item.restaurant')->findAllByAttributes(array('shopping_cart_id'=>$user->shoppingCarts[0]->id));
+		CVarDumper::dump($cartItems,10,1); die;
 		$this->render('index',array('locations'=>$locations));
 	}
 
@@ -115,6 +119,14 @@ class SiteController extends Controller
 				$mobile_exist = User::model()->find(array('condition'=>'mobile_number=:mobile','params'=>array(':mobile'=>$newUser->mobile_number)));
 				if (empty($mobile_exist)) {
 					if($newUser->validate() && $newUser->save()) {
+						if($newUser->role_id == 2) {
+							$userCart = new ShoppingCart;
+							$userCart->customer_id = $newUser->id;
+							$userCart->status = 1;
+							$userCart->add_date = new CDbExpression('NOW()');
+							$userCart->modify_date = new CDbExpression('NOW()');
+							$userCart->save();
+						}
 						$this->sendVerificationSMSOnSignUp($newUser);
 						$this->sendVerificationEmailOnSignUP($newUser);
 						$response['status'] = 1;
@@ -266,6 +278,66 @@ class SiteController extends Controller
 			$user->update();
 			echo json_encode(array('status'=>1,'msg'=>'Your password has been updated.'));
 		}
+	}
+
+	public function actionAddToCart() {
+		if(isset($_POST['itemId'])) {
+			$item = Item::model()->with('restaurant')->findByPk($_POST['itemId']);
+			$user = User::model()->with('shoppingCarts')->findByPk(Yii::app()->user->id);
+			$cartItem = new ShoppingCartHasItems;
+			$cartItem->item_id = $item->id;
+			$cartItem->shopping_cart_id = $user->shoppingCarts[0]->id;
+			$cartItem->item_quantity = 1;
+			$cartItem->item_cost = $item->price;
+			$cartItem->add_date = new CDbExpression('NOW()');
+			$cartItem->modify_date = new CDbExpression('NOW()');
+			if($cartItem->validate()) {
+				$cartItem->save();
+				echo json_encode(array('status'=>1,'msg'=>'Added to cart'));
+			} else {
+				echo json_encode(array('status'=>2,'msg'=>'Could not add'));
+			}
+		}
+	}
+
+	public function actionCart() {
+		if(isset($_POST['trashId'])) {
+			$cartItem = ShoppingCartHasItems::model()->findByPk($_POST['trashId']);
+			if(!empty($cartItem)) {
+				$cartItem->status = 0;
+				$cartItem->update();
+				echo json_encode(array('status'=>1,'msg'=>'Deleted successfully'));
+			} else {
+				echo json_encode(array('status'=>2,'msg'=>'No such item found'));
+			}
+		} else if(isset($_POST['reload'])) {
+			$user = User::model()->with('shoppingCarts')->findByPk(Yii::app()->user->id);
+			$cartItems = ShoppingCartHasItems::model()->with('item')->findAllByAttributes(array('shopping_cart_id'=>$user->shoppingCarts[0]->id,'status'=>1));
+			$i=0;
+			if(!empty($cartItems)) {
+				foreach ($cartItems as $cartItem) {
+					$response[$i]['id'] = $cartItem->id;
+					$response[$i]['name'] = $cartItem->item->name;
+					$response[$i]['price'] = $cartItem->item_cost;
+					$response[$i]['quantity'] = $cartItem->item_quantity;
+					$response[$i]['restaurant'] = $cartItem->item->restaurant->name;
+					$i++;
+				}
+				echo json_encode($response);
+			} else {
+				echo json_encode(array('msg'=>'Cart is empty'));
+			}
+		} else {
+			$user = User::model()->with('shoppingCarts')->findByPk(Yii::app()->user->id);
+			$cartItems = ShoppingCartHasItems::model()->with('item')->findAllByAttributes(array('shopping_cart_id'=>$user->shoppingCarts[0]->id,'status'=>1));
+			$this->render('usercart',array('user'=>$user,'cartItems'=>$cartItems));
+		}
+	}
+
+
+	public function actionProfile() {
+		$user = User::model()->with('customerAddressBooks')->findByPk(Yii::app()->user->id);
+		$this->render('userprofile',array('user'=>$user));
 	}
 	/**
 	 * Logs out the current user and redirect to homepage.

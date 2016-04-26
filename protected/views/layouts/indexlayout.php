@@ -92,8 +92,8 @@
 					<li class="login-drop">
 						<a href="#">My&nbsp;Account&nbsp;&nbsp;<i class="fa fa-sort-desc"></i></a>
 						<ul>
-							<li><a href="profile.html">Profile</a></li>
-							<li><a href="cart.html">Cart</a></li>
+							<li><a href="<?php echo Yii::app()->createUrl('site/profile');?>">Profile</a></li>
+							<li><a href="<?php echo Yii::app()->createUrl('site/cart');?>">Cart</a></li>
 							<li><a href="orders.html">Orders</a></li>
 							<li><a href="<?php echo Yii::app()->createUrl('site/logout');?>">Logout</a></li>
 						</ul>
@@ -188,8 +188,10 @@
 						success: function(data) {
 							var resp = $.parseJSON(data);
 							if(resp.status == 1) {
-								if(resp.role == 2) {
+								if(resp.role == 2 && window.location.href == "<?php echo Yii::app()->createUrl('site/index');?>") {
 									window.location.href = "<?php echo Yii::app()->createUrl('site/index');?>";
+								} else if (resp.role == 2 && window.location.href != "<?php echo Yii::app()->createUrl('site/index');?>") {
+									window.location.href = window.location.href;
 								} else if (resp.role == 3) {
 									window.location.href = "<?php echo Yii::app()->createUrl('dashboard/index');?>";
 								}
