@@ -3,6 +3,14 @@
 		top: -8.5em;
 	}
 
+	.footer > div > div:nth-of-type(3) ul {
+		text-align: center;
+	}
+
+	.footer > div > div:nth-of-type(3) ul li {
+		display: inline;
+	}
+
 	.errors {
 		font-size: 0.7em;
 		display: block;
@@ -331,11 +339,14 @@
 }
 
 @media all and (min-width: 769px) and (max-width: 1170px) {
+	.footer > div.container{
+		width: 100% !important;
+	}
 	.nav-up {
 		top: -8.5em;
 	}
 
-		#form-error {
+	#form-error {
 		font-size: 0.7em;
 		position: absolute;
 		top: 30em;

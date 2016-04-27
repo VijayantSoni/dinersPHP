@@ -30,7 +30,7 @@
 		</div>
 		<nav class="row top-fixed nav-down">
 			<div class="container">
-				<a href="#" class="colGLG-4 colGMD-12 colGSM-12"><img src="<?php echo Yii::app()->request->baseUrl; ?>/img/logonew.png"></a>
+				<a href="<?php echo Yii::app()->createUrl('site/index'); ?>" class="colGLG-4 colGMD-12 colGSM-12"><img src="<?php echo Yii::app()->request->baseUrl; ?>/img/logonew.png"></a>
 				<ul class="colGLG-8 colGMD-12 colGSM-12" id="main-nav">
 					<li><a href="#">Restaurants</a></li>
 					<li><a href="#">Cuisines</a></li>
@@ -123,6 +123,28 @@
 
 		<?php echo $content; ?>
 
+		<footer class="container-fluid row footer">
+			<div class="container">
+				<div class="colGLG-4 colGMD-5 colGSM-12">
+					<ul>
+						<li><a href="<?php echo Yii::app()->createUrl('site/index');?>">Home</a></li>
+						<li><a href="<?php echo Yii::app()->createUrl('site/index');?>">About&nbsp;Us</a></li>
+						<li><a href="<?php echo Yii::app()->createUrl('site/index');?>">Contact&nbsp;Us</a></li>
+					</ul>
+				</div>
+				<div class="colGLG-4 colGMD-3 colGSM-12">
+					<p><i class="fa fa-copyright"></i>&nbsp;DinersMeet&nbsp;2016</p>
+				</div>
+				<div class="colGLG-4 colGMD-4 colGSM-12">
+					<ul>
+						<li>Follow&nbsp;us&nbsp;@</li>
+						<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+						<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+						<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+					</ul>
+				</div>
+			</div>
+		</footer>
 		<!-- ALL Scripts goes here -->
 		<script src="<?php echo Yii::app()->request->baseUrl;?>/js/jquery-2.1.1.js"></script>
 		<script>

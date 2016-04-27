@@ -36,24 +36,24 @@
 </div>
 </section>
 
-<section>
+<!-- <section>
 <header class="cd-header">
 	<h1>Trending around you</h1>
-</header>
+</header> -->
 
-<main class="cd-main-content">
+<!-- <main class="cd-main-content">
 	<div class="cd-tab-filter-wrapper">
 		<div class="cd-tab-filter">
 			<ul class="cd-filters">
 				<li class="placeholder">
-					<a data-type="all" href="#0">Everything</a> <!-- selected option on mobile -->
+					<a data-type="all" href="#0">Everything</a>
 				</li>
 				<li class="filter"><a class="selected" href="#0" data-type="all">Everything</a></li>
 				<li class="filter" data-filter=".cuisines"><a href="#0" data-type="cuisines">Cuisines</a></li>
 				<li class="filter" data-filter=".restaurants"><a href="#0" data-type="restaurants">Restaurants</a></li>
-			</ul> <!-- cd-filters -->
-		</div> <!-- cd-tab-filter -->
-	</div> <!-- cd-tab-filter-wrapper -->
+			</ul>
+		</div>
+	</div>
 
 	<section class="cd-gallery">
 		<ul>
@@ -70,9 +70,9 @@
 			<li class="gap"></li>
 			<li class="gap"></li>
 		</ul>
-	</section> <!-- cd-gallery -->
-</main>
-</section>
+	</section>
+</main> -->
+<!-- </section> -->
 <script src="<?php echo Yii::app()->request->baseUrl;?>/js/jquery-2.1.1.js"></script>
 <script src="<?php echo Yii::app()->request->baseUrl;?>/js/jquery.mixitup.min.js"></script>
 <script src="<?php echo Yii::app()->request->baseUrl;?>/js/main.js"></script> <!-- Filter jQuery -->
