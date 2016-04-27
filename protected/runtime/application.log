@@ -633,3 +633,69 @@ Stack trace:
 REQUEST_URI=/dinersPHP/index.php/site/%3C?php%20Yii::app()-%3Erequest-%3EbaseUrl;?%3E/img/pizza%20vector.png
 HTTP_REFERER=http://localhost/dinersPHP/index.php/site/profile
 ---
+2016/04/27 06:20:06 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "<". in C:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\yii\framework\web\CController.php(270): CController->missingAction('<')
+#1 C:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('<')
+#2 C:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/<')
+#3 C:\xampp\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\dinersPHP\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/dinersPHP/index.php/site/%3C?php%20Yii::app()-%3Erequest-%3EbaseUrl;?%3E/img/pizza%20vector.png
+HTTP_REFERER=http://localhost/dinersPHP/index.php/site/profile
+---
+2016/04/27 06:20:27 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "<". in C:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\yii\framework\web\CController.php(270): CController->missingAction('<')
+#1 C:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('<')
+#2 C:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/<')
+#3 C:\xampp\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\dinersPHP\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/dinersPHP/index.php/site/%3C?php%20Yii::app()-%3Erequest-%3EbaseUrl;?%3E/img/pizza%20vector.png
+HTTP_REFERER=http://localhost/dinersPHP/index.php/site/profile
+---
+2016/04/27 06:25:02 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "<". in C:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\yii\framework\web\CController.php(270): CController->missingAction('<')
+#1 C:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('<')
+#2 C:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/<')
+#3 C:\xampp\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\dinersPHP\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/dinersPHP/index.php/site/%3C?php%20Yii::app()-%3Erequest-%3EbaseUrl;?%3E/img/pizza%20vector.png
+HTTP_REFERER=http://localhost/dinersPHP/index.php/site/profile
+---
+2016/04/27 06:25:06 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "orders.html". in C:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\yii\framework\web\CController.php(270): CController->missingAction('orders.html')
+#1 C:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('orders.html')
+#2 C:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/orders.htm...')
+#3 C:\xampp\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\dinersPHP\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/dinersPHP/index.php/site/orders.html
+HTTP_REFERER=http://localhost/dinersPHP/index.php/site/profile
+---
+2016/04/27 06:25:07 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "<". in C:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\yii\framework\web\CController.php(270): CController->missingAction('<')
+#1 C:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('<')
+#2 C:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/<')
+#3 C:\xampp\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\dinersPHP\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/dinersPHP/index.php/site/%3C?php%20Yii::app()-%3Erequest-%3EbaseUrl;?%3E/img/pizza%20vector.png
+HTTP_REFERER=http://localhost/dinersPHP/index.php/site/profile
+---
+2016/04/27 06:26:13 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "<". in C:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\yii\framework\web\CController.php(270): CController->missingAction('<')
+#1 C:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('<')
+#2 C:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/<')
+#3 C:\xampp\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\dinersPHP\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/dinersPHP/index.php/site/%3C?php%20Yii::app()-%3Erequest-%3EbaseUrl;?%3E/img/pizza%20vector.png
+HTTP_REFERER=http://localhost/dinersPHP/index.php/site/profile
+---

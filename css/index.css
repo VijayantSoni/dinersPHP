@@ -1659,6 +1659,7 @@ Style for cart.html goes here
 *************************************/
 .cart .marginate{
 	width: 65%;
+	min-height: 100vh;
 	margin: 0 auto;
 	padding: 1em 1em;
 	margin-top: 5.4em;
@@ -1772,6 +1773,7 @@ Styles for orders.html
 	margin: 0 auto;
 	padding: 1em 1em;
 	margin-top: 5.4em;
+	min-height: 100vh;
 
 	transition: all 0.3s ease-in;
 }
@@ -1876,6 +1878,7 @@ Verification error styles goes here
 	padding: 1em 1em;
 	margin-top: 5.4em;
 	text-align: center;
+	min-height: 100vh;
 	transition: all 0.3s ease-in;
 }
 
