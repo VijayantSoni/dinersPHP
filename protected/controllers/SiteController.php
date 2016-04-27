@@ -28,6 +28,9 @@ class SiteController extends Controller
 	{
 		// renders the view file 'protected/views/site/index.php'
 		// using the default layout 'protected/views/layouts/main.php'
+
+			// $cartId = ShoppingCart::model()->findByAttributes(array('customer_id'=>Yii::app()->user->id));
+			// CVarDumper::dump($cartId,10,1); die;
 		$locations = AvailableInLocation::model()->findAllByAttributes(array('status'=>1,'parent_location_id'=>NULL));
 		$this->render('index',array('locations'=>$locations));
 	}
@@ -340,8 +343,83 @@ class SiteController extends Controller
 
 
 	public function actionProfile() {
-		$user = User::model()->with('customerAddressBooks')->findByPk(Yii::app()->user->id);
-		$this->render('userprofile',array('user'=>$user));
+		if(isset($_POST['first_name'])) {
+			$user = User::model()->findByPk(Yii::app()->user->id);
+			$user->first_name = $_POST['first_name'];
+			$user->last_name = $_POST['last_name'];
+			$user->email = $_POST['email'];
+			$user->mobile_number = $_POST['mobile'];
+			$user->password = base64_encode($_POST['confirm_password']);
+
+			if($user->validate()) {
+				$user->update();
+				if(isset($_POST['recipient_name']) && isset($_POST['recipient_mobile']) && isset($_POST['recipient_addr'])) {
+					$prevAddress = CustomerAddressBook::model()->findByAttributes(array('customer_id'=>Yii::app()->user->id));
+					if(empty($prevAddress)) {
+						$addressBook = new CustomerAddressBook;
+						$addressBook->customer_id = Yii::app()->user->id;
+						$addressBook->recipient_name = $_POST['recipient_name'];
+						$addressBook->recipient_mobile = $_POST['recipient_mobile'];
+						$addressBook->address = $_POST['recipient_addr'];
+						$addressBook->status = 1;
+						$addressBook->add_date = new CDbExpression('NOW()');
+						$addressBook->modify_date = new CDbExpression('NOW()');
+						if($addressBook->validate()) {
+							$addressBook->save();
+							echo json_encode(array('status'=>1,'msg'=>'Profile updated'));
+						} else {
+							echo json_encode(array('status'=>2,'msg'=>'Sorry form has errors'));
+						}
+					} else {
+						$prevAddress->recipient_name = $_POST['recipient_name'];
+						$prevAddress->recipient_mobile = $_POST['recipient_mobile'];
+						$prevAddress->address = $_POST['recipient_addr'];
+						$prevAddress->status = 1;
+						$prevAddress->modify_date = new CDbExpression('NOW()');
+						if($prevAddress->validate()) {
+							$prevAddress->save();
+							echo json_encode(array('status'=>1,'msg'=>'Profile updated'));
+						} else {
+							echo json_encode(array('status'=>2,'msg'=>'Sorry form has errors'));
+						}
+					}
+				} else {
+					echo json_encode(array('status'=>3,'msg'=>'User updated without address'));
+				}
+			} else {
+				echo json_encode(array('status'=>2,'msg'=>'Sorry form has errors.'));
+			}
+		} else {
+			$user = User::model()->with('customerAddressBooks')->findByPk(Yii::app()->user->id);
+			$this->render('userprofile',array('user'=>$user));
+		}
+	}
+
+
+	public function actionCheckout() {
+		if(isset($_POST["itemId"])) {
+			$prevItem = ShoppingCartHasItems::model()->findByAttributes(array('item_id'=>$_POST['itemId']));
+			if(empty($prevItem)) {
+				$cart = ShoppingCart::model()->findByAttributes(array('customer_id'=>Yii::app()->user->id));
+				$item = Item::model()->findByPk($_POST["itemId"]);
+				$cartItem = new ShoppingCartHasItems;
+				$cartItem->item_id = $_POST["itemId"];
+				$cartItem->shopping_cart_id = $cart->id;
+				$cartItem->item_quantity = 1;
+				$cartItem->item_cost = $cartItem->item_quantity * $item->price;
+				$cartItem->status = 1;
+				$cartItem->add_date = new CDbExpression('NOW()');
+				$cartItem->modify_date = new CDbExpression('NOW()');
+				if($cartItem->validate()) {
+					$cartItem->save();
+					echo json_encode(array('status'=>1,'url'=>Yii::app()->createUrl('site/cart')));
+				} else {
+					echo json_encode(array('status'=>2,'msg'=>'Sorry cannot process checkout'));
+				}
+			} else {
+				echo json_encode(array('status'=>3,'url'=>Yii::app()->createUrl('site/cart')));
+			}
+		}
 	}
 	/**
 	 * Logs out the current user and redirect to homepage.

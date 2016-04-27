@@ -28,7 +28,7 @@
 								<i class="fa fa-trash"></i>
 							</a>
 							&nbsp;&nbsp;&nbsp;&nbsp;
-							<a href="#">
+							<a onClick="makeOrder($(this),event)" href="javascript:void(0);" id="<?php echo $cartItem->id; ?>">
 								<i class="fa fa-check"></i>
 							</a>
 						</td>

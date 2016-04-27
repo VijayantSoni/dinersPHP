@@ -83,7 +83,7 @@
 									<p class="colGLG-8"><?php echo $item->name; ?></p>
 									<p class="colGLG-2"><i class="fa fa-inr"></i><?php echo $item->price; ?></p>
 									<span id="<?php echo $item->id;?>" class="cart colGLG-1 cart-tip" <?php echo Yii::app()->user->isGuest?"onClick='openModal()'":"onClick='callCart($(this),event)'" ?>><i class="fa fa-cart-plus" aria-hidden="true"></i></span>
-									<a id="checkout" href="#" class="colGLG-1 check-tip"><i class="fa fa-check"></i></a>
+									<span id="<?php echo $item->id;?>" <?php echo Yii::app()->user->isGuest?"onClick='openModal()'":"onClick='callCheckout($(this),event)'" ?> class="colGLG-1 check-tip"><i class="fa fa-check"></i></span>
 								</div>
 								<div class="row">
 									<p class="colGLG-6"><?php echo $item->restaurant->name; ?></p>
@@ -109,6 +109,28 @@
 <script src="<?php echo Yii::app()->request->baseUrl;?>/js/jquery-2.1.1.js"></script>
 <!-- <script src="js/navup.js"></script> -->
 <script>
+	function callCheckout(elem,e) {
+		$.ajax({
+			data:'itemId='+elem.prop('id'),
+			type:'POST',
+			url:"<?php echo Yii::app()->createUrl('site/checkout'); ?>",
+			success:function(data) {
+				var response = $.parseJSON(data);
+				if(response.status == 1) {
+					alert("Status1");
+					window.location.href = response.url;
+				} else if(response.status == 2){
+					alert(response.msg);
+				} else if(response.status == 3){
+					window.location.href = response.url;
+				}
+			},
+			error:function(data) {
+				alert("Sorry errors");
+			},
+		});
+	}
+
 	function callCart(elem,e) {
 		$.ajax({
 			data:'itemId='+elem.prop('id'),
