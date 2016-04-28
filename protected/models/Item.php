@@ -65,7 +65,7 @@ class Item extends CActiveRecord
 		return array(
 			'restaurant' => array(self::BELONGS_TO, 'Restaurant', 'restaurant_id'),
 			'category' => array(self::BELONGS_TO, 'Category', 'category_id'),
-			'shoppingCartHasItems' => array(self::HAS_MANY, 'ShoppingCartHasItems', 'item_id'),
+			'shoppingCartHasItems' => array(self::HAS_MANY, 'ShoppingCartHasItems', 'item_id')
 		);
 	}
 

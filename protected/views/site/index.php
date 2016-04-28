@@ -7,16 +7,16 @@
 		<div class="colGLG-6">
 			<div class="card">
 				<h3>Place your first order today</h3>
-				<form method="GET" action="<?php echo Yii::app()->createUrl('site/search'); ?>">
+				<form id="search">
 					<div class="query">
-						<input type="text" name="location" placeholder="Enter your location" id="auto-pop" required>
+						<input type="text" name="location" placeholder="Enter your location" class="auto-pop" required>
 						<ul class="list-select hider">
 						<?php foreach($locations as $location): ?>
 							<li id="<?php echo $location->id; ?>"><?php echo $location->name; ?></li>
 						<?php endforeach; ?>
 						</ul>
 					</div>
-					<input type="text" name="query" placeholder="Search for cuisines, restaurants or chefs" required>
+					<input id="query" type="text" name="query" placeholder="Search for cuisines, restaurants or chefs" required>
 					<input type="submit" value="Search" name="search" class="colGLG-5 colGMD-6 colGSM-12">
 				</form>
 			</div>
@@ -80,14 +80,14 @@
 
 <script type="text/javascript">
 	$(document).ready(function() {
-		$("#auto-pop").on('focus', function(){
-			$('ul').removeClass('hider').addClass('shower');
+		$(".auto-pop").on('focus', function(){
+			$('.list-select').removeClass('hider').addClass('shower');
 		});
 
-		$("#auto-pop").keyup(function(){
-			var string = $("#auto-pop").val();
+		$(".auto-pop").keyup(function(){
+			var string = $(".auto-pop").val();
 			var expression = new RegExp(string,"gi");
-			$('ul li').each(function(){
+			$('.list-select li').each(function(){
 				if($(this).text().search(expression) == -1) {
 					$(this).addClass('no-disp');
 				} else {
@@ -97,15 +97,32 @@
 		});
 
 		$(document).on('click', function(e){
-			var container = $('#auto-pop, .list-select');
+			var container = $('.auto-pop, .list-select');
 			if(!container.is(e.target) && container.has(e.target).length === 0) {
-				$('ul').removeClass('shower').addClass('hider');
+				$('.list-select').removeClass('shower').addClass('hider');
 			}
-			var targetList = $("li:hover");
+			var targetList = $(".list-select li:hover");
 			if(targetList.is(e.target)) {
-				$("#auto-pop").val(targetList.text());
-				$('ul').removeClass('shower').addClass('hider');
+				$(".auto-pop").val(targetList.text());
+				$(".auto-pop").prop('id',targetList.prop("id"));
+				$('.list-select').removeClass('shower').addClass('hider');
 			}
 		});
+
+		$("#search").submit(function() {
+			$.ajax({
+				type:'POST',
+				url:"<?php echo Yii::app()->createUrl('site/search'); ?>",
+				data:'location-id='+$('.auto-pop').prop("id")+'&query='+$('#query').val(),
+				success:function(data) {
+					var response = $.parseJSON(data);
+					window.location.href = response.url;
+				},
+				error:function() {
+					alert("Errr");
+				}
+			})
+			return false;
+		})
 	});
 </script>

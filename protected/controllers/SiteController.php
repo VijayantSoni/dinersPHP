@@ -28,25 +28,44 @@ class SiteController extends Controller
 	{
 		// renders the view file 'protected/views/site/index.php'
 		// using the default layout 'protected/views/layouts/main.php'
-
-			// $cartId = ShoppingCart::model()->findByAttributes(array('customer_id'=>Yii::app()->user->id));
-			// CVarDumper::dump($cartId,10,1); die;
 		$locations = AvailableInLocation::model()->findAllByAttributes(array('status'=>1,'parent_location_id'=>NULL));
 		$this->render('index',array('locations'=>$locations));
 	}
 
 	public function actionSearch() {
-		if(isset($_GET['query'])) {
+		if(isset($_POST['location-id'])) {
+			echo json_encode(array('url'=>Yii::app()->createUrl('site/search').'?location='.$_POST['location-id'].'&query='.$_POST['query']));
+		} else if(isset($_GET['query'])) {
 			$criteria = new CDbCriteria;
-			$criteria->condition = "name like '%".$_GET["query"]."%' or details like '%".$_GET["query"]."%' AND status=1";
-			$items = Item::model()->findAll($criteria);
+
+			$criteria->with = array('restaurant.location.parentLocation');
+			$criteria->condition = "t.name like '%".$_GET["query"]."%' or t.details like '%".$_GET["query"]."%' AND t.status=1";
+			$items = Item::model()->with('restaurant')->findAll($criteria);
+			$newItems = array();
+			foreach ($items as $item) {
+				if($item->restaurant->location->parent_location_id == $_GET['location']) {
+					array_unshift($newItems, $item);
+				}
+			}
+			CVarDumper::dump($newItems,10,1); die;
 			$this->render('searchresults',array('items'=>$items,'query'=>$_GET['query'],'location'=>$_GET['location']));
+		} else if(isset($_GET['restaurant'])) {
+			$restaurant = Restaurant::model()->with('location')->findAllByAttributes(array('status'=>1));
+			$key = 0;
+			foreach($restaurant as $rest) {
+				$resArray[$key]['id'] = $rest->id;
+				$resArray[$key]['name'] = $rest->name;
+				$resArray[$key]['location'] = $rest->location->name;
+				$resArray[$key]['address'] = $rest->street_address;
+				$resArray[$key]['contact'] = $rest->mobile_number;
+				$key++;
+			}
+			echo json_encode($resArray);
+		} else if (isset($_GET['cuisine'])) {
+
 		}
 	}
 
-	/**
-	 * This is the action to handle external exceptions.
-	 */
 	public function actionError() {
 		if($error=Yii::app()->errorHandler->error)
 		{

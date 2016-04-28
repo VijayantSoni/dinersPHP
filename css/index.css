@@ -207,6 +207,96 @@ Footer style goes here
 /*********************************
 Top nav styles goes here
 *********************************/
+.location-modal-show {
+	top: 8em;
+	left: 25em;
+	right: 25em;
+	height: auto;
+	z-index: 999;
+	opacity: 1;
+	position: fixed;
+	background: #f2f2f2;
+	border: 1px solid rgba(0,0,0,0.2);
+	box-shadow: 0 0 20px rgba(0,0,0,0.6), 0 0 37px rgba(0,0,0,0.2);
+	transition: all 0.4s ease-in-out;
+}
+
+.location-modal-hide {
+	top: -8em;
+	left: 25em;
+	right: 25em;
+	height: auto;
+	z-index: -999;
+	opacity: 0;
+	position: fixed;
+	background: #f2f2f2;
+	border: 1px solid rgba(0,0,0,0.2);
+	box-shadow: none;
+	transition: all 0.4s ease-in-out;
+}
+
+#loc-mod div.location {
+	padding: 2em 0;
+	width: 100%;
+	position: relative;
+}
+
+#loc-mod div.location div:last-of-type {
+}
+
+#loc-mod div.location div:last-of-type label {
+	float: right;
+	width: 100px;
+	text-align: center;
+	color: #fff;
+	padding: 0.5em;
+	margin-top: 1em;
+	background: #f07762;
+}
+
+#loc-mod input {
+	width: 100%;
+	padding: 1em;
+}
+#loc-mod ul {
+	background: #fff;
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+#loc-mod ul li {
+	cursor: pointer;
+	padding: 0.5em 0;
+	border: 1px solid #f2f2f2;
+}
+
+#loc-mod ul li:hover {
+	background: #f2f2f2;
+	color: rgba(0,0,0,0.4);
+}
+
+#loc-mod ul.hider {
+	left: 0;
+	right: 0;
+	height: auto;
+	display: block;
+	position: absolute;
+	display: none !important;
+}
+#loc-mod ul.shower {
+	left: 0;
+	right: 0;
+	display: block;
+	background: #fff;
+	position: absolute;
+	max-height: 200px;
+	overflow-y: scroll;
+}
+
+#loc-mod li.no-disp {
+	display: none!important;
+}
+
 nav:first-of-type {
 	background: #FFF;
 	z-index: 99;
@@ -232,6 +322,10 @@ nav:first-of-type {
 #main-nav > li {
 	display: inline-block;
 	margin: 1.8em 1.6em 0 1.6em;
+}
+
+#main-nav > li:first-child input[type="checkbox"]{
+	/*display: none;*/
 }
 
 #main-nav > li:last-child {
@@ -1384,18 +1478,20 @@ Style for search results.html
 	justify-content: center;
 }
 
-.search-results .items {
+.search-results .items,
+.search-results .restaurant {
 	width: 350px;
 	height: 250px;
 	cursor: pointer;
-	background: teal;
+	background: #fff;
 	overflow: hidden;
 	border-radius: 1px;
 	position: relative;
 	box-shadow: 0 0 3px rgba(0,0,0,0.6), 0 0 8px rgba(0,0,0,0.3);
 }
 
-.search-results .items img {
+.search-results .items img,
+.search-results .restaurant img {
 	height: 250px;
 	max-width: 100%;
 	transform: scale(1.15);
@@ -1416,51 +1512,79 @@ Style for search results.html
 	transition: all 0.25s ease-in;
 }
 
-.search-results .items:hover img{
+.search-results .restaurant .restaurant-details {
+	left: 0;
+	right: 0;
+	bottom: 0;
+	height: 70px;
+	padding: 0.5em;
+	position: absolute;
+	color: #fff;
+	background: #7ececa;
+	box-shadow: 0 -1px rgba(0,0,0,0.4), 0 -3px rgba(0,0,0,0.1);
+	transition: all 0.25s ease-in;
+}
+
+.search-results .items:hover img,
+.search-results .restaurant:hover img{
 	transform: scale(1);
 }
 
-.search-results .items:hover .item-details {
+.search-results .items:hover .item-details,
+.search-results .restaurant .restaurant-details {
 	/*height: 100%;*/
 	color: #fff;
 	padding: 0.5em;
 }
 
-.item-details > div > [class*='colG'] {
+.item-details > div > [class*='colG'],
+.restaurant-details > div > [class*='colG'] {
 	padding: 0.5em 0.5em 0 0.5em!important;
 }
 
-.item-details > div:last-child {
+.item-details > div:last-child,
+.restaurant-details > div:last-child {
 	margin-top: 1em;
 	opacity: 0;
 
 	transition: all 0.45s ease-in;
 }
 
-.search-results .items:hover .item-details > div:last-child {
+.search-results .items:hover .item-details > div:last-child,
+.search-results .restaurant:hover .restaurant-details > div:last-child {
 	opacity: 1;
 }
 
-.item-details > div i {
+.item-details > div i,
+.restaurant-details > div i {
 	padding: 0;
 	color: inherit;
 }
 
-.item-details > div p {
+.item-details > div p,
+.restaurant-details > div p {
 	color: #fff;
 	color: inherit;
 	text-align: justify;
 }
 
+.restaurant-details > div:nth-of-type(2) > p:last-of-type {
+	text-align: right;
+}
+
 .item-details > div a,
-.item-details > div span {
+.item-details > div span,
+.restaurant-details > div a,
+.restaurant-details > div span {
 	color: #fff;
 	color: inherit;
 	position: relative;
 }
 
 .item-details > div a:after,
-.item-details > div span:after {
+.item-details > div span:after,
+.restaurant-details > div a:after,
+.restaurant-details > div span:after {
 	left: 0;
 	right: 0;
 	bottom: -2px;
@@ -1473,11 +1597,14 @@ Style for search results.html
 }
 
 .item-details > div a:hover:after,
-.item-details > div span:hover:after {
+.item-details > div span:hover:after,
+.restaurant-details > div a:hover:after,
+.restaurant-details > div span:hover:after {
 	height: 2px;
 }
 
-.item-details > div h4 {
+.item-details > div h4,
+.restaurant-details > div h4 {
 	color: #fff;
 	text-align: justify;
 }

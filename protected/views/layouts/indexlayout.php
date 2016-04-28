@@ -28,12 +28,29 @@
 					 <img class="loading-image" src="<?php echo Yii::app()->request->baseUrl;?>/img/loader.gif" alt="loading..">
 			 </center>
 		</div>
+		<div id="loc-mod" class="location-modal-hide">
+			<div class="location row" id="controlid">
+				<div class="row">
+					<input type="text" id="auto-popup">
+					<?php $locations = AvailableInLocation::model()->findAllByAttributes(array('status'=>1,'parent_location_id'=>NULL)); ?>
+					<ul class="loc-select hider">
+					<?php foreach($locations as $location): ?>
+						<li id="<?php echo $location->id; ?>"><?php echo $location->name; ?></li>
+					<?php endforeach; ?>
+					</ul>
+				</div>
+				<div class="row">
+					<label for="location-trigger" id="set-in">Set</label>
+				</div>
+			</div>
+		</div>
 		<nav class="row top-fixed nav-down">
 			<div class="container">
 				<a href="<?php echo Yii::app()->createUrl('site/index'); ?>" class="colGLG-4 colGMD-12 colGSM-12"><img src="<?php echo Yii::app()->request->baseUrl; ?>/img/logonew.png"></a>
 				<ul class="colGLG-8 colGMD-12 colGSM-12" id="main-nav">
-					<li><a href="#">Restaurants</a></li>
-					<li><a href="#">Cuisines</a></li>
+					<li><input type="checkbox" id="location-trigger"><label id="set-out" for="location-trigger">Location</label></li>
+					<li><a href="javascript:void(0);" onClick="callSearch(event,1);">Restaurants</a></li>
+					<li><a href="javascript:void(0);" onClick="callSearch(event,2);">Cuisines</a></li>
 
 					<?php if(Yii::app()->user->isGuest): ?>
 					<li>
@@ -148,6 +165,29 @@
 		<!-- ALL Scripts goes here -->
 		<script src="<?php echo Yii::app()->request->baseUrl;?>/js/jquery-2.1.1.js"></script>
 		<script>
+			function askLocation(e) {
+				$('#location-trigger').prop('checked',true);
+			}
+
+			function callSearch(e,type) {
+				e.preventDefault();
+				if(type == 1)
+					var dat = 'restaurant=1';
+				else
+					var dat = 'cuisine=1';
+				$.ajax({
+					type:'GET',
+					url:'<?php echo Yii::app()->createUrl("site/search");?>',
+					data:dat,
+					success:function(data) {
+						alert("Yes");
+					},
+					error:function() {
+						alert("No");
+					}
+				});
+			}
+
 			function callAjax(e,id) {
 				e.preventDefault();
 				$.ajax({
@@ -163,6 +203,7 @@
 					}
 				});
 			}
+
 			$("document").ready(function(){
 				$('#tab-content2').submit(function(){
 					$.ajax({
@@ -196,6 +237,7 @@
 					});
 					return false;
 				});
+
 				$('#tab-content1').submit(function(){
 					var resp;
 					$.ajax({
@@ -233,7 +275,47 @@
 					});
 					return false;
 				});
+
 				$("#tab1").prop("checked",true);
+
+				$('#location-trigger').change(function(){
+					if($('#location-trigger').is(':checked')) {
+						$('#loc-mod').removeClass('location-modal-hide').addClass('location-modal-show');
+					} else {
+						$('#set-out').html($('#auto-popup').val());
+						localStorage.setItem()
+						$('#loc-mod').removeClass('location-modal-show').addClass('location-modal-hide');
+					}
+				});
+
+				$("#auto-popup").on('focus', function(){
+					$('.loc-select').removeClass('hider').addClass('shower');
+				});
+
+				$("#auto-popup").keyup(function(){
+					$('.loc-select').removeClass('hider').addClass('shower');
+					var string = $("#auto-popup").val();
+					var expression = new RegExp(string,"gi");
+					$('.loc-select li').each(function(){
+						if($(this).text().search(expression) == -1) {
+							$(this).addClass('no-disp');
+						} else {
+							$(this).removeClass('no-disp');
+						}
+					});
+				});
+
+				$(document).on('click', function(e){
+					var container = $('#auto-popup, .loc-select');
+					if(!container.is(e.target) && container.has(e.target).length === 0) {
+						$('.loc-select').removeClass('shower').addClass('hider');
+					}
+					var targetList = $(".loc-select li:hover");
+					if(targetList.is(e.target)) {
+						$("#auto-popup").val(targetList.text());
+						$('.loc-select').removeClass('shower').addClass('hider');
+					}
+				});
 			});
 
 			$("#modal-trigger").click(function(){
