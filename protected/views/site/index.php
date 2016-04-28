@@ -9,7 +9,7 @@
 				<h3>Place your first order today</h3>
 				<form id="search">
 					<div class="query">
-						<input type="text" name="location" placeholder="Enter your location" class="auto-pop" required>
+						<input type="text" name="location" placeholder="Enter your location" class="auto-pop" value='<?php echo Yii::app()->user->getState('location_name',NULL);?>' id='<?php echo Yii::app()->user->getState('location_id',NULL);?>' required>
 						<ul class="list-select hider">
 						<?php foreach($locations as $location): ?>
 							<li id="<?php echo $location->id; ?>"><?php echo $location->name; ?></li>
@@ -74,8 +74,6 @@
 </main> -->
 <!-- </section> -->
 <script src="<?php echo Yii::app()->request->baseUrl;?>/js/jquery-2.1.1.js"></script>
-<script src="<?php echo Yii::app()->request->baseUrl;?>/js/jquery.mixitup.min.js"></script>
-<script src="<?php echo Yii::app()->request->baseUrl;?>/js/main.js"></script> <!-- Filter jQuery -->
 <script src="<?php echo Yii::app()->request->baseUrl;?>/js/navup.js"></script>
 
 <script type="text/javascript">
@@ -120,7 +118,7 @@
 				},
 				error:function() {
 					alert("Errr");
-				}
+				},
 			})
 			return false;
 		})

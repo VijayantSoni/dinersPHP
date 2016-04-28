@@ -20,7 +20,7 @@
 					<tr>
 						<td><?php echo $cartItem->item->name; ?></td>
 						<td><?php echo $cartItem->item->restaurant->name; ?></td>
-						<td><input type="number" value=<?php echo $cartItem->item_quantity;?>></td>
+						<td><input type="number" id="<?php echo $cartItem->id;?>" class="quantity" value=<?php echo $cartItem->item_quantity;?>></td>
 						<td>
 							<i class="fa fa-inr"></i>
 							&nbsp;<?php echo $cartItem->item_cost; ?>&nbsp;&nbsp;&nbsp;&nbsp;
@@ -28,7 +28,7 @@
 								<i class="fa fa-trash"></i>
 							</a>
 							&nbsp;&nbsp;&nbsp;&nbsp;
-							<a onClick="makeOrder($(this),event)" href="javascript:void(0);" id="<?php echo $cartItem->id; ?>">
+							<a href="<?php echo Yii::app()->createUrl('site/makePayment',array('cartItemId'=>$cartItem->id)); ?>" id="<?php echo $cartItem->id; ?>">
 								<i class="fa fa-check"></i>
 							</a>
 						</td>
@@ -68,7 +68,7 @@
 			$("#cart-data").append('<tr>\
 										<td>'+response[i].name+'</td>\
 										<td>'+response[i].restaurant+'</td>\
-										<td><input type="number" value='+response[i].quantity+'></td>\
+										<td><input type="number" id="'+response[i].id+'" class="quantity" value='+response[i].quantity+'></td>\
 										<td>\
 											<i class="fa fa-inr"></i>\
 											&nbsp;'+response[i].price+'&nbsp;&nbsp;&nbsp;&nbsp;\
@@ -76,7 +76,7 @@
 												<i class="fa fa-trash"></i>\
 											</a>\
 											&nbsp;&nbsp;&nbsp;&nbsp;\
-											<a href="#">\
+											<a href="'+response[i].url+'" id="'+response[i].id+'">\
 												<i class="fa fa-check"></i>\
 											</a>\
 										</td>\
@@ -109,6 +109,7 @@
 				alert("Could not reload data");
 			}
 		});
+		return true;
 	}
 	function trash(elem,e) {
 		$.ajax({
@@ -125,6 +126,21 @@
 			}
 		});
 	}
+
 	$("document").ready(function(){
+		$('#cart-data').on('blur','.quantity',function(){
+			var dat = 'cartItemId='+$(this).prop('id')+'&quantity='+$(this).val();
+			$.ajax({
+				type:'POST',
+				url:"<?php echo Yii::app()->createUrl('site/cart'); ?>",
+				data:dat,
+				success:function(data) {
+					reloadAjax();
+				},
+				error:function() {
+					alert("Sorry there have been some errors");
+				},
+			});
+		});
 	});
 </script>

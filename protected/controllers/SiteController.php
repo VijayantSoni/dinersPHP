@@ -32,37 +32,66 @@ class SiteController extends Controller
 		$this->render('index',array('locations'=>$locations));
 	}
 
+	public function actionSetLocation() {
+		if(isset($_POST['locId'])) {
+			Yii::app()->user->setState('location_id',$_POST['locId']);
+			Yii::app()->user->setState('location_name',$_POST['locName']);
+			echo json_encode(array('msg'=>'Location set successfully'));
+		}
+	}
+
+	protected function getLocation() {
+		return array('id'=>Yii::app()->user->location_id,'name'=>Yii::app()->user->location_name);
+	}
+
 	public function actionSearch() {
 		if(isset($_POST['location-id'])) {
 			echo json_encode(array('url'=>Yii::app()->createUrl('site/search').'?location='.$_POST['location-id'].'&query='.$_POST['query']));
 		} else if(isset($_GET['query'])) {
 			$criteria = new CDbCriteria;
-
 			$criteria->with = array('restaurant.location.parentLocation');
 			$criteria->condition = "t.name like '%".$_GET["query"]."%' or t.details like '%".$_GET["query"]."%' AND t.status=1";
 			$items = Item::model()->with('restaurant')->findAll($criteria);
 			$newItems = array();
 			foreach ($items as $item) {
 				if($item->restaurant->location->parent_location_id == $_GET['location']) {
-					array_unshift($newItems, $item);
+					array_push($newItems, $item);
 				}
 			}
-			CVarDumper::dump($newItems,10,1); die;
-			$this->render('searchresults',array('items'=>$items,'query'=>$_GET['query'],'location'=>$_GET['location']));
+			$crit = new CDbCriteria;
+			$crit->condition = "t.name like '%".$_GET["query"]."%' AND t.status=1";
+			$res = Restaurant::model()->with('location')->findAll($crit);
+			foreach ($res as $r) {
+				if($r->location->parent_location_id == $_GET['location']) {
+					array_push($newItems, $r);
+				}
+			}
+			$itemarray = array();
+			foreach($newItems as $item) {
+				if($item->hasRelated('restaurant')) {
+					array_push($itemarray, array('item'=>1,'id'=>$item->id,'name'=>$item->name,'time'=>$item->serving_time,'deliverable'=>$item->delivery_available,'price'=>$item->price,'rest_name'=>$item->restaurant->name));
+				} else if($item->hasRelated('location')){
+					array_push($itemarray,array('restaurant'=>1,'id'=>$item->id,'name'=>$item->name,'adddr'=>$item->street_address,'mainlocation'=>$item->location->parentLocation->name,'sublocation'=>$item->location->name));
+				}
+			}
+			$this->render('searchresults',array('items'=>$itemarray,'query'=>$_GET['query'],'location'=>$_GET['location']));
 		} else if(isset($_GET['restaurant'])) {
 			$restaurant = Restaurant::model()->with('location')->findAllByAttributes(array('status'=>1));
-			$key = 0;
+			$resArray = array();
 			foreach($restaurant as $rest) {
-				$resArray[$key]['id'] = $rest->id;
-				$resArray[$key]['name'] = $rest->name;
-				$resArray[$key]['location'] = $rest->location->name;
-				$resArray[$key]['address'] = $rest->street_address;
-				$resArray[$key]['contact'] = $rest->mobile_number;
-				$key++;
+				if($rest->location->parent_location_id == $_GET['locId'])
+					array_push($resArray,array('restaurant'=>1,'id'=>$rest->id,'name'=>$rest->name,'adddr'=>$rest->street_address,'mainlocation'=>$rest->location->parentLocation->name,'sublocation'=>$rest->location->name));
 			}
-			echo json_encode($resArray);
-		} else if (isset($_GET['cuisine'])) {
-
+			$this->render('searchresults',array('items'=>$resArray));
+		} else if (isset($_GET['item'])) {
+			$items = Item::model()->with('restaurant')->findAllByAttributes(array('status'=>1));
+			$itemarray = array();
+			foreach ($items as $item) {
+				if($item->restaurant->location->parent_location_id == $_GET['locId']) {
+					array_push($itemarray, array('item'=>1,'id'=>$item->id,'name'=>$item->name,'time'=>$item->serving_time,'deliverable'=>$item->delivery_available,'price'=>$item->price,'rest_name'=>$item->restaurant->name));
+				}
+			}
+			$this->render('searchresults',array('items'=>$itemarray));
 		}
 	}
 
@@ -302,7 +331,7 @@ class SiteController extends Controller
 		if(isset($_POST['itemId'])) {
 			$item = Item::model()->with('restaurant')->findByPk($_POST['itemId']);
 			$user = User::model()->with('shoppingCarts')->findByPk(Yii::app()->user->id);
-			$prevItem = ShoppingCartHasItems::model()->findByAttributes(array('item_id'=>$item->id,'shopping_cart_id'=>$user->shoppingCarts[0]->id));
+			$prevItem = ShoppingCartHasItems::model()->findByAttributes(array('item_id'=>$item->id,'shopping_cart_id'=>$user->shoppingCarts[0]->id,'status'=>1));
 			if(empty($prevItem)) {
 				$cartItem = new ShoppingCartHasItems;
 				$cartItem->item_id = $item->id;
@@ -343,6 +372,7 @@ class SiteController extends Controller
 			if(!empty($cartItems)) {
 				foreach ($cartItems as $cartItem) {
 					$response[$i]['id'] = $cartItem->id;
+					$response[$i]['url'] = Yii::app()->createUrl('site/makepayment',array('cartItemId'=>$cartItem->id))."" ;
 					$response[$i]['name'] = $cartItem->item->name;
 					$response[$i]['price'] = $cartItem->item_cost;
 					$response[$i]['quantity'] = $cartItem->item_quantity;
@@ -353,6 +383,16 @@ class SiteController extends Controller
 			} else {
 				echo json_encode(array('msg'=>'Cart is empty'));
 			}
+		} else if(isset($_POST['cartItemId'])) {
+				$cartItem = ShoppingCartHasItems::model()->with('item')->findByPk($_POST['cartItemId']);
+				$cartItem->item_quantity = $_POST['quantity'];
+				$cartItem->item_cost = $cartItem->item_quantity * $cartItem->item->price;
+				$cartItem->modify_date = new CDbExpression('NOW()');
+				if($cartItem->update()) {
+					echo json_encode(array('status'=>1,'msg'=>'Updated'));
+				} else {
+					echo json_encode(array('status'=>2,'msg'=>'Error while updating'));
+				}
 		} else {
 			$user = User::model()->with('shoppingCarts')->findByPk(Yii::app()->user->id);
 			$cartItems = ShoppingCartHasItems::model()->with('item')->findAllByAttributes(array('shopping_cart_id'=>$user->shoppingCarts[0]->id,'status'=>1));
@@ -416,28 +456,16 @@ class SiteController extends Controller
 
 
 	public function actionCheckout() {
-		if(isset($_POST["itemId"])) {
-			$prevItem = ShoppingCartHasItems::model()->findByAttributes(array('item_id'=>$_POST['itemId']));
-			if(empty($prevItem)) {
-				$cart = ShoppingCart::model()->findByAttributes(array('customer_id'=>Yii::app()->user->id));
-				$item = Item::model()->findByPk($_POST["itemId"]);
-				$cartItem = new ShoppingCartHasItems;
-				$cartItem->item_id = $_POST["itemId"];
-				$cartItem->shopping_cart_id = $cart->id;
-				$cartItem->item_quantity = 1;
-				$cartItem->item_cost = $cartItem->item_quantity * $item->price;
-				$cartItem->status = 1;
-				$cartItem->add_date = new CDbExpression('NOW()');
-				$cartItem->modify_date = new CDbExpression('NOW()');
-				if($cartItem->validate()) {
-					$cartItem->save();
-					echo json_encode(array('status'=>1,'url'=>Yii::app()->createUrl('site/cart')));
-				} else {
-					echo json_encode(array('status'=>2,'msg'=>'Sorry cannot process checkout'));
-				}
-			} else {
-				echo json_encode(array('status'=>3,'url'=>Yii::app()->createUrl('site/cart')));
-			}
+		if(isset($_GET['cartItemId'])) {
+			$cartItem = ShoppingCartHasItems::model()->findByPk($_GET['cartItemId']);
+			$this->render('makepayment',array('cartItem'=>$cartItem));
+		}
+	}
+
+	public function actionMakePayment() {
+		if(isset($_GET['cartItemId'])) {
+			$cartItem = ShoppingCartHasItems::model()->with('item')->findByPk($_GET['cartItemId']);
+			$this->render('makepayment',array('cartItem'=>$cartItem));
 		}
 	}
 	/**

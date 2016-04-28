@@ -76,19 +76,20 @@
 				<div class="row">
 				<?php foreach($items as $item): ?>
 					<div class="colGLG-3 colGMD-6 colGSM-12">
+						<?php if(isset($item['item'])): ?>
 						<div class="items">
 							<img src="<?php echo Yii::app()->request->baseUrl;?>/img/sampleFood.jpg">
 							<div class="item-details">
 								<div class="row">
-									<p class="colGLG-8"><?php echo $item->name; ?></p>
-									<p class="colGLG-2"><i class="fa fa-inr"></i><?php echo $item->price; ?></p>
-									<span id="<?php echo $item->id;?>" class="cart colGLG-1 cart-tip" <?php echo Yii::app()->user->isGuest?"onClick='openModal()'":"onClick='callCart($(this),event)'" ?>><i class="fa fa-cart-plus" aria-hidden="true"></i></span>
-									<span id="<?php echo $item->id;?>" <?php echo Yii::app()->user->isGuest?"onClick='openModal()'":"onClick='callCheckout($(this),event)'" ?> class="colGLG-1 check-tip"><i class="fa fa-check"></i></span>
+									<p class="colGLG-8"><?php echo $item['name']; ?></p>
+									<p class="colGLG-2"><i class="fa fa-inr"></i><?php echo $item['price']; ?></p>
+									<span id="<?php echo $item['id'];?>" class="cart colGLG-1 cart-tip" <?php echo Yii::app()->user->isGuest?"onClick='openModal()'":"onClick='callCart($(this),event)'" ?>><i class="fa fa-cart-plus" aria-hidden="true"></i></span>
+									<span id="<?php echo $item['id'];?>" <?php echo Yii::app()->user->isGuest?"onClick='openModal()'":"onClick='callCheckout($(this),event)'" ?> class="colGLG-1 check-tip"><i class="fa fa-check"></i></span>
 								</div>
 								<div class="row">
-									<p class="colGLG-6"><?php echo $item->restaurant->name; ?></p>
-									<p class="colGLG-4"><?php echo $item->delivery_available?'Deliverable':'Takeaway'; ?></p>
-									<p class="colGLG-1"><?php echo $item->serving_time?>M</p>
+									<p class="colGLG-6"><?php echo $item['rest_name']; ?></p>
+									<p class="colGLG-4"><?php echo $item['deliverable']?'Deliverable':'Takeaway'; ?></p>
+									<p class="colGLG-1"><?php echo $item['time']?>M</p>
 								</div>
 								<div class="row">
 									<h4 class="colGLG-12">Item Details</h4>
@@ -97,6 +98,26 @@
 								</div>
 							</div>
 						</div>
+						<?php elseif(isset($item['restaurant'])): ?>
+							<div class="restaurant">
+								<img src="<?php echo Yii::app()->request->baseUrl;?>/img/sampleFood.jpg">
+								<div class="restaurant-details">
+									<div class="row">
+										<p class="colGLG-8"><?php echo $item['name']; ?></p>
+										<a id="<?php echo $item['id']; ?>" href="#" class="colGLG-4">View Items</a>
+									</div>
+									<div class="row">
+										<p class="colGLG-6"><?php echo $item['mainlocation']; ?></p>
+										<p class="colGLG-6"><?php echo $item['sublocation']; ?></p>
+									</div>
+									<div class="row">
+										<h4 class="colGLG-12">Item Details</h4>
+										<p class="colGLG-12">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+										tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+									</div>
+								</div>
+							</div>
+						<?php endif; ?>
 					</div>
 				<?php endforeach; ?>
 				</div>
@@ -183,14 +204,13 @@
 		}, 250);
 		function filterRowHasScrolled() {
 		  var st = $(this).scrollTop();
-		  // alert(st);
-		  if (st > del) {
-		    $('#filter-row').removeClass('filter-row-float').addClass('filter-row-fixed');
-		    $('#filters').addClass('aside-fixed');
-		  } else {
-	      $('#filter-row').removeClass('filter-row-fixed').addClass('filter-row-float');
-	      $('#filters').removeClass('aside-fixed');
-	    }
+			if (st > del) {
+			$('#filter-row').removeClass('filter-row-float').addClass('filter-row-fixed');
+			$('#filters').addClass('aside-fixed');
+			} else {
+			  $('#filter-row').removeClass('filter-row-fixed').addClass('filter-row-float');
+			  $('#filters').removeClass('aside-fixed');
+			}
 		}
 	});
 

@@ -1,139 +1,3 @@
-
-/*********************************
-Loader style goes here
-*********************************/
-/*.bubblingG {
-	text-align: center;
-	width:78px;
-	height:49px;
-	margin: auto;
-}
-
-.bubblingG span {
-	display: inline-block;
-	vertical-align: middle;
-	width: 10px;
-	height: 10px;
-	margin: 24px auto;
-	background: rgb(240,119,98);
-	border-radius: 49px;
-		-o-border-radius: 49px;
-		-ms-border-radius: 49px;
-		-webkit-border-radius: 49px;
-		-moz-border-radius: 49px;
-	animation: bubblingG 0.975s infinite alternate;
-		-o-animation: bubblingG 0.975s infinite alternate;
-		-ms-animation: bubblingG 0.975s infinite alternate;
-		-webkit-animation: bubblingG 0.975s infinite alternate;
-		-moz-animation: bubblingG 0.975s infinite alternate;
-}
-
-#bubblingG_1 {
-	animation-delay: 0s;
-		-o-animation-delay: 0s;
-		-ms-animation-delay: 0s;
-		-webkit-animation-delay: 0s;
-		-moz-animation-delay: 0s;
-}
-
-#bubblingG_2 {
-	animation-delay: 0.2895s;
-		-o-animation-delay: 0.2895s;
-		-ms-animation-delay: 0.2895s;
-		-webkit-animation-delay: 0.2895s;
-		-moz-animation-delay: 0.2895s;
-}
-
-#bubblingG_3 {
-	animation-delay: 0.589s;
-		-o-animation-delay: 0.589s;
-		-ms-animation-delay: 0.589s;
-		-webkit-animation-delay: 0.589s;
-		-moz-animation-delay: 0.589s;
-}
-
-
-
-@keyframes bubblingG {
-	0% {
-		width: 10px;
-		height: 10px;
-		background-color:rgb(240,119,98);
-		transform: translateY(0);
-	}
-
-	100% {
-		width: 23px;
-		height: 23px;
-		background-color:rgb(255,255,255);
-		transform: translateY(-20px);
-	}
-}
-
-@-o-keyframes bubblingG {
-	0% {
-		width: 10px;
-		height: 10px;
-		background-color:rgb(240,119,98);
-		-o-transform: translateY(0);
-	}
-
-	100% {
-		width: 23px;
-		height: 23px;
-		background-color:rgb(255,255,255);
-		-o-transform: translateY(-20px);
-	}
-}
-
-@-ms-keyframes bubblingG {
-	0% {
-		width: 10px;
-		height: 10px;
-		background-color:rgb(240,119,98);
-		-ms-transform: translateY(0);
-	}
-
-	100% {
-		width: 23px;
-		height: 23px;
-		background-color:rgb(255,255,255);
-		-ms-transform: translateY(-20px);
-	}
-}
-
-@-webkit-keyframes bubblingG {
-	0% {
-		width: 10px;
-		height: 10px;
-		background-color:rgb(240,119,98);
-		-webkit-transform: translateY(0);
-	}
-
-	100% {
-		width: 23px;
-		height: 23px;
-		background-color:rgb(255,255,255);
-		-webkit-transform: translateY(-20px);
-	}
-}
-
-@-moz-keyframes bubblingG {
-	0% {
-		width: 10px;
-		height: 10px;
-		background-color:rgb(240,119,98);
-		-moz-transform: translateY(0);
-	}
-
-	100% {
-		width: 23px;
-		height: 23px;
-		background-color:rgb(255,255,255);
-		-moz-transform: translateY(-20px);
-	}
-}*/
-
 /*********************************
 Footer style goes here
 *********************************/
@@ -325,7 +189,11 @@ nav:first-of-type {
 }
 
 #main-nav > li:first-child input[type="checkbox"]{
-	/*display: none;*/
+	display: none;
+}
+
+#main-nav > li:first-child label {
+	cursor: pointer;
 }
 
 #main-nav > li:last-child {
@@ -2089,4 +1957,77 @@ Forgot Password styles goes here
 .reset .marginate form button:hover {
 	color: #fff;
 	background: #f07762;
+}
+
+
+/***********************************
+Make Payment styles goes here
+***********************************/
+.payment .marginate{
+	width: 65%;
+	min-height: 100vh;
+	margin: 0 auto;
+	padding: 1em 1em;
+	margin-top: 5.4em;
+}
+
+.payment .marginate > div.row:first-of-type {
+	border-bottom: 1px solid #7ececa;
+}
+.payment .marginate > div.row:first-of-type h4 {
+	color: #f2f2f2;
+	padding: 0.75em 3em;
+	display: inline-block;
+	letter-spacing: 0.05em;
+	background: #7ececa;
+}
+
+.payment .marginate > form.row {
+	margin-top: 2em;
+}
+
+.payment .marginate > form.row .select {
+	margin-bottom: 1em;
+}
+
+.payment .marginate > form.row .select select{
+	border: 0;
+	padding: 0 1em;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	border-bottom: 0.15em solid #f07762;
+}
+
+.payment .marginate > form.row .select select option {
+	padding: 1em;
+}
+
+.payment .marginate > form.row .addressbook {
+	border: 0.2em solid rgba(0,0,0,0.2);
+}
+
+.payment .marginate > form.row .addressbook > div.row:first-child,
+.payment .marginate > form.row .addressbook > div.row:last-child,
+.payment .marginate > form.row .addressbook > div.row:nth-of-type(2) {
+	padding: 0.5em 1em;
+}
+
+.payment .marginate > form.row .addressbook > div.row:first-child > div,
+.payment .marginate > form.row .addressbook > div.row:last-child > div,
+.payment .marginate > form.row .addressbook > div.row:nth-of-type(2) > div{
+	padding: 0;
+}
+.payment .marginate > form.row .addressbook > div.row:first-child > div input {
+	width: 99%;
+	padding: 0.5em;
+	line-height: 2em;
+	background: #f2f2f2;
+	border: 0.15em solid rgba(0,0,0,0.2);
+}
+
+.payment .marginate > form.row .addressbook > div.row:nth-of-type(2) > div textarea {
+	width: 100%;
+	resize: none;
+	background: #f2f2f2;
+	border: 0.15em solid rgba(0,0,0,0.2);
 }
