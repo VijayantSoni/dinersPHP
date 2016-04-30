@@ -34,6 +34,7 @@
 				<li><a href="<?php echo Yii::app()->createUrl('dashboard/addCuisine');?>"><i class="fa fa-plus"></i><span>Add&nbsp;Cuisine</span></a></li>
 				<li><a href="<?php echo Yii::app()->createUrl('dashboard/editCuisine');?>"><i class="fa fa-pencil"></i><span>Edit&nbsp;Cuisine</span></a></li>
 				<li><a href="<?php echo Yii::app()->createUrl('dashboard/editRestaurant');?>"><i class="fa fa-pencil"></i><span>Edit&nbsp;Restaurant</span></a></li>
+				<li><a href="<?php echo Yii::app()->createUrl('dashboard/viewOrders');?>"><i class="fa fa-eye"></i><span>View&nbsp;Orders</span></a></li>
 				<li><a href="<?php echo Yii::app()->createUrl('dashboard/userAccountSettings');?>"><i class="fa fa-cogs"></i><span>Account&nbsp;Settings</span></a></li>
 				<li><a href="<?php echo Yii::app()->createUrl('site/logout');?>"><i class="fa fa-sign-out"></i><span>Logout</span></a></li>
 			</ul>

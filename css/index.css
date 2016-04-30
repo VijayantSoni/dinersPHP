@@ -2002,8 +2002,16 @@ Make Payment styles goes here
 	padding: 1em;
 }
 
+.payment .marginate > form.row .hidden {
+	display: none;
+}
+
 .payment .marginate > form.row .addressbook {
 	border: 0.2em solid rgba(0,0,0,0.2);
+}
+
+.payment .marginate > form.row .addressbook .active {
+	background: #fff !important;
 }
 
 .payment .marginate > form.row .addressbook > div.row:first-child,
@@ -2028,6 +2036,94 @@ Make Payment styles goes here
 .payment .marginate > form.row .addressbook > div.row:nth-of-type(2) > div textarea {
 	width: 100%;
 	resize: none;
+	padding: 1em 0.5em;
+	min-height: 150px;
 	background: #f2f2f2;
 	border: 0.15em solid rgba(0,0,0,0.2);
+}
+
+.payment .marginate > form.row .addressbook > div.row:last-child div:first-child input{
+	display: none;
+}
+
+.payment .marginate > form.row .addressbook > div.row:last-child div:first-child label {
+	background: #f2f2f2;
+	text-align: center;
+	border: 1px solid rgba(0,0,0,0.2);
+	transition: all 0.2s ease-in;
+}
+
+.payment .marginate > form.row .addressbook > div.row:last-child div:first-child label:hover {
+	color: #fff;
+	cursor: pointer;
+	background: #f07762;
+}
+
+.payment .marginate > form.row .addressbook > div.row:last-child div:last-child button {
+	background: #f2f2f2;
+	transition: all 0.2s ease-in;
+	border: 1px solid rgba(0,0,0,0.2);
+}
+
+.payment .marginate > form.row .addressbook > div.row:last-child div:last-child button:hover {
+	background: #f07762;
+	color: #fff;
+}
+
+.payment .marginate > form.row .order-details {
+	padding: 1em 0;
+}
+
+.payment .marginate > form.row .order-details > div > div {
+	padding: 1em 0;
+}
+
+.payment .marginate > form.row .order-details > div > div p {
+	width: 100%;
+	display: block;
+	/*margin: 0.75em 0;*/
+}
+
+.payment .marginate > form.row .order-details > div > div input[type="number"] {
+	border: 0;
+	width: 100px;
+	border: 0.15em solid rgba(0,0,0,0.2);
+}
+
+.payment .marginate > form.row .order-details > div > div input[type="text"] {
+	padding: 0.75em;
+	width: 100%;
+}
+
+.payment .marginate > form.row .order-details > div:last-of-type {
+
+}
+
+.payment .marginate > form.row .card-details {
+	margin: 1em 0;
+	border: 1px solid rgba(0,0,0,0.2);
+}
+
+.payment .marginate > form.row .card-details > div > div input[type="text"] {
+	width: 100%;
+	padding: 1em 0.5em;
+	border: 0.15em solid rgba(0,0,0,0.2);
+}
+
+.payment .marginate > form.row .card-details > div > div input[type="number"] {
+	width: 50%;
+	float: left;
+	padding: 1em 0.5em;
+	border: 0.15em solid rgba(0,0,0,0.2);
+}
+
+.payment .marginate > form.row .card-details > div > div button {
+	background: #f2f2f2;
+	transition: all 0.2s ease-in;
+	border: 0.15em solid rgba(0,0,0,0.2);
+}
+
+.payment .marginate > form.row .card-details > div > div button:hover {
+	color: #fff;
+	background: #f07762;
 }

@@ -1,9 +1,12 @@
 <?php
+Yii::import('application.vendors.*');
+require_once('stripe/init.php');
 class SiteController extends Controller
 {
 	/**
 	 * Declares class-based actions.
 	 */
+
 	public function actions()
 	{
 		return array(
@@ -459,6 +462,30 @@ class SiteController extends Controller
 		if(isset($_GET['cartItemId'])) {
 			$cartItem = ShoppingCartHasItems::model()->findByPk($_GET['cartItemId']);
 			$this->render('makepayment',array('cartItem'=>$cartItem));
+		} else if(isset($_POST['itemId'])) {
+			$prevItem = ShoppingCartHasItems::model()->findByAttributes(array('item_id'=>$_POST['itemId'],'status'=>1));
+			$cart = ShoppingCart::model()->findByAttributes(array('customer_id'=>Yii::app()->user->id,'status'=>1));
+			$item = Item::model()->findByPk($_POST['itemId']);
+			if(empty($prevItem)) {
+				$cartItem = new ShoppingCartHasItems;
+				$cartItem->item_id = $_POST['itemId'];
+				$cartItem->shopping_cart_id = $cart->id;
+				$cartItem->item_quantity = 1;
+				$cartItem->item_cost = $item->price;
+				$cartItem->add_date = new CDbExpression('NOW()');
+				$cartItem->modify_date = new CDbExpression('NOW()');
+				if($cartItem->validate()) {
+					$cartItem->save();
+					echo json_encode(array('status'=>1,'msg'=>'Added to cart'));
+				} else {
+					echo json_encode(array('status'=>2,'msg'=>'Could not add'));
+				}
+			} else {
+				$prevItem->item_quantity += 1;
+				$prevItem->item_cost = $item->price * $prevItem->item_quantity;
+				$prevItem->update();
+				echo json_encode(array('status'=>1,'msg'=>'Cart updated'));
+			}
 		}
 	}
 
@@ -466,7 +493,224 @@ class SiteController extends Controller
 		if(isset($_GET['cartItemId'])) {
 			$cartItem = ShoppingCartHasItems::model()->with('item')->findByPk($_GET['cartItemId']);
 			$this->render('makepayment',array('cartItem'=>$cartItem));
+		} else if(isset($_POST['allCheckout'])) {
+			echo json_encode(array('url'=>Yii::app()->createUrl('site/makepayment',array('allCheckout'=>1))));
+		} else if(isset($_GET['allCheckout'])) {
+			$this->render('allcheckout',array('cartItem'=>0));
 		}
+	}
+
+	public function actionMakeOrder() {
+		if(isset($_POST['delivery-type']) && isset($_POST['payment-type']) && isset($_POST['allCheck'])) {
+			$cart = ShoppingCart::model()->findByAttributes(array('customer_id'=>Yii::app()->user->id));
+			$cartItems = ShoppingCartHasItems::model()->with('item','item.restaurant')->findAllByAttributes(array('shopping_cart_id'=>$cart->id,'status'=>1));
+			foreach($cartItems as $cartItem) {
+				$order = new Orders;
+				$order->customer_id = Yii::app()->user->id;
+				$order->package_id = $cartItem->id;
+				$order->restaurant_id = $cartItem->item->restaurant->id;
+				$order->delivery_address_id = $_POST['delivery-type'] == 'delivery'?$_POST['addressId']:NULL;
+				$order->amount = $cartItem->item_cost;
+				if($_POST['delivery-type'] == 'pickup') {
+					$order->serving_type = 'pickup';
+				} else {
+					if($_POST['delivery-type'] == 'delivery' && $cartItem->item->delivery_available) {
+						$order->serving_type = 'delivery';
+					} else {
+						$order->serving_type = 'pickup';
+					}
+				}
+
+				if($_POST['delivery-type'] == 'pickup') {
+					$order->time_for_pickup = $_POST['hour'].":".$_POST['min'];
+				} else {
+					if($_POST['delivery-type'] == 'delivery' && $cartItem->item->delivery_available) {
+						$order->time_for_delivery = $_POST['hour'].":".$_POST['min'];
+					}
+					else {
+						$order->time_for_pickup = $_POST['hour'].":".$_POST['min'];
+					}
+				}
+				$order->add_date = new CDbExpression('NOW()');
+				$order->modify_date = new CDbExpression('NOW()');
+				if($order->validate()) {
+					$order->save();
+					$cartItem->status=0;
+					$cartItem->update();
+					$orderStatus = new OrderStatus;
+					$orderStatus->order_id = $order->id;
+					$orderStatus->order_status = 'awaiting_confirmation';
+					$orderStatus->add_date = new CDbExpression('NOW()');
+					$orderStatus->modify_date = new CDbExpression('NOW()');
+					$orderStatus->save();
+					echo json_encode(array('status'=>1,'msg'=>'Order has been placed'));
+				} else {
+					echo json_encode(array('status'=>2,'msg'=>'Incorrect data'));
+				}
+			}
+		} else {
+				echo json_encode(array('status'=>1));
+			}
+	}
+
+	public function actionTransaction() {
+		if(isset($_POST['token']) &&  isset($_POST['allCheckout'])) {
+			$cart = ShoppingCart::model()->findByAttributes(array('customer_id'=>Yii::app()->user->id));
+			$cartItems = ShoppingCartHasItems::model()->with('item','item.restaurant')->findAllByAttributes(array('shopping_cart_id'=>$cart->id,'status'=>1));
+			$token = $_POST['token'];
+			$amnt = split(' ', $_POST['amount']);
+			try{
+				$secretkey=Controller::getSecretKey();
+				\Stripe\Stripe::setApiKey($secretkey);
+
+				$charge = \Stripe\Charge::create(
+					array(
+						'amount' => ($amnt[0]*100),
+						'currency' => 'usd',
+						'source' => $token
+					)
+				);
+
+				if($charge->paid) {
+					$transaction = new Transaction;
+					$transaction->transaction_number = $token;
+					$transaction->amount = $amnt[0];
+					$transaction->transaction_status = 'done';
+					$transaction->add_date = new CDbExpression('NOW()');
+					$transaction->modify_date = new CDbExpression('NOW()');
+					$transaction->save();
+
+					foreach ($cartItems as $cartItem) {
+						$order = new Orders;
+						$order->customer_id = Yii::app()->user->id;
+						$order->package_id = $cartItem->id;
+						$order->restaurant_id = $cartItem->item->restaurant->id;
+						$order->delivery_address_id = $_POST['delivery-type'] == 'delivery'?$_POST['addressId']:NULL;
+						$order->amount = $cartItem->item_cost;
+						$order->transaction_id = $transaction->id;
+						$order->payment_type = 'credit';
+						if($_POST['delivery-type'] == 'pickup') {
+							$order->serving_type = 'pickup';
+						} else {
+							if($_POST['delivery-type'] == 'delivery' && $cartItem->item->delivery_available) {
+								$order->serving_type = 'delivery';
+							} else {
+								$order->serving_type = 'pickup';
+							}
+						}
+
+						if($_POST['delivery-type'] == 'pickup') {
+							$order->time_for_pickup = $_POST['hour'].":".$_POST['min'];
+						} else {
+							if($_POST['delivery-type'] == 'delivery' && $cartItem->item->delivery_available) {
+								$order->time_for_delivery = $_POST['hour'].":".$_POST['min'];
+							}
+							else {
+								$order->time_for_pickup = $_POST['hour'].":".$_POST['min'];
+							}
+						}
+						$order->add_date = new CDbExpression('NOW()');
+						$order->modify_date = new CDbExpression('NOW()');
+						if($order->validate()) {
+							$order->save();
+							$cartItem->status=0;
+							$cartItem->update();
+							$orderStatus = new OrderStatus;
+							$orderStatus->order_id = $order->id;
+							$orderStatus->order_status = 'order_placed';
+							$orderStatus->add_date = new CDbExpression('NOW()');
+							$orderStatus->modify_date = new CDbExpression('NOW()');
+							$orderStatus->save();
+							echo json_encode(array('status'=>1,'msg'=>'Order has been placed with status'));
+						}	else {
+							echo json_encode(array('status'=>2,'msg'=>'Incorrect data'));
+						}
+					}
+					echo json_encode(array('status'=>1,'msg'=>'Done with transaction'));
+				} else {
+					$transaction = new Transaction;
+					$transaction->transaction_number = $token;
+					$transaction->amount = $amnt[0];
+					$transaction->transaction_status = 'fail';
+					$transaction->add_date = new CDbExpression('NOW()');
+					$transaction->modify_date = new CDbExpression('NOW()');
+					$transaction->save();
+					echo json_encode(array('status'=>2, 'msg'=>'Trans not possible'));
+				}
+			}
+			catch(\Stripe\Error\InvalidRequest $e)
+			{
+				echo "Hello1";
+				$e_json = $e->getJsonBody();
+				$error = $e_json['error'];
+				$response['error']=$error['message'];
+				$response['status']="2";
+				echo json_encode($response);
+			}
+			catch(\Stripe\Error\ApiConnection $e)
+			{
+				echo "Hello2";
+				$e_json = $e->getJsonBody();
+				$error = $e_json['error'];
+				$response['error']=$error['message'];
+				$response['status']="3";
+				echo json_encode($response);
+			}
+			catch (\Stripe\Error\Base $e)
+			{
+				echo "Hello3";
+				$e_json = $e->getJsonBody();
+				$error = $e_json['error'];
+				$response['error']=$error['message'];
+				$response['message']="Something gone wrong.Please try later.And send us screenshot of this error.";
+				$response['status']="4";
+				echo json_encode($response);
+			}
+			catch(Exception $e)
+			{
+				echo "Hello4";
+				$e_json = $e->getJsonBody();
+				$error = $e_json['error'];
+				$response['error']=$error['message'];
+				$response['message']="Internal Server Error.";
+				$response['success']="5";
+				echo json_encode($response);
+			}
+		}
+	}
+
+	public function actionUpdateAddress() {
+		if(isset($_POST['custId'])) {
+			$address = CustomerAddressBook::model()->findByAttributes(array('customer_id'=>$_POST['custId']));
+			if(!empty($address)) {
+				$address->recipient_name = $_POST['name'];
+				$address->recipient_mobile = $_POST['mobile'];
+				$address->address = $_POST['address'];
+				$address->modify_date = new CDbExpression('NOW()');
+				$address->update();
+				echo json_encode(array('status'=>1,'msg'=>'Updated address'));
+			} else {
+				$address = new CustomerAddressBook;
+				$address->customer_id = $_POST['custId'];
+				$address->recipient_name = $_POST['name'];
+				$address->recipient_mobile = $_POST['mobile'];
+				$address->address = $_POST['address'];
+				$address->add_date = new CDbExpression('NOW()');
+				$address->modify_date = new CDbExpression('NOW()');
+				if($address->validate()) {
+					$address->save();
+					echo json_encode(array('status'=>1,'msg'=>'Address added'));
+				} else {
+					echo json_encode(array('status'=>2,'msg'=>'Wrong data entered'));
+				}
+			}
+		}
+	}
+
+	public function actionViewOrders() {
+		$orders = Orders::model()->with('package.item','orderStatuses','restaurant')->findAllByAttributes(array('customer_id'=>Yii::app()->user->id,'status'=>1));
+		// CVarDumper::dump($orders,10,1); die;
+		$this->render('order',array('orders'=>$orders));
 	}
 	/**
 	 * Logs out the current user and redirect to homepage.

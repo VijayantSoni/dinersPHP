@@ -17,7 +17,7 @@
 				<tbody id="cart-data">
 				<?php $checkOutAmnt = 0; ?>
 				<?php foreach($cartItems as $cartItem): ?>
-					<tr>
+					<tr id="<?php echo $cartItem->id; ?>">
 						<td><?php echo $cartItem->item->name; ?></td>
 						<td><?php echo $cartItem->item->restaurant->name; ?></td>
 						<td><input type="number" id="<?php echo $cartItem->id;?>" class="quantity" value=<?php echo $cartItem->item_quantity;?>></td>
@@ -46,7 +46,7 @@
 							<i class="fa fa-inr"></i>&nbsp;&nbsp;<?php echo $checkOutAmnt; ?>
 						</td>
 						<td>
-							<a href="#">Make&nbsp;Payment</a>
+							<a href="javascript:void(0);" id="checkout">Checkout</a>
 						</td>
 					</tr>
 				</tfoot>
@@ -142,5 +142,24 @@
 				},
 			});
 		});
+
+		$('#checkout').click(function(){
+			var cartIdArray = [];
+			$('#cart-data tr').each(function(index) {
+				cartIdArray.push($(this).prop('id'));
+			})
+			$.ajax({
+				type:'POST',
+				url:'<?php echo Yii::app()->createUrl('site/makePayment'); ?>',
+				data: 'allCheckout=1',
+				success:function(data) {
+					var response = $.parseJSON(data);
+					window.location.href = response.url;
+				},
+				error:function() {
+					alert("Error");
+				}
+			})
+		})
 	});
 </script>

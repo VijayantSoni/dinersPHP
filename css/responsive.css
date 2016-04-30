@@ -336,6 +336,31 @@
 	.order-box section figure {
 		text-align: center;
 	}
+
+	/************************************
+	Style for make payment
+	************************************/
+	.payment .marginate{
+		width: 100%;
+		min-height: 100vh;
+		margin: 0 auto;
+		padding: 1em 1em;
+		margin-top: 8.4em;
+	}
+
+	.payment .marginate > form.row .addressbook > div.row:first-child,
+	.payment .marginate > form.row .addressbook > div.row:last-child,
+	.payment .marginate > form.row .addressbook > div.row:nth-of-type(2) {
+		padding: 0.5em 1em;
+		margin-bottom: 0.5em;
+	}
+
+	.payment .marginate > form.row .addressbook > div.row:first-child > div,
+	.payment .marginate > form.row .addressbook > div.row:last-child > div,
+	.payment .marginate > form.row .addressbook > div.row:nth-of-type(2) > div{
+		padding: 0;
+		margin-bottom: 0.5em;
+	}
 }
 
 @media all and (min-width: 769px) and (max-width: 1170px) {
@@ -501,6 +526,17 @@
 	**************************************/
 	.orders .marginate{
 		width: 90%;
+		margin: 0 auto;
+		padding: 1em 1em;
+		margin-top: 8.4em;
+	}
+
+	/************************************
+	Style for make payment
+	************************************/
+	.payment .marginate{
+		width: 90%;
+		min-height: 100vh;
 		margin: 0 auto;
 		padding: 1em 1em;
 		margin-top: 8.4em;

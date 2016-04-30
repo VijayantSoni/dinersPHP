@@ -111,7 +111,7 @@
 						<ul>
 							<li><a href="<?php echo Yii::app()->createUrl('site/profile');?>">Profile</a></li>
 							<li><a href="<?php echo Yii::app()->createUrl('site/cart');?>">Cart</a></li>
-							<li><a href="orders.html">Orders</a></li>
+							<li><a href="<?php echo Yii::app()->createUrl('site/viewOrders');?>">Orders</a></li>
 							<li><a href="<?php echo Yii::app()->createUrl('site/logout');?>">Logout</a></li>
 						</ul>
 					</li>

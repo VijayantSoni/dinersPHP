@@ -25,6 +25,10 @@ class Controller extends CController
 	 */
 	public $breadcrumbs=array();
 
+	public static function getSecretKey() {
+		return 'sk_test_tS1v3OkXW4UR8dd3T8DQ8Kmp';
+	}
+
 	protected function sendSMS($to, $textmessage) {
 		$sid = "AC683b6a55bc0f961e3b48c7963a6cef35";
 		$token = "e79424d7746235598e3a689353f9800a";

@@ -183,4 +183,30 @@ class DashboardController extends Controller {
 			$this->render('user-account-setting',array('user'=>$user));
 		}
 	}
+
+	public function actionViewOrders() {
+		// $orders = Orders::model()->with('package.item','orderStatuses','restaurant')->findAllByAttributes(array('customer_id'=>Yii::app()->user->id,'status'=>1));
+		$restaurants = Restaurant::model()->findAllByAttributes(array('vendor_id'=>Yii::app()->user->id,'status'=>1));
+		// CVarDumper::dump($orders,10,1); die;
+		$this->render('view-order-home',array('restaurants'=>$restaurants));
+	}
+
+	public function actionLoadOrders() {
+		if(isset($_POST['restid'])) {
+			$orders = Orders::model()->with('package.item','orderStatuses','restaurant','customer')->findAllByAttributes(array('restaurant_id'=>$_POST['restid'],'status'=>1));
+			$key = 0;
+			foreach($orders as $order) {
+				$response[$key]['id'] = $order->id;
+				$response[$key]['customer_name'] = $order->customer->first_name." ".$order->customer->last_name;
+				$response[$key]['serving_type'] = $order->serving_type;
+				$response[$key]['item_name'] = $order->package->item->name;
+				$response[$key]['item_quantity'] = $order->package->item_quantity;
+				$response[$key]['order_amount'] = $order->amount;
+				$response[$key]['order_status'] = strtoupper($order->orderStatuses[0]->order_status);
+				$response[$key]['order_time'] = $order->time_for_pickup?$order->time_for_pickup:$order->time_for_delivery;
+				$key++;
+			}
+			echo json_encode($response);
+		}
+	}
 }

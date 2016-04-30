@@ -136,18 +136,11 @@
 			type:'POST',
 			url:"<?php echo Yii::app()->createUrl('site/checkout'); ?>",
 			success:function(data) {
-				var response = $.parseJSON(data);
-				if(response.status == 1) {
-					alert("Status1");
-					window.location.href = response.url;
-				} else if(response.status == 2){
-					alert(response.msg);
-				} else if(response.status == 3){
-					window.location.href = response.url;
-				}
+				alert("Proceeding to checkout");
+				window.location.href = "<?php echo Yii::app()->createUrl('site/cart'); ?>";
 			},
 			error:function(data) {
-				alert("Sorry errors");
+				alert("Sorry some errors happened");
 			},
 		});
 	}

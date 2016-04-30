@@ -7,7 +7,10 @@
  * @property integer $id
  * @property integer $customer_id
  * @property integer $package_id
+ * @property integer $restaurant_id
  * @property integer $delivery_address_id
+ * @property integer $transaction_id
+ * @property string $payment_type
  * @property double $amount
  * @property string $serving_type
  * @property string $time_for_pickup
@@ -22,6 +25,7 @@
  * @property User $customer
  * @property CustomerAddressBook $deliveryAddress
  * @property ShoppingCartHasItems $package
+ * @property Restaurant $restaurant
  */
 class Orders extends CActiveRecord
 {
@@ -41,17 +45,18 @@ class Orders extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('customer_id, package_id, delivery_address_id', 'required'),
-			array('customer_id, package_id, delivery_address_id, status', 'numerical', 'integerOnly'=>true),
+			array('customer_id, package_id, restaurant_id', 'required'),
+			array('customer_id, package_id, restaurant_id, delivery_address_id, transaction_id, status', 'numerical', 'integerOnly'=>true),
 			array('amount', 'numerical'),
+			array('payment_type', 'length', 'max'=>6),
 			array('serving_type', 'length', 'max'=>8),
-			array('time_for_pickup, time_for_delivery, admin_notes, add_date, modify_date', 'safe'),
+			array('time_for_pickup, time_for_delivery', 'length', 'max'=>10),
+			array('admin_notes, add_date, modify_date', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, customer_id, package_id, delivery_address_id, amount, serving_type, time_for_pickup, time_for_delivery, status, admin_notes, add_date, modify_date', 'safe', 'on'=>'search'),
+			array('id, customer_id, package_id, restaurant_id, delivery_address_id, transaction_id, payment_type, amount, serving_type, time_for_pickup, time_for_delivery, status, admin_notes, add_date, modify_date', 'safe', 'on'=>'search'),
 		);
 	}
-
 	/**
 	 * @return array relational rules.
 	 */
@@ -64,6 +69,7 @@ class Orders extends CActiveRecord
 			'customer' => array(self::BELONGS_TO, 'User', 'customer_id'),
 			'deliveryAddress' => array(self::BELONGS_TO, 'CustomerAddressBook', 'delivery_address_id'),
 			'package' => array(self::BELONGS_TO, 'ShoppingCartHasItems', 'package_id'),
+			'restaurant' => array(self::BELONGS_TO, 'Restaurant', 'restaurant_id'),
 		);
 	}
 
@@ -76,7 +82,10 @@ class Orders extends CActiveRecord
 			'id' => 'ID',
 			'customer_id' => 'Customer',
 			'package_id' => 'Package',
+			'restaurant_id' => 'Restaurant',
 			'delivery_address_id' => 'Delivery Address',
+			'transaction_id' => 'Transaction',
+			'payment_type' => 'Payment Type',
 			'amount' => 'Amount',
 			'serving_type' => 'Serving Type',
 			'time_for_pickup' => 'Time For Pickup',
@@ -109,7 +118,10 @@ class Orders extends CActiveRecord
 		$criteria->compare('id',$this->id);
 		$criteria->compare('customer_id',$this->customer_id);
 		$criteria->compare('package_id',$this->package_id);
+		$criteria->compare('restaurant_id',$this->restaurant_id);
 		$criteria->compare('delivery_address_id',$this->delivery_address_id);
+		$criteria->compare('transaction_id',$this->transaction_id);
+		$criteria->compare('payment_type',$this->payment_type,true);
 		$criteria->compare('amount',$this->amount);
 		$criteria->compare('serving_type',$this->serving_type,true);
 		$criteria->compare('time_for_pickup',$this->time_for_pickup,true);

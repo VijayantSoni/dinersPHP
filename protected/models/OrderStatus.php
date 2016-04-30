@@ -35,7 +35,7 @@ class OrderStatus extends CActiveRecord
 		return array(
 			array('order_id', 'required'),
 			array('order_id, status', 'numerical', 'integerOnly'=>true),
-			array('order_status', 'length', 'max'=>21),
+			array('order_status', 'length', 'max'=>50),
 			array('admin_notes, add_date, modify_date', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
