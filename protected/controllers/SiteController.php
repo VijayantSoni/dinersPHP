@@ -3,10 +3,6 @@ Yii::import('application.vendors.*');
 require_once('stripe/init.php');
 class SiteController extends Controller
 {
-	/**
-	 * Declares class-based actions.
-	 */
-
 	public function actions()
 	{
 		return array(
@@ -23,10 +19,6 @@ class SiteController extends Controller
 		);
 	}
 
-	/**
-	 * This is the default 'index' action that is invoked
-	 * when an action is not explicitly requested by users.
-	 */
 	public function actionIndex()
 	{
 		// renders the view file 'protected/views/site/index.php'
@@ -50,6 +42,7 @@ class SiteController extends Controller
 	public function actionSearch() {
 		if(isset($_POST['location-id'])) {
 			echo json_encode(array('url'=>Yii::app()->createUrl('site/search').'?location='.$_POST['location-id'].'&query='.$_POST['query']));
+
 		} else if(isset($_GET['query'])) {
 			$criteria = new CDbCriteria;
 			$criteria->with = array('restaurant.location.parentLocation');
@@ -77,7 +70,10 @@ class SiteController extends Controller
 					array_push($itemarray,array('restaurant'=>1,'id'=>$item->id,'name'=>$item->name,'adddr'=>$item->street_address,'mainlocation'=>$item->location->parentLocation->name,'sublocation'=>$item->location->name));
 				}
 			}
-			$this->render('searchresults',array('items'=>$itemarray,'query'=>$_GET['query'],'location'=>$_GET['location']));
+			$tempLoc = AvailableInLocation::model()->findByPk($_GET['location']);
+			$location = array('id'=>$_GET['location'],'name'=>$tempLoc->name);
+			$this->render('searchresults',array('items'=>$itemarray,'query'=>$_GET['query'],'location'=>$location));
+
 		} else if(isset($_GET['restaurant'])) {
 			$restaurant = Restaurant::model()->with('location')->findAllByAttributes(array('status'=>1));
 			$resArray = array();
@@ -85,7 +81,8 @@ class SiteController extends Controller
 				if($rest->location->parent_location_id == $_GET['locId'])
 					array_push($resArray,array('restaurant'=>1,'id'=>$rest->id,'name'=>$rest->name,'adddr'=>$rest->street_address,'mainlocation'=>$rest->location->parentLocation->name,'sublocation'=>$rest->location->name));
 			}
-			$this->render('searchresults',array('items'=>$resArray));
+			$this->render('searchresults',array('items'=>$resArray,'query'=>0,'location'=>$this->getLocation()));
+
 		} else if (isset($_GET['item'])) {
 			$items = Item::model()->with('restaurant')->findAllByAttributes(array('status'=>1));
 			$itemarray = array();
@@ -94,48 +91,36 @@ class SiteController extends Controller
 					array_push($itemarray, array('item'=>1,'id'=>$item->id,'name'=>$item->name,'time'=>$item->serving_time,'deliverable'=>$item->delivery_available,'price'=>$item->price,'rest_name'=>$item->restaurant->name));
 				}
 			}
-			$this->render('searchresults',array('items'=>$itemarray));
+			$this->render('searchresults',array('items'=>$itemarray,'query'=>0,'location'=>$this->getLocation()));
 		}
 	}
 
-	public function actionError() {
-		if($error=Yii::app()->errorHandler->error)
-		{
-			if(Yii::app()->request->isAjaxRequest)
-				echo $error['message'];
-			else
-				$this->render('error', $error);
-		}
-	}
-
-	/**
-	 * Displays the contact page
-	 */
-	public function actionContact() {
-		$model=new ContactForm;
-		if(isset($_POST['ContactForm']))
-		{
-			$model->attributes=$_POST['ContactForm'];
-			if($model->validate())
-			{
-				$name='=?UTF-8?B?'.base64_encode($model->name).'?=';
-				$subject='=?UTF-8?B?'.base64_encode($model->subject).'?=';
-				$headers="From: $name <{$model->email}>\r\n".
-					"Reply-To: {$model->email}\r\n".
-					"MIME-Version: 1.0\r\n".
-					"Content-Type: text/plain; charset=UTF-8";
-
-				mail(Yii::app()->params['adminEmail'],$subject,$model->body,$headers);
-				Yii::app()->user->setFlash('contact','Thank you for contacting us. We will respond to you as soon as possible.');
-				$this->refresh();
+	public function actionFilter() {
+		if(isset($_POST['filter'])) {
+			$catIdArray = $_POST['categoryIds'];
+			$criteria = new CDbCriteria;
+			$criteria->with = array('restaurant.location.parentLocation');
+			$criteria->condition = "t.name like '%".$_POST["query"]."%' or t.details like '%".$_POST["query"]."%' AND t.status=1";
+			$items = Item::model()->with('restaurant')->findAll($criteria);
+			$newItems = array();
+			foreach ($items as $item) {
+				if($item->restaurant->location->parent_location_id == $_POST['locId']) {
+					foreach ($_POST['categoryIds'] as $id) {
+						if($id == $item->category_id) {
+							array_push($newItems, array('id'=>$item->id,
+					                            'name'=>$item->name,
+					                            'price'=>$item->price,
+					                            'servingTime'=>$item->serving_time,
+					                            'deliverable'=>$item->delivery_available,
+					                            'restName'=>$item->restaurant->name));
+						}
+					}
+				}
 			}
+			echo json_encode($newItems);
 		}
-		$this->render('contact',array('model'=>$model));
 	}
 
-	/**
-	 * Displays the login page
-	 */
 	public function actionLogin() {
 		$model=new LoginForm;
 		// collect user input data
@@ -712,9 +697,7 @@ class SiteController extends Controller
 		// CVarDumper::dump($orders,10,1); die;
 		$this->render('order',array('orders'=>$orders));
 	}
-	/**
-	 * Logs out the current user and redirect to homepage.
-	 */
+
 	public function actionLogout() {
 		Yii::app()->user->logout();
 		$this->redirect(Yii::app()->homeUrl);
