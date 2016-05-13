@@ -14,24 +14,10 @@
 		<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/font-awesome.min.css">
 	</head>
 	<body>
-		<!-- Nav for anonymous users -->
-		<!-- <div class="bubblingG">
-			<span id="bubblingG_1">
-			</span>
-			<span id="bubblingG_2">
-			</span>
-			<span id="bubblingG_3">
-			</span>
-		</div> -->
-		<div class="loader">
-			 <center>
-					 <img class="loading-image" src="<?php echo Yii::app()->request->baseUrl;?>/img/loader.gif" alt="loading..">
-			 </center>
-		</div>
 		<div id="loc-mod" class="location-modal-hide">
 			<div class="location row" id="controlid">
 				<div class="row">
-					<input type="text" class="auto-popup">
+					<input type="text" class="auto-popup" required>
 					<?php $locations = AvailableInLocation::model()->findAllByAttributes(array('status'=>1,'parent_location_id'=>NULL)); ?>
 					<ul class="loc-select hider">
 					<?php foreach($locations as $location): ?>
