@@ -19,6 +19,20 @@ class SiteController extends Controller
 		);
 	}
 
+	protected function beforeAction($action) {
+		if(Yii::app()->user->isGuest) return true;
+		else if(Yii::app()->user->role == 3){
+			if($action->id == 'logout') {
+				return true;
+			} else {
+				$this->layout = 'dashboardlayout';
+				$this->render('//dashboard/badpage');
+				return false;
+			}
+		}
+		return parent::beforeAction($action);
+	}
+
 	public function actionContact() {
 		if(isset($_POST['name'])) {
 			$this->sendContactEmail(array('name'=>$_POST['name'],
@@ -586,7 +600,8 @@ class SiteController extends Controller
 					$orderStatus->modify_date = new CDbExpression('NOW()');
 					$orderStatus->save();
 					echo json_encode(array('status'=>1,'msg'=>'Order has been placed'));
-					$this->sendOrderSMS($order);
+					// $this->sendOrderSMSToVendor($order);
+					// $this->sendOrderSMSToUser($order);
 				} else {
 					echo json_encode(array('status'=>2,'msg'=>'Incorrect data'));
 				}
@@ -596,12 +611,24 @@ class SiteController extends Controller
 			}
 	}
 
+	protected function sendOrderSMSToVendor($order) {
+		$to = '+91'.$order->restaurant->mobile_number;
+		$text = "Recieved an order for ".$order->package->item->name." with quantity".$order->package->quantity." amounting to INR ".$order->amount.". Regards Team DinersMeet";
+		$this->sendSMS($to,$text);
+	}
+
+	protected function sendOrderSMSToUser($order) {
+		$to = '+91'.$order->customer->mobile_number;
+		$text = "Recieved an order for ".$order->package->item->name." with quantity".$order->package->quantity." amounting to INR ".$order->amount.". Regards Team DinersMeet";
+		$this->sendSMS($to,$text);
+	}
+
 	public function actionTransaction() {
 		if(isset($_POST['token']) &&  isset($_POST['allCheckout'])) {
 			$cart = ShoppingCart::model()->findByAttributes(array('customer_id'=>Yii::app()->user->id));
 			$cartItems = ShoppingCartHasItems::model()->with('item','item.restaurant')->findAllByAttributes(array('shopping_cart_id'=>$cart->id,'status'=>1));
 			$token = $_POST['token'];
-			$amnt = split(' ', $_POST['amount']);
+			$amnt = explode(' ', $_POST['amount']);
 			try{
 				$secretkey=Controller::getSecretKey();
 				\Stripe\Stripe::setApiKey($secretkey);

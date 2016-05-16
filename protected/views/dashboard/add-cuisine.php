@@ -10,7 +10,7 @@
 				</select>
 			</header>
 			<main class="main-hide row">
-				<figure class="colGLG-3 colGSM-12">
+				<figure class="colGLG-3 colGSM-12" id="parent">
 					<!-- <img src="#"> -->
 					<i class="fa fa-user fa-5x" id="default" style="cursor: pointer;"></i>
 					<input type="hidden" name="logo" id="logo">
@@ -98,7 +98,7 @@
 		$('#yes_delivery').prop('checked',true);
 		$('label[for="aside-trigger"] > i').removeClass('fa-times').addClass('fa-bars');
 
-		$('#default').on('click',function() {
+		$('#add-cuisines').on('click','#default',function() {
 			filepicker.setKey("AfyDwACYjTPaC2oAavYkQz");
 			filepicker.pick({
 			services: ['COMPUTER', 'FACEBOOK', 'CLOUDAPP'],
@@ -107,12 +107,11 @@
 			cropForce:true,
 			},
 			function onSuccess(Blob){
-				$('#logo').val(Blob.url);
-				var parent = $('#default').parent();
-				$('#default').remove();
-				parent.append('<div class="image-box">\
-									<img src="'+Blob.url+'" style="max-width: 100%;">\
-								</div>');
+				$('#parent').empty();
+				$('#parent').append('<div class="image-box">\
+															<img src="'+Blob.url+'" style="max-width: 100%;" id="default">\
+														</div>\
+														<input type="hidden" name="logo" id="logo" value="'+Blob.url+'">');
 			})
 		});
 
@@ -143,30 +142,9 @@
 		});
 	});
 
-	$('#restaurant-option').change(function(){
+	$('#restaurant-option').on('change', function(){
 		if( $('#restaurant-option option:selected').val() != 'NULL') {
 			$('.dash-content-add-cus main').removeClass('main-hide').addClass('main-show');
-			$.ajax({
-				type:'POST',
-				data: 'id='+$('#restaurant-option option:selected').val()+'&rest=1',
-				url: '<?php echo Yii::app()->createUrl('dashboard/getImage'); ?>',
-				success: function(data) {
-					var response = $.parseJSON(data);
-					if(response.url == null) {
-						;
-					} else {
-						var parent = $('#default').parent();
-						$('#default').remove();
-						parent.append('<div class="image-box">\
-											<img src="#" style="max-width: 100%;">\
-										</div>\
-										<input type="hidden" name="logo" id="logo">');
-					}
-				},
-				error: function() {
-					alert('Some errors happened');
-				}
-			})
 		} else {
 			$('.dash-content-add-cus main').removeClass('main-show').addClass('main-hide');
 		}

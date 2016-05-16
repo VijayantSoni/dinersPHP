@@ -27,7 +27,7 @@
 						<ul class="row" id="cat-list">
 						<?php foreach($categories as $category): ?>
 							<li>
-								<input type="checkbox" name="sort-category" id="<?php echo join('-',split(' ', htmlentities($category->name))); ?>" value="<?php echo $category->id; ?>">&nbsp;<label for="<?php echo join('-',split(' ', htmlentities($category->name))); ?>"><?php echo htmlentities($category->name); ?></label>
+								<input type="checkbox" name="sort-category" id="<?php echo implode('-',explode(' ', htmlentities($category->name))); ?>" value="<?php echo $category->id; ?>">&nbsp;<label for="<?php echo implode('-',explode(' ', htmlentities($category->name))); ?>"><?php echo htmlentities($category->name); ?></label>
 							</li>
 						<?php endforeach; ?>
 						</ul>

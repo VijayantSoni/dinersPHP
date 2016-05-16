@@ -4,15 +4,15 @@
 			<header class="colGLG-12 colGSM-12">
 			</header>
 			<main class="main-show row">
-				<figure class="colGLG-3 colGSM-12">
+				<figure class="colGLG-3 colGSM-12" id="parent">
 					<!-- <img src="#"> -->
 					<?php if(!$item->logo): ?>
 						<i class="fa fa-user fa-5x" id="default" style="cursor: pointer;"></i>
 						<input type="hidden" name="logo" id="logo">
 					<?php else: ?>
 						<div class="image-box">
-							<img src="<?php echo $item->logo; ?>" style="max-width: 100%;">
-							<input type="hidden" name="logo" id="logo" value="$item->logo">
+							<img src="<?php echo $item->logo; ?>" style="max-width: 100%;" id="default">
+							<input type="hidden" name="logo" id="logo" value="<?php echo $item->logo; ?>">
 						</div>
 					<?php endif; ?>
 				</figure>
@@ -115,7 +115,7 @@
 <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery-2.1.1.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
-		$('#default').on('click',function() {
+		$(document).on('click','#default',function() {
 			filepicker.setKey("AfyDwACYjTPaC2oAavYkQz");
 			filepicker.pick({
 			services: ['COMPUTER', 'FACEBOOK', 'CLOUDAPP'],
@@ -124,12 +124,11 @@
 			cropForce:true,
 			},
 			function onSuccess(Blob){
-				$('#logo').val(Blob.url);
-				var parent = $('#default').parent();
-				$('#default').remove();
-				parent.append('<div class="image-box">\
-									<img src="'+Blob.url+'" style="max-width: 100%;">\
-								</div>');
+				$('#parent').empty();
+				$('#parent').append('<div class="image-box">\
+															<img src="'+Blob.url+'" style="max-width: 100%;" id="default">\
+														</div>\
+														<input type="hidden" name="logo" id="logo" value="'+Blob.url+'">');
 			})
 		});
 

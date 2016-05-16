@@ -9,15 +9,19 @@ class DashboardController extends Controller {
 		return array('accessControl');
 	}
 
-	public function beforeAction ($action){
-		if(Yii::app()->user->role == 2) {
+	protected function beforeAction($action) {
+		if(Yii::app()->user->isGuest) {
 			$this->layout = 'indexlayout';
 			$this->render('//site/badpage');
 			return false;
-		} else {
-			return true;
+		} else if(Yii::app()->user->role == 2) {
+			$this->layout = 'indexlayout';
+			$this->render('//site/badpage');
+			return false;
 		}
+		return parent::beforeAction($action);
 	}
+
 
 	public function actionGetImage() {
 		if(isset($_POST['rest'])) {
@@ -211,19 +215,37 @@ class DashboardController extends Controller {
 	public function actionLoadOrders() {
 		if(isset($_POST['restid'])) {
 			$orders = Orders::model()->with('package.item','orderStatuses','restaurant','customer')->findAllByAttributes(array('restaurant_id'=>$_POST['restid'],'status'=>1));
-			$key = 0;
-			foreach($orders as $order) {
-				$response[$key]['id'] = $order->id;
-				$response[$key]['customer_name'] = $order->customer->first_name." ".$order->customer->last_name;
-				$response[$key]['serving_type'] = $order->serving_type;
-				$response[$key]['item_name'] = $order->package->item->name;
-				$response[$key]['item_quantity'] = $order->package->item_quantity;
-				$response[$key]['order_amount'] = $order->amount;
-				$response[$key]['order_status'] = strtoupper($order->orderStatuses[0]->order_status);
-				$response[$key]['order_time'] = $order->time_for_pickup?$order->time_for_pickup:$order->time_for_delivery;
-				$key++;
+			if(!empty($orders)) {
+				$key = 0;
+				foreach($orders as $order) {
+					$response[$key]['id'] = $order->id;
+					$response[$key]['customer_name'] = $order->customer->first_name." ".$order->customer->last_name;
+					$response[$key]['serving_type'] = $order->serving_type;
+					$response[$key]['item_name'] = $order->package->item->name;
+					$response[$key]['item_quantity'] = $order->package->item_quantity;
+					$response[$key]['order_amount'] = $order->amount;
+					$response[$key]['order_status_id'] = $order->orderStatuses[0]->id;
+					$response[$key]['order_status_text'] = strtoupper($order->orderStatuses[0]->order_status);
+					$response[$key]['order_time'] = $order->time_for_pickup?$order->time_for_pickup:$order->time_for_delivery;
+					$response[$key]['status'] = 1;
+					$key++;
+				}
+				echo json_encode($response);
+			} else echo json_encode(array('0'=>array('status'=>2)));
+		}
+	}
+
+	public function actionUpdateStatus() {
+		if(isset($_POST['orderstatusid'])) {
+			$orderstatus = OrderStatus::model()->findByPk($_POST['orderstatusid']);
+			$orderstatus->order_status = $_POST['status'];
+			if($orderstatus->order_status == 'order_completed' || $orderstatus->order_status == 'order_cancelled') {
+				$orderstatus->status = 0;
 			}
-			echo json_encode($response);
+			if($orderstatus->validate() && $orderstatus->update())
+				echo json_encode(array('id'=>$orderstatus->id,'status'=>$orderstatus->order_status));
+			else
+				echo json_encode(array('error'=>'Problem','status'=>$_POST['status']));
 		}
 	}
 }

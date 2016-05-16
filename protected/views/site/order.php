@@ -11,7 +11,7 @@
 						<h4>Order ID : <span><?php echo "OD2016".$order->id; ?></span></h4>
 					</div>
 					<div class="colGLG-6">
-						<h4>Date : <span><?php echo split(" ", $order->add_date)[0]; ?></span></h4>
+						<h4>Date : <span><?php echo explode(" ", $order->add_date)[0]; ?></span></h4>
 					</div>
 				</header>
 				<section class="row">

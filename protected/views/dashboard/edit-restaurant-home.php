@@ -7,7 +7,7 @@
 					<option id="<?php echo $res->id;?>" value="<?php echo $res->id;?>"><?php echo $res->name;?>&nbsp;-&nbsp;<?php echo $res->location->name; ?></option>
 				<?php endforeach; ?>
 			</select>
-			<figure class="colGLG-3 colGSM-12">
+			<figure class="colGLG-3 colGSM-12" id="parent">
 				<i class="fa fa-user fa-5x" id="default" style="cursor: pointer;"></i>
 			</figure>
 			<div class="colGLG-9 colGSM-12">
@@ -49,7 +49,7 @@
 <script src="<?php echo Yii::app()->request->baseUrl;?>/js/jquery-2.1.1.js"></script>
 <script>
 	$(document).ready(function(){
-		$('#default').on('click',function() {
+		$(document).on('click','#default',function() {
 			filepicker.setKey("AfyDwACYjTPaC2oAavYkQz");
 			filepicker.pick({
 			services: ['COMPUTER', 'FACEBOOK', 'CLOUDAPP'],
@@ -58,12 +58,11 @@
 			cropForce:true,
 			},
 			function onSuccess(Blob){
-				$('#logo').val(Blob.url);
-				var parent = $('#default').parent();
-				$('#default').remove();
-				parent.append('<div class="image-box">\
-									<img src="'+Blob.url+'" style="max-width: 100%;">\
-								</div>');
+				$('#parent').empty();
+				$('#parent').append('<div class="image-box">\
+												<img src="'+Blob.url+'" style="max-width: 100%;" id="default">\
+											</div>\
+											<input type="hidden" id="logo" name="logo" value="'+Blob.url+'">');
 			})
 		});
 
@@ -84,16 +83,18 @@
 						$("#sub-location").append('<option value='+response.sub_location_id+' id='+response.sub_location_id+'>'+response.sub_location_name+'</option>');
 						$("input[name='mobile']").val(response.contact);
 						$('textarea').html(response.address);
-						if(response.url == null) {
-							var parent = $('#default').parent();
-							parent.append('<input type="hidden" id="logo" name="logo" value="">');
+						if(response.logo == null) {
+							// alert('H')
+							$('#parent').empty();
+							$('#parent').append('<i class="fa fa-user fa-5x" id="default" style="cursor: pointer;"></i>\
+							                    <input type="hidden" id="logo" name="logo" value="">');
 						} else {
-							var parent = $('#default').parent();
-							$('#default').remove();
-							parent.append('<div class="image-box">\
-												<img src="'+Blob.url+'" style="max-width: 100%;">\
-											</div>\
-											<input type="hidden" id="logo" name="logo" value="'+response.logo+'">');
+							// alert('I');
+							$('#parent').empty();
+							$('#parent').append('<div class="image-box">\
+																		<img src="'+response.logo+'" style="max-width: 100%;" id="default">\
+																	</div>\
+																	<input type="hidden" id="logo" name="logo" val	ue="'+response.logo+'">');
 						}
 					},
 					error:function() {

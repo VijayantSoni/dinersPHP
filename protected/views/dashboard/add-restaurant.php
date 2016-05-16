@@ -1,7 +1,7 @@
 <main class="dash-content-add-res container-fluid">
 	<header class="row">
 		<form class="row" id="add_restaurant">
-			<figure class="colGLG-3 colGSM-12">
+			<figure class="colGLG-3 colGSM-12" id="parent">
 				<i class="fa fa-user fa-5x" id="default" style="cursor: pointer;"></i>
 				<input type="hidden" name="logo" id="logo">
 			</figure>
@@ -49,7 +49,7 @@
 <script src="<?php echo Yii::app()->request->baseUrl;?>/js/jquery-2.1.1.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
-		$('#default').on('click',function() {
+		$(document).on('click','#default',function() {
 			filepicker.setKey("AfyDwACYjTPaC2oAavYkQz");
 			filepicker.pick({
 			services: ['COMPUTER', 'FACEBOOK', 'CLOUDAPP'],
@@ -58,12 +58,11 @@
 			cropForce:true,
 			},
 			function onSuccess(Blob){
-				$('#logo').val(Blob.url);
-				var parent = $('#default').parent();
-				$('#default').remove();
-				parent.append('<div class="image-box">\
-									<img src="'+Blob.url+'" style="max-width: 100%;">\
-								</div>');
+				$('#parent').empty();
+				$('#parent').append('<div class="image-box">\
+															<img src="'+Blob.url+'" style="max-width: 100%;" id="default">\
+														</div>\
+														<input type="hidden" name="logo" id="logo" value="'+Blob.url+'">');
 			})
 		});
 
