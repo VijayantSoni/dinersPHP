@@ -361,6 +361,33 @@
 		padding: 0;
 		margin-bottom: 0.5em;
 	}
+
+	/*********************************
+	Style for about us
+	*********************************/
+	.about .marginate{
+		width: 100%;
+		min-height: 100vh;
+		margin: 0 auto;
+		padding: 1em 1em;
+		margin-top: 8.4em;
+	}
+
+	.partners .marginate{
+		width: 100%;
+		min-height: 100vh;
+		margin: 0 auto;
+		padding: 1em 1em;
+		margin-top: 8.4em;
+	}
+
+	.contact .marginate{
+		width: 100%;
+		min-height: 100vh;
+		margin: 0 auto;
+		padding: 1em 1em;
+		margin-top: 8.4em;
+	}
 }
 
 @media all and (min-width: 769px) and (max-width: 1170px) {
@@ -535,6 +562,33 @@
 	Style for make payment
 	************************************/
 	.payment .marginate{
+		width: 90%;
+		min-height: 100vh;
+		margin: 0 auto;
+		padding: 1em 1em;
+		margin-top: 8.4em;
+	}
+
+	/*********************************
+	Style for about us
+	*********************************/
+	.about .marginate{
+		width: 90%;
+		min-height: 100vh;
+		margin: 0 auto;
+		padding: 1em 1em;
+		margin-top: 8.4em;
+	}
+
+	.partners .marginate{
+		width: 90%;
+		min-height: 100vh;
+		margin: 0 auto;
+		padding: 1em 1em;
+		margin-top: 8.4em;
+	}
+
+	.contact .marginate{
 		width: 90%;
 		min-height: 100vh;
 		margin: 0 auto;

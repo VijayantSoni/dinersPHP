@@ -1,8 +1,30 @@
+<style type="text/css">
+.user-image {
+	color: #000;
+	/*background: #000;*/
+}
+.image-box {
+	width: 150px;
+	height: 150px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	overflow: hidden;
+}
+</style>
 <header class="container-fluid profile">
 	<form class="marginate" id="user-profile">
 		<div class="row">
 			<figure class="colGLG-12">
-				<?php echo $user->profile_image?'<img src="<?php Yii::app()->request->baseUrl;?>/img/pizza vector.png">':'<img src="<?php Yii::app()->request->baseUrl;?>/img/pizza vector.png">'; ?>
+				<div class="image-box">
+				<?php if(!$user->profile_image): ?>
+					<a href="#" class="user-image" id="image-pick"><i class="fa fa-user fa-5x"></i></a>
+					<input type="hidden" id="profile_image" name="profile_image">
+				<?php else: ?>
+					<img src="<?php echo $user->profile_image; ?>" style="max-width: 100%;" id="image-pick">
+					<input type="hidden" id="profile_image" name="profile_image" value="<?php echo $user->profile_image; ?>">
+				<?php endif; ?>
+				</div>
 			</figure>
 		</div>
 
@@ -102,10 +124,31 @@
 
 
 <!-- ALL Scripts goes here -->
+<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl;?>/js/filepicker.js"></script>
 <script src="<?php echo Yii::app()->request->baseUrl;?>/js/jquery-2.1.1.js"></script>
 <!-- <script src="js/navup.js"></script> -->
 <script>
 	$("document").ready(function(){
+		var key = "AxEAO62SlRhuJ7tUJw73Dz"
+		filepicker.setKey(key);
+		$('#image-pick').click(function(){
+			filepicker.setKey("AfyDwACYjTPaC2oAavYkQz");
+			filepicker.pick({
+			services: ['COMPUTER', 'FACEBOOK', 'CLOUDAPP'],
+			mimetype:'image/*',
+			cropRatio:1,
+			cropForce:true,
+			},
+			function onSuccess(Blob){
+				$('#profile_image').val(Blob.url);
+				parent = $('#profile_image').parent().parent();
+				$('.image-box').remove();
+				parent.append('<div class="image-box">\
+				              	<img src="'+Blob.url+'" style="max-width: 100%;" id="default">\
+				              	<input type="hidden" id="profile_image" name="profile_image" value="'+Blob.url+'">');
+			})
+		});
+
 		if($("#edit").is(":checked")) {
 			$("#edit").prop("checked",false);
 		}

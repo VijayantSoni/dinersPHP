@@ -49,15 +49,15 @@
 	<script type="text/javascript">
 		$('document').ready(function(){
 			$('label[for="aside-trigger"] > i').removeClass('fa-times').addClass('fa-bars');
-		});
-		$('#aside-trigger').change(function(){
-			if($('#aside-trigger').is(':checked')) {
-				$('label[for="aside-trigger"] > i').removeClass('fa-bars').addClass('fa-times');
-				$('section.content > aside').removeClass('hide').addClass('show');
-			} else {
-				$('label[for="aside-trigger"] > i').removeClass('fa-times').addClass('fa-bars');
-				$('section.content > aside').removeClass('show').addClass('hide');
-			}
+			$('#aside-trigger').change(function(){
+				if($('#aside-trigger').is(':checked')) {
+					$('label[for="aside-trigger"] > i').removeClass('fa-bars').addClass('fa-times');
+					$('section.content > aside').removeClass('hide').addClass('show');
+				} else {
+					$('label[for="aside-trigger"] > i').removeClass('fa-times').addClass('fa-bars');
+					$('section.content > aside').removeClass('show').addClass('hide');
+				}
+			});
 		});
 	</script>
 </body>

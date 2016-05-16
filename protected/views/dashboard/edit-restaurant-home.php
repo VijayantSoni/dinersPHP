@@ -8,7 +8,7 @@
 				<?php endforeach; ?>
 			</select>
 			<figure class="colGLG-3 colGSM-12">
-				<i class="fa fa-user fa-5x"></i>
+				<i class="fa fa-user fa-5x" id="default" style="cursor: pointer;"></i>
 			</figure>
 			<div class="colGLG-9 colGSM-12">
 				<div class="row">
@@ -45,9 +45,28 @@
 		</form>
 	</header>
 </main>
+<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl;?>/js/filepicker.js"></script>
 <script src="<?php echo Yii::app()->request->baseUrl;?>/js/jquery-2.1.1.js"></script>
 <script>
 	$(document).ready(function(){
+		$('#default').on('click',function() {
+			filepicker.setKey("AfyDwACYjTPaC2oAavYkQz");
+			filepicker.pick({
+			services: ['COMPUTER', 'FACEBOOK', 'CLOUDAPP'],
+			mimetype:'image/*',
+			cropRatio:1,
+			cropForce:true,
+			},
+			function onSuccess(Blob){
+				$('#logo').val(Blob.url);
+				var parent = $('#default').parent();
+				$('#default').remove();
+				parent.append('<div class="image-box">\
+									<img src="'+Blob.url+'" style="max-width: 100%;">\
+								</div>');
+			})
+		});
+
 		$("#restaurant-option").change(function(){
 			$("#main-location").empty();
 			$("#sub-location").empty();
@@ -65,6 +84,17 @@
 						$("#sub-location").append('<option value='+response.sub_location_id+' id='+response.sub_location_id+'>'+response.sub_location_name+'</option>');
 						$("input[name='mobile']").val(response.contact);
 						$('textarea').html(response.address);
+						if(response.url == null) {
+							var parent = $('#default').parent();
+							parent.append('<input type="hidden" id="logo" name="logo" value="">');
+						} else {
+							var parent = $('#default').parent();
+							$('#default').remove();
+							parent.append('<div class="image-box">\
+												<img src="'+Blob.url+'" style="max-width: 100%;">\
+											</div>\
+											<input type="hidden" id="logo" name="logo" value="'+response.logo+'">');
+						}
 					},
 					error:function() {
 						alert("Sorry there were some errors");

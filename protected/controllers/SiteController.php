@@ -19,12 +19,40 @@ class SiteController extends Controller
 		);
 	}
 
+	public function actionContact() {
+		if(isset($_POST['name'])) {
+			$this->sendContactEmail(array('name'=>$_POST['name'],
+			                              'mobile'=>$_POST['mobile'],
+			                              'subject'=>$_POST['subject'],
+			                              'matter'=>$_POST['matter']));
+			$this->render('contactSuccess');
+		} else {
+			$this->render('badpage');
+		}
+	}
+
+	protected function sendContactEmail($attributes) {
+		$to='nishaakashona@live.com';
+		$from="teamdiners@gmail.com";
+		$from_name=$attributes['name'];
+		$subject=$attributes['subject'];
+		$message = $attributes['matter'];
+		$this->mailsend($to,$from,$from_name,$subject,$message);
+	}
+
 	public function actionIndex()
 	{
 		// renders the view file 'protected/views/site/index.php'
 		// using the default layout 'protected/views/layouts/main.php'
 		$locations = AvailableInLocation::model()->findAllByAttributes(array('status'=>1,'parent_location_id'=>NULL));
 		$this->render('index',array('locations'=>$locations));
+	}
+
+	public function actionViewPage() {
+		if(isset($_GET['about'])) $this->render('aboutus');
+		else if(isset($_GET['partners'])) $this->render('partners');
+		else if(isset($_GET['contact'])) $this->render('contact');
+		else $this->render('badpage');
 	}
 
 	public function actionSetLocation() {
@@ -65,9 +93,9 @@ class SiteController extends Controller
 			$itemarray = array();
 			foreach($newItems as $item) {
 				if($item->hasRelated('restaurant')) {
-					array_push($itemarray, array('item'=>1,'id'=>$item->id,'name'=>$item->name,'time'=>$item->serving_time,'deliverable'=>$item->delivery_available,'price'=>$item->price,'rest_name'=>$item->restaurant->name));
+					array_push($itemarray, array('item'=>1,'logo'=>$item->logo,'id'=>$item->id,'name'=>$item->name,'time'=>$item->serving_time,'deliverable'=>$item->delivery_available,'price'=>$item->price,'rest_name'=>$item->restaurant->name));
 				} else if($item->hasRelated('location')){
-					array_push($itemarray,array('restaurant'=>1,'id'=>$item->id,'name'=>$item->name,'adddr'=>$item->street_address,'mainlocation'=>$item->location->parentLocation->name,'sublocation'=>$item->location->name));
+					array_push($itemarray,array('restaurant'=>1,'logo'=>$item->logo,'id'=>$item->id,'name'=>$item->name,'adddr'=>$item->street_address,'mainlocation'=>$item->location->parentLocation->name,'sublocation'=>$item->location->name));
 				}
 			}
 			$tempLoc = AvailableInLocation::model()->findByPk($_GET['location']);
@@ -79,7 +107,7 @@ class SiteController extends Controller
 			$resArray = array();
 			foreach($restaurant as $rest) {
 				if($rest->location->parent_location_id == $_GET['locId'])
-					array_push($resArray,array('restaurant'=>1,'id'=>$rest->id,'name'=>$rest->name,'adddr'=>$rest->street_address,'mainlocation'=>$rest->location->parentLocation->name,'sublocation'=>$rest->location->name));
+					array_push($resArray,array('restaurant'=>1,'logo'=>$rest->logo,'id'=>$rest->id,'name'=>$rest->name,'adddr'=>$rest->street_address,'mainlocation'=>$rest->location->parentLocation->name,'sublocation'=>$rest->location->name));
 			}
 			$this->render('searchresults',array('items'=>$resArray,'query'=>0,'location'=>$this->getLocation()));
 
@@ -88,7 +116,7 @@ class SiteController extends Controller
 			$itemarray = array();
 			foreach ($items as $item) {
 				if($item->restaurant->location->parent_location_id == $_GET['locId']) {
-					array_push($itemarray, array('item'=>1,'id'=>$item->id,'name'=>$item->name,'time'=>$item->serving_time,'deliverable'=>$item->delivery_available,'price'=>$item->price,'rest_name'=>$item->restaurant->name));
+					array_push($itemarray, array('item'=>1,'logo'=>$item->logo,'id'=>$item->id,'name'=>$item->name,'time'=>$item->serving_time,'deliverable'=>$item->delivery_available,'price'=>$item->price,'rest_name'=>$item->restaurant->name));
 				}
 			}
 			$this->render('searchresults',array('items'=>$itemarray,'query'=>0,'location'=>$this->getLocation()));
@@ -96,11 +124,17 @@ class SiteController extends Controller
 	}
 
 	public function actionFilter() {
-		if(isset($_POST['filter'])) {
+		if(isset($_POST['filter']) && $_POST['categoryIds'] != 0) {
 			$catIdArray = $_POST['categoryIds'];
 			$criteria = new CDbCriteria;
 			$criteria->with = array('restaurant.location.parentLocation');
 			$criteria->condition = "t.name like '%".$_POST["query"]."%' or t.details like '%".$_POST["query"]."%' AND t.status=1";
+			if($_POST['price'] == 1) {
+				$criteria->order = "price ASC";
+			}
+			if($_POST['time'] == 1) {
+				$criteria->order = "serving_time ASC";
+			}
 			$items = Item::model()->with('restaurant')->findAll($criteria);
 			$newItems = array();
 			foreach ($items as $item) {
@@ -115,6 +149,30 @@ class SiteController extends Controller
 					                            'restName'=>$item->restaurant->name));
 						}
 					}
+				}
+			}
+			echo json_encode($newItems);
+		} else if(isset($_POST['filter'])) {
+			$catIdArray = $_POST['categoryIds'];
+			$criteria = new CDbCriteria;
+			$criteria->with = array('restaurant.location.parentLocation');
+			$criteria->condition = "t.name like '%".$_POST["query"]."%' or t.details like '%".$_POST["query"]."%' AND t.status=1";
+			if($_POST['price'] == 1) {
+				$criteria->order = "price ASC";
+			}
+			if($_POST['time'] == 1) {
+				$criteria->order = "serving_time ASC";
+			}
+			$items = Item::model()->with('restaurant')->findAll($criteria);
+			$newItems = array();
+			foreach ($items as $item) {
+				if($item->restaurant->location->parent_location_id == $_POST['locId']) {
+					array_push($newItems, array('id'=>$item->id,
+			                            'name'=>$item->name,
+			                            'price'=>$item->price,
+			                            'servingTime'=>$item->serving_time,
+			                            'deliverable'=>$item->delivery_available,
+			                            'restName'=>$item->restaurant->name));
 				}
 			}
 			echo json_encode($newItems);
@@ -388,10 +446,10 @@ class SiteController extends Controller
 		}
 	}
 
-
 	public function actionProfile() {
 		if(isset($_POST['first_name'])) {
 			$user = User::model()->findByPk(Yii::app()->user->id);
+			$user->profile_image = $_POST['profile_image'];
 			$user->first_name = $_POST['first_name'];
 			$user->last_name = $_POST['last_name'];
 			$user->email = $_POST['email'];
@@ -441,7 +499,6 @@ class SiteController extends Controller
 			$this->render('userprofile',array('user'=>$user));
 		}
 	}
-
 
 	public function actionCheckout() {
 		if(isset($_GET['cartItemId'])) {
@@ -529,6 +586,7 @@ class SiteController extends Controller
 					$orderStatus->modify_date = new CDbExpression('NOW()');
 					$orderStatus->save();
 					echo json_encode(array('status'=>1,'msg'=>'Order has been placed'));
+					$this->sendOrderSMS($order);
 				} else {
 					echo json_encode(array('status'=>2,'msg'=>'Incorrect data'));
 				}

@@ -141,9 +141,10 @@
 					alert("Payment has been done and order has been placed");
 					$('#make-payment').html('Make Payment');
 					$('#make-payment').removeAttr('disabled');
+					window.location.href="<?php echo Yii::app()->createUrl('site/viewOrders'); ?>"
 				},
 				error: function(data) {
-					alert("Transaction failed");
+					alert("Transaction failed. Bad internet connection.");
 					var res = $.parseJSON(data);
 					alert(res.message);
 					alert(res.error);
@@ -207,7 +208,7 @@
 							url:"<?php echo Yii::app()->createUrl('site/makeOrder'); ?>",
 							data:$(this).serialize()+'&allCheck=1&addressId='+$('.addressbook').prop('id'),
 							success:function(data) {
-								alert(data);
+								// alert(data);
 							},
 							error:function() {
 								alert("Error");
@@ -216,7 +217,6 @@
 					} else if($('#payment').val() == 'credit') {
 						$('#make-payment').html('Please wait..');
 						$('#make-payment').attr("disabled", "disabled");
-						alert("Before");
 						var error = false;
 						if (!Stripe.card.validateCardNumber($('#card').val())) {
 							error = true;
@@ -248,7 +248,6 @@
 								exp_year: $('#yy').val()
 							}, stripeResponseHandler);
 						}
-						alert(After);
 						return false; // submit from callback
 					}
 				}

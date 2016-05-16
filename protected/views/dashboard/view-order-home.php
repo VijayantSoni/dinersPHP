@@ -55,7 +55,7 @@
 				}
 			},
 			error:function(){
-				alert("No");
+				alert("No orders for this restaurant");
 			}
 		});
 	}

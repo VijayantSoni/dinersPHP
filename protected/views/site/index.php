@@ -37,43 +37,6 @@
 </div>
 </section>
 
-<!-- <section>
-<header class="cd-header">
-	<h1>Trending around you</h1>
-</header> -->
-
-<!-- <main class="cd-main-content">
-	<div class="cd-tab-filter-wrapper">
-		<div class="cd-tab-filter">
-			<ul class="cd-filters">
-				<li class="placeholder">
-					<a data-type="all" href="#0">Everything</a>
-				</li>
-				<li class="filter"><a class="selected" href="#0" data-type="all">Everything</a></li>
-				<li class="filter" data-filter=".cuisines"><a href="#0" data-type="cuisines">Cuisines</a></li>
-				<li class="filter" data-filter=".restaurants"><a href="#0" data-type="restaurants">Restaurants</a></li>
-			</ul>
-		</div>
-	</div>
-
-	<section class="cd-gallery">
-		<ul>
-			<li class="mix cuisines"><div></div></li>
-			<li class="mix restaurants"><div></div></li>
-			<li class="mix cuisines"><div></div></li>
-			<li class="mix restaurants"><div></div></li>
-			<li class="mix cuisines"><div></div></li>
-			<li class="mix restaurants"><div></div></li>
-			<li class="mix cuisines"><div></div></li>
-			<li class="mix restaurants"><div></div></li>
-			<li class="mix cuisines"><div></div></li>
-			<li class="gap"></li>
-			<li class="gap"></li>
-			<li class="gap"></li>
-		</ul>
-	</section>
-</main> -->
-<!-- </section> -->
 <script src="<?php echo Yii::app()->request->baseUrl;?>/js/jquery-2.1.1.js"></script>
 <script src="<?php echo Yii::app()->request->baseUrl;?>/js/navup.js"></script>
 

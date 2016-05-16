@@ -1,4 +1,28 @@
 /***************************************
+Style for dashboard index
+***************************************/
+section.content main.dash-index {
+	/*padding: 2em 0;*/
+}
+
+section.content main.dash-index > header.row {
+	width: 50%;
+	height: 500px;
+	padding: 2em 0;
+	margin: 0 auto;
+	color: #7ececa;
+	font-weight: 100;
+	font-family: Foo;
+	font-size: 1.4em;
+	transition: all 0.3s ease-in;
+}
+
+section.content main.dash-index > header.row h5{
+	color: rgba(0,0,0,0.8);
+	font-family: "Myriad-Pro-Regular";
+}
+
+/***************************************
 Styles for dashboard add-restaurant.html
 ***************************************/
 body {

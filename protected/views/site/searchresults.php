@@ -72,7 +72,7 @@
 					<div class="colGLG-3 colGMD-6 colGSM-12">
 						<?php if(isset($item['item'])): ?>
 						<div class="items">
-							<img src="<?php echo Yii::app()->request->baseUrl;?>/img/sampleFood.jpg">
+							<img src="<?php echo $item['logo'] ? $item['logo'] : Yii::app()->request->baseUrl."/img/sampleFood.jpg";?>">
 							<div class="item-details">
 								<div class="row">
 									<p class="colGLG-8"><?php echo $item['name']; ?></p>
@@ -94,7 +94,7 @@
 						</div>
 						<?php elseif(isset($item['restaurant'])): ?>
 							<div class="restaurant">
-								<img src="<?php echo Yii::app()->request->baseUrl;?>/img/sampleFood.jpg">
+								<img src="<?php echo $item['logo']? $item['logo']: Yii::app()->request->baseUrl."/img/sampleFood.jpg";?>">
 								<div class="restaurant-details">
 									<div class="row">
 										<p class="colGLG-8"><?php echo $item['name']; ?></p>
@@ -206,12 +206,40 @@
 
 		$('#query').keypress(function(e){
 			if(e.which == 13) {
-				alert('You pressed enter');
 				SendData();
 			}
 		});
 
-		$('input[name="sort-category"]').click(function(){
+		$('input[name="sort-category"],input[id="filter-price"],input[id="filter-time"]').on('click', collectAndSendAjax);
+		function updateItem(response) {
+			$('#data-item').empty();
+			for (var i = 0; i < response.length; i++) {
+				if(response[i].deliverable == 1) { var s = "Deliverable"; }
+				else { var s = "Takeaway"; }
+				$('#data-item').append('<div class="colGLG-3 colGMD-6 colGSM-12">\
+										<div class="items">\
+											<img src="<?php echo Yii::app()->request->baseUrl;?>/img/sampleFood.jpg">\
+											<div class="item-details">\
+												<div class="row">\
+													<p class="colGLG-8">'+response[i].name+'</p>\
+													<p class="colGLG-2"><i class="fa fa-inr"></i>'+response[i].price+'</p>\
+													<span id="'+response[i].id+'" class="cart colGLG-1 cart-tip" <?php echo Yii::app()->user->isGuest?"onClick=\"openModal()\"":"onClick=\"callCart($(this),event)\"" ?>><i class="fa fa-cart-plus" aria-hidden="true"></i></span>\
+													<span id="'+response[i].id+'" <?php echo Yii::app()->user->isGuest?"onClick=\"openModal()\"":"onClick=\"callCheckout($(this),event)\"" ?> class="colGLG-1 check-tip"><i class="fa fa-check"></i></span>\
+												</div>\
+												<div class="row">\
+													<p class="colGLG-6">'+response[i].restName+'</p>\
+													<p class="colGLG-4" id="deliv">'+s+'</p>\
+													<p class="colGLG-1">'+response[i].servingTime+'M</p>\
+												</div>\
+												<div class="row">\
+													<h4 class="colGLG-12">Item Details</h4>\
+													<p class="colGLG-12">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmodtempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>\
+												</div>\
+											</div>\
+										</div>');
+			}
+		}
+		function collectAndSendAjax(){
 			var dat = [];
 			$('#cat-list li').each(function() {
 				if($(this).find('input').is(':checked')) {
@@ -219,48 +247,54 @@
 					dat.push($(this).find('input').val());
 				}
 			});
-			currentRequest = jQuery.ajax({
-				type:'POST',
-				url:'<?php echo Yii::app()->createUrl('site/filter'); ?>',
-				data:{filter: 1,categoryIds: dat,locId:$('.auto-pop').prop("id"),query:$('#query').val()},
-				beforeSend:function() {
-					if (currentRequest != null) {
-						currentRequest.abort();
+			if($('#filter-price').is(':checked')) {
+				var priceFilter = 1;
+			} else {
+				var priceFilter = 0;
+			}
+			if($('#filter-time').is(':checked')) {
+				var timeFilter = 1;
+			} else {
+				var timeFilter = 0;
+			}
+			if(dat.length != 0) {
+				currentRequest = jQuery.ajax({
+					type:'POST',
+					url:'<?php echo Yii::app()->createUrl('site/filter'); ?>',
+					data:{filter: 1,categoryIds: dat,locId:$('.auto-pop').prop("id"),query:$('#query').val(),price: priceFilter, time: timeFilter},
+					beforeSend:function() {
+						if (currentRequest != null) {
+							currentRequest.abort();
+						}
+					},
+					success:function(ob) {
+						var response = $.parseJSON(ob);
+						updateItem(response);
+					},
+					error:function() {
+						alert('Failed');
 					}
-				},
-				success:function(ob) {
-					var response = $.parseJSON(ob);
-					$('#data-item').empty();
-					for (var i = 0; i < response.length; i++) {
-						$('#data-item').append('<div class="colGLG-3 colGMD-6 colGSM-12">\
-												<div class="items">\
-													<img src="<?php echo Yii::app()->request->baseUrl;?>/img/sampleFood.jpg">\
-													<div class="item-details">\
-														<div class="row">\
-															<p class="colGLG-8">'+response[i].name+'</p>\
-															<p class="colGLG-2"><i class="fa fa-inr"></i>'+response[i].price+'</p>\
-															<span id="'+response[i].id+'" class="cart colGLG-1 cart-tip" <?php echo Yii::app()->user->isGuest?"onClick=\"openModal()\"":"onClick=\"callCart($(this),event)\"" ?>><i class="fa fa-cart-plus" aria-hidden="true"></i></span>\
-															<span id="'+response[i].id+'" <?php echo Yii::app()->user->isGuest?"onClick=\"openModal()\"":"onClick=\"callCheckout($(this),event)\"" ?> class="colGLG-1 check-tip"><i class="fa fa-check"></i></span>\
-														</div>\
-														<div class="row">\
-															<p class="colGLG-6">'+response[i].restName+'</p>\
-															<p class="colGLG-4" id="deliv"></p>\
-															<p class="colGLG-1">'+response[i].servingTime+'M</p>\
-														</div>\
-														<div class="row">\
-															<h4 class="colGLG-12">Item Details</h4>\
-															<p class="colGLG-12">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmodtempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>\
-														</div>\
-													</div>\
-												</div>');
-						$('#deliv').html(response[i].deliverable?'Deliverable':'Takeaway');
+				});
+			} else {
+				currentRequest = jQuery.ajax({
+					type:'POST',
+					url:'<?php echo Yii::app()->createUrl('site/filter'); ?>',
+					data:{filter: 1,categoryIds: 0,locId:$('.auto-pop').prop("id"),query:$('#query').val(),price: priceFilter, time: timeFilter},
+					beforeSend:function() {
+						if (currentRequest != null) {
+							currentRequest.abort();
+						}
+					},
+					success:function(ob) {
+						var response = $.parseJSON(ob);
+						updateItem(response);
+					},
+					error:function() {
+						alert('Failed');
 					}
-				},
-				error:function() {
-					alert('Failed');
-				}
-			});
-		});
+				});
+			}
+		};
 
 		$("#category-trigger").prop("checked",false);
 

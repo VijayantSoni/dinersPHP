@@ -14,24 +14,10 @@
 		<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/font-awesome.min.css">
 	</head>
 	<body>
-		<!-- Nav for anonymous users -->
-		<!-- <div class="bubblingG">
-			<span id="bubblingG_1">
-			</span>
-			<span id="bubblingG_2">
-			</span>
-			<span id="bubblingG_3">
-			</span>
-		</div> -->
-		<div class="loader">
-			 <center>
-					 <img class="loading-image" src="<?php echo Yii::app()->request->baseUrl;?>/img/loader.gif" alt="loading..">
-			 </center>
-		</div>
 		<div id="loc-mod" class="location-modal-hide">
 			<div class="location row" id="controlid">
 				<div class="row">
-					<input type="text" class="auto-popup">
+					<input type="text" class="auto-popup" placeholder="Please set your location" required>
 					<?php $locations = AvailableInLocation::model()->findAllByAttributes(array('status'=>1,'parent_location_id'=>NULL)); ?>
 					<ul class="loc-select hider">
 					<?php foreach($locations as $location): ?>
@@ -125,10 +111,9 @@
 							<div>
 								<div>
 									<ul>
-										<li><a href="#">About</a></li>
-										<li><a href="#">Partners</a></li>
-										<li><a href="#">Join us</a></li>
-										<li><a href="#">Contact us</a></li>
+										<li><a href="<?php echo Yii::app()->createUrl('site/viewPage',array('about'=>1)); ?>">About</a></li>
+										<li><a href="<?php echo Yii::app()->createUrl('site/viewPage',array('partners'=>1)); ?>">Partners</a></li>
+										<li><a href="<?php echo Yii::app()->createUrl('site/viewPage',array('contact'=>1)); ?>">Contact us</a></li>
 									</ul>
 								</div>
 							</div>
@@ -145,8 +130,8 @@
 				<div class="colGLG-4 colGMD-5 colGSM-12">
 					<ul>
 						<li><a href="<?php echo Yii::app()->createUrl('site/index');?>">Home</a></li>
-						<li><a href="<?php echo Yii::app()->createUrl('site/index');?>">About&nbsp;Us</a></li>
-						<li><a href="<?php echo Yii::app()->createUrl('site/index');?>">Contact&nbsp;Us</a></li>
+						<li><a href="<?php echo Yii::app()->createUrl('site/viewPage',array('about'=>1)); ?>">About&nbsp;Us</a></li>
+						<li><a href="<?php echo Yii::app()->createUrl('site/viewPage',array('contact'=>1)); ?>">Contact&nbsp;Us</a></li>
 					</ul>
 				</div>
 				<div class="colGLG-4 colGMD-3 colGSM-12">

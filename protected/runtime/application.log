@@ -3328,3 +3328,528 @@ Stack trace:
 REQUEST_URI=/dinersPHP/index.php/site/filter
 in C:\xampp\htdocs\dinersPHP\protected\controllers\SiteController.php (108)
 in C:\xampp\htdocs\dinersPHP\index.php (13)
+2016/05/08 16:36:47 [error] [php] Undefined index: categoryIds (C:\xampp\htdocs\dinersPHP\protected\controllers\SiteController.php:100)
+Stack trace:
+#0 C:\xampp\yii\framework\web\CController.php(286): SiteController->runAction()
+#1 C:\xampp\yii\framework\web\CController.php(265): SiteController->runActionWithFilters()
+#2 C:\xampp\yii\framework\web\CWebApplication.php(282): SiteController->run()
+#3 C:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#4 C:\xampp\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#5 C:\xampp\htdocs\dinersPHP\index.php(13): CWebApplication->run()
+REQUEST_URI=/dinersPHP/index.php/site/filter
+in C:\xampp\htdocs\dinersPHP\protected\controllers\SiteController.php (100)
+in C:\xampp\htdocs\dinersPHP\index.php (13)
+2016/05/13 06:03:06 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "<".' in C:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\yii\framework\web\CController.php(270): CController->missingAction('<')
+#1 C:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('<')
+#2 C:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/<')
+#3 C:\xampp\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\dinersPHP\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/dinersPHP/index.php/site/%3C?php%20Yii::app()-%3Erequest-%3EbaseUrl;?%3E/img/pizza%20vector.png
+HTTP_REFERER=http://localhost/dinersPHP/index.php/site/profile
+---
+2016/05/13 06:04:23 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "<".' in C:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\yii\framework\web\CController.php(270): CController->missingAction('<')
+#1 C:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('<')
+#2 C:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/<')
+#3 C:\xampp\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\dinersPHP\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/dinersPHP/index.php/site/%3C?php%20Yii::app()-%3Erequest-%3EbaseUrl;?%3E/img/pizza%20vector.png
+HTTP_REFERER=http://localhost/dinersPHP/index.php/site/profile
+---
+2016/05/13 06:04:39 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "<".' in C:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\yii\framework\web\CController.php(270): CController->missingAction('<')
+#1 C:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('<')
+#2 C:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/<')
+#3 C:\xampp\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\dinersPHP\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/dinersPHP/index.php/site/%3C?php%20Yii::app()-%3Erequest-%3EbaseUrl;?%3E/img/pizza%20vector.png
+HTTP_REFERER=http://localhost/dinersPHP/index.php/site/profile
+---
+2016/05/13 06:05:04 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "<".' in C:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\yii\framework\web\CController.php(270): CController->missingAction('<')
+#1 C:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('<')
+#2 C:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/<')
+#3 C:\xampp\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\dinersPHP\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/dinersPHP/index.php/site/%3C?php%20Yii::app()-%3Erequest-%3EbaseUrl;?%3E/img/pizza%20vector.png
+HTTP_REFERER=http://localhost/dinersPHP/index.php/site/profile
+---
+2016/05/13 06:18:11 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "<".' in C:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\yii\framework\web\CController.php(270): CController->missingAction('<')
+#1 C:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('<')
+#2 C:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/<')
+#3 C:\xampp\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\dinersPHP\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/dinersPHP/index.php/site/%3C?php%20Yii::app()-%3Erequest-%3EbaseUrl;?%3E/img/pizza%20vector.png
+HTTP_REFERER=http://localhost/dinersPHP/index.php/site/profile
+---
+2016/05/13 06:19:26 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in C:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 C:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 C:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/js/jquery-...')
+#3 C:\xampp\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\dinersPHP\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/dinersPHP/index.php/site/js/jquery-2.1.1.js
+HTTP_REFERER=http://localhost/dinersPHP/index.php/site/viewOrders
+---
+2016/05/13 06:19:26 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "img".' in C:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\yii\framework\web\CController.php(270): CController->missingAction('img')
+#1 C:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('img')
+#2 C:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/img/sample...')
+#3 C:\xampp\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\dinersPHP\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/dinersPHP/index.php/site/img/sampleFood.jpg
+HTTP_REFERER=http://localhost/dinersPHP/index.php/site/viewOrders
+---
+2016/05/13 17:45:04 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "<".' in C:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\yii\framework\web\CController.php(270): CController->missingAction('<')
+#1 C:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('<')
+#2 C:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/<')
+#3 C:\xampp\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\dinersPHP\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/dinersPHP/index.php/site/%3C?php%20Yii::app()-%3Erequest-%3EbaseUrl;?%3E/img/pizza%20vector.png
+HTTP_REFERER=http://localhost/dinersPHP/index.php/site/profile
+---
+2016/05/16 07:58:45 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "img".' in C:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\yii\framework\web\CController.php(270): CController->missingAction('img')
+#1 C:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('img')
+#2 C:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/img/sample...')
+#3 C:\xampp\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\dinersPHP\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/dinersPHP/index.php/site/img/sampleFood.jpg
+HTTP_REFERER=http://localhost/dinersPHP/index.php/site/viewOrders
+---
+2016/05/16 07:58:45 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in C:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 C:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 C:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/js/jquery-...')
+#3 C:\xampp\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\dinersPHP\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/dinersPHP/index.php/site/js/jquery-2.1.1.js
+HTTP_REFERER=http://localhost/dinersPHP/index.php/site/viewOrders
+---
+2016/05/16 08:24:25 [error] [php] Undefined variable: model (C:\xampp\htdocs\dinersPHP\protected\views\site\contact.php:38)
+Stack trace:
+#0 C:\xampp\yii\framework\web\CController.php(869): SiteController->renderFile()
+#1 C:\xampp\yii\framework\web\CController.php(782): SiteController->renderPartial()
+#2 C:\xampp\htdocs\dinersPHP\protected\controllers\SiteController.php(33): SiteController->render()
+#3 C:\xampp\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionViewPage()
+#4 C:\xampp\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#5 C:\xampp\yii\framework\web\CController.php(286): SiteController->runAction()
+#6 C:\xampp\yii\framework\web\CController.php(265): SiteController->runActionWithFilters()
+#7 C:\xampp\yii\framework\web\CWebApplication.php(282): SiteController->run()
+#8 C:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#9 C:\xampp\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\dinersPHP\index.php(13): CWebApplication->run()
+REQUEST_URI=/dinersPHP/index.php/site/viewPage?contact
+in C:\xampp\htdocs\dinersPHP\protected\views\site\contact.php (38)
+in C:\xampp\htdocs\dinersPHP\protected\controllers\SiteController.php (33)
+in C:\xampp\htdocs\dinersPHP\index.php (13)
+2016/05/16 09:07:11 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "<". in C:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\yii\framework\web\CController.php(270): CController->missingAction('<')
+#1 C:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('<')
+#2 C:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/<')
+#3 C:\xampp\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\dinersPHP\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/dinersPHP/index.php/site/%3C?php%20Yii::app()-%3Erequest-%3EbaseUrl;?%3E/img/pizza%20vector.png
+HTTP_REFERER=http://localhost/dinersPHP/index.php/site/profile
+---
+2016/05/16 09:07:17 [error] [php] Undefined offset: 0 (C:\xampp\htdocs\dinersPHP\protected\controllers\SiteController.php:443)
+Stack trace:
+#0 C:\xampp\yii\framework\web\CController.php(286): SiteController->runAction()
+#1 C:\xampp\yii\framework\web\CController.php(265): SiteController->runActionWithFilters()
+#2 C:\xampp\yii\framework\web\CWebApplication.php(282): SiteController->run()
+#3 C:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#4 C:\xampp\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#5 C:\xampp\htdocs\dinersPHP\index.php(13): CWebApplication->run()
+REQUEST_URI=/dinersPHP/index.php/site/cart
+in C:\xampp\htdocs\dinersPHP\protected\controllers\SiteController.php (443)
+in C:\xampp\htdocs\dinersPHP\index.php (13)
+2016/05/16 09:07:22 [error] [exception.CDbException] CDbException: The relation "restaurant" in active record class "Orders" is specified with an invalid foreign key "restaurant_id". There is no such column in the table "orders". in C:\xampp\yii\framework\db\ar\CActiveFinder.php:1101
+Stack trace:
+#0 C:\xampp\yii\framework\db\ar\CActiveFinder.php(1072): CJoinElement->joinOneMany(Object(CJoinElement), Array, Object(CJoinElement), Object(CJoinElement))
+#1 C:\xampp\yii\framework\db\ar\CActiveFinder.php(1317): CJoinElement->getJoinCondition()
+#2 C:\xampp\yii\framework\db\ar\CActiveFinder.php(795): CJoinQuery->join(Object(CJoinElement))
+#3 C:\xampp\yii\framework\db\ar\CActiveFinder.php(438): CJoinElement->buildQuery(Object(CJoinQuery))
+#4 C:\xampp\yii\framework\db\ar\CActiveFinder.php(68): CJoinElement->find(Object(CDbCriteria))
+#5 C:\xampp\yii\framework\db\ar\CActiveRecord.php(1361): CActiveFinder->query(Object(CDbCriteria), true)
+#6 C:\xampp\yii\framework\db\ar\CActiveRecord.php(1541): CActiveRecord->query(Object(CDbCriteria), true)
+#7 C:\xampp\htdocs\dinersPHP\protected\controllers\SiteController.php(753): CActiveRecord->findAllByAttributes(Array)
+#8 C:\xampp\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionViewOrders()
+#9 C:\xampp\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#10 C:\xampp\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#11 C:\xampp\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('viewOrders')
+#13 C:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/viewOrders')
+#14 C:\xampp\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#15 C:\xampp\htdocs\dinersPHP\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/dinersPHP/index.php/site/viewOrders
+HTTP_REFERER=http://localhost/dinersPHP/index.php/site/profile
+---
+2016/05/16 09:33:20 [error] [exception.CDbException] CDbException: Table "orders" does not have a column named "restaurant_id". in C:\xampp\yii\framework\db\schema\CDbCommandBuilder.php:697
+Stack trace:
+#0 C:\xampp\yii\framework\db\ar\CActiveRecord.php(1540): CDbCommandBuilder->createColumnCriteria(Object(CMysqlTableSchema), Array, '', Array, '`t`.')
+#1 C:\xampp\htdocs\dinersPHP\protected\controllers\DashboardController.php(196): CActiveRecord->findAllByAttributes(Array)
+#2 C:\xampp\yii\framework\web\actions\CInlineAction.php(49): DashboardController->actionLoadOrders()
+#3 C:\xampp\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#4 C:\xampp\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#5 C:\xampp\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#6 C:\xampp\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#7 C:\xampp\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#8 C:\xampp\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#9 C:\xampp\yii\framework\web\CController.php(291): CFilterChain->run()
+#10 C:\xampp\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 C:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('loadOrders')
+#12 C:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('dashboard/loadO...')
+#13 C:\xampp\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#14 C:\xampp\htdocs\dinersPHP\index.php(13): CApplication->run()
+#15 {main}
+REQUEST_URI=/dinersPHP/index.php/dashboard/loadOrders
+HTTP_REFERER=http://localhost/dinersPHP/index.php/dashboard/viewOrders
+---
+2016/05/16 09:34:12 [error] [exception.CDbException] CDbException: Table "orders" does not have a column named "restaurant_id". in C:\xampp\yii\framework\db\schema\CDbCommandBuilder.php:697
+Stack trace:
+#0 C:\xampp\yii\framework\db\ar\CActiveRecord.php(1540): CDbCommandBuilder->createColumnCriteria(Object(CMysqlTableSchema), Array, '', Array, '`t`.')
+#1 C:\xampp\htdocs\dinersPHP\protected\controllers\DashboardController.php(196): CActiveRecord->findAllByAttributes(Array)
+#2 C:\xampp\yii\framework\web\actions\CInlineAction.php(49): DashboardController->actionLoadOrders()
+#3 C:\xampp\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#4 C:\xampp\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#5 C:\xampp\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#6 C:\xampp\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#7 C:\xampp\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#8 C:\xampp\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#9 C:\xampp\yii\framework\web\CController.php(291): CFilterChain->run()
+#10 C:\xampp\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 C:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('loadOrders')
+#12 C:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('dashboard/loadO...')
+#13 C:\xampp\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#14 C:\xampp\htdocs\dinersPHP\index.php(13): CApplication->run()
+#15 {main}
+REQUEST_URI=/dinersPHP/index.php/dashboard/loadOrders
+HTTP_REFERER=http://localhost/dinersPHP/index.php/dashboard/viewOrders
+---
+2016/05/16 09:35:59 [error] [exception.CException] CException: Property "User.name" is not defined. in C:\xampp\yii\framework\base\CComponent.php:130
+Stack trace:
+#0 C:\xampp\yii\framework\db\ar\CActiveRecord.php(145): CComponent->__get('name')
+#1 C:\xampp\htdocs\dinersPHP\protected\views\dashboard\dashboardindex.php(4): CActiveRecord->__get('name')
+#2 C:\xampp\yii\framework\web\CBaseController.php(126): require('C:\\xampp\\htdocs...')
+#3 C:\xampp\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\xampp\\htdocs...', NULL, true)
+#4 C:\xampp\yii\framework\web\CController.php(869): CBaseController->renderFile('C:\\xampp\\htdocs...', NULL, true)
+#5 C:\xampp\yii\framework\web\CController.php(782): CController->renderPartial('dashboardindex', NULL, true)
+#6 C:\xampp\htdocs\dinersPHP\protected\controllers\DashboardController.php(23): CController->render('dashboardindex')
+#7 C:\xampp\yii\framework\web\actions\CInlineAction.php(49): DashboardController->actionIndex()
+#8 C:\xampp\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#9 C:\xampp\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#10 C:\xampp\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#11 C:\xampp\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#12 C:\xampp\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#13 C:\xampp\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#14 C:\xampp\yii\framework\web\CController.php(291): CFilterChain->run()
+#15 C:\xampp\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#16 C:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('index')
+#17 C:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('dashboard/index')
+#18 C:\xampp\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#19 C:\xampp\htdocs\dinersPHP\index.php(13): CApplication->run()
+#20 {main}
+REQUEST_URI=/dinersPHP/index.php/dashboard/index
+---
+2016/05/16 11:46:01 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "<".' in C:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\yii\framework\web\CController.php(270): CController->missingAction('<')
+#1 C:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('<')
+#2 C:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/<')
+#3 C:\xampp\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\dinersPHPnew\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/dinersPHPnew/index.php/site/%3C?php%20Yii::app()-%3Erequest-%3EbaseUrl;?%3E/img/pizza%20vector.png
+HTTP_REFERER=http://localhost/dinersPHPnew/index.php/site/profile
+---
+2016/05/16 11:46:28 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "img".' in C:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\yii\framework\web\CController.php(270): CController->missingAction('img')
+#1 C:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('img')
+#2 C:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/img/sample...')
+#3 C:\xampp\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\dinersPHPnew\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/dinersPHPnew/index.php/site/img/sampleFood.jpg
+HTTP_REFERER=http://localhost/dinersPHPnew/index.php/site/viewOrders
+---
+2016/05/16 11:46:28 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in C:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 C:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 C:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/js/jquery-...')
+#3 C:\xampp\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\dinersPHPnew\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/dinersPHPnew/index.php/site/js/jquery-2.1.1.js
+HTTP_REFERER=http://localhost/dinersPHPnew/index.php/site/viewOrders
+---
+2016/05/16 13:10:57 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in C:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 C:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 C:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/js/filepic...')
+#3 C:\xampp\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\dinersPHPnew\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/dinersPHPnew/index.php/site/js/filepicker.js
+HTTP_REFERER=http://localhost/dinersPHPnew/index.php/site/profile
+---
+2016/05/16 13:45:27 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "getImage".' in C:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\yii\framework\web\CController.php(270): CController->missingAction('getImage')
+#1 C:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('getImage')
+#2 C:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/getImage')
+#3 C:\xampp\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\dinersPHPnew\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/dinersPHPnew/index.php/site/getImage
+HTTP_REFERER=http://localhost/dinersPHPnew/index.php/dashboard/addCuisine
+---
+2016/05/16 13:45:33 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "getImage".' in C:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\yii\framework\web\CController.php(270): CController->missingAction('getImage')
+#1 C:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('getImage')
+#2 C:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/getImage')
+#3 C:\xampp\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\dinersPHPnew\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/dinersPHPnew/index.php/site/getImage
+HTTP_REFERER=http://localhost/dinersPHPnew/index.php/dashboard/addCuisine
+---
+2016/05/16 13:46:09 [error] [exception.CDbException] exception 'CDbException' with message 'The value for the column "id" is not supplied when querying the table "restaurant".' in C:\xampp\yii\framework\db\schema\CDbCommandBuilder.php:816
+Stack trace:
+#0 C:\xampp\yii\framework\db\schema\CDbCommandBuilder.php(624): CDbCommandBuilder->createInCondition(Object(CMysqlTableSchema), Array, Array, '`t`.')
+#1 C:\xampp\yii\framework\db\ar\CActiveRecord.php(1490): CDbCommandBuilder->createPkCriteria(Object(CMysqlTableSchema), '1', '', Array, '`t`.')
+#2 C:\xampp\htdocs\dinersPHPnew\protected\controllers\DashboardController.php(24): CActiveRecord->findByPk('1')
+#3 C:\xampp\yii\framework\web\actions\CInlineAction.php(49): DashboardController->actionGetImage()
+#4 C:\xampp\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\xampp\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 C:\xampp\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 C:\xampp\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 C:\xampp\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 C:\xampp\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 C:\xampp\yii\framework\web\CController.php(291): CFilterChain->run()
+#11 C:\xampp\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('getImage')
+#13 C:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('dashboard/getIm...')
+#14 C:\xampp\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#15 C:\xampp\htdocs\dinersPHPnew\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/dinersPHPnew/index.php/dashboard/getImage
+HTTP_REFERER=http://localhost/dinersPHPnew/index.php/dashboard/addCuisine
+---
+2016/05/16 13:47:01 [error] [exception.CDbException] exception 'CDbException' with message 'The value for the column "id" is not supplied when querying the table "restaurant".' in C:\xampp\yii\framework\db\schema\CDbCommandBuilder.php:816
+Stack trace:
+#0 C:\xampp\yii\framework\db\schema\CDbCommandBuilder.php(624): CDbCommandBuilder->createInCondition(Object(CMysqlTableSchema), Array, Array, '`t`.')
+#1 C:\xampp\yii\framework\db\ar\CActiveRecord.php(1490): CDbCommandBuilder->createPkCriteria(Object(CMysqlTableSchema), '1', '', Array, '`t`.')
+#2 C:\xampp\htdocs\dinersPHPnew\protected\controllers\DashboardController.php(25): CActiveRecord->findByPk('1')
+#3 C:\xampp\yii\framework\web\actions\CInlineAction.php(49): DashboardController->actionGetImage()
+#4 C:\xampp\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\xampp\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 C:\xampp\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 C:\xampp\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 C:\xampp\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 C:\xampp\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 C:\xampp\yii\framework\web\CController.php(291): CFilterChain->run()
+#11 C:\xampp\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('getImage')
+#13 C:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('dashboard/getIm...')
+#14 C:\xampp\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#15 C:\xampp\htdocs\dinersPHPnew\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/dinersPHPnew/index.php/dashboard/getImage
+HTTP_REFERER=http://localhost/dinersPHPnew/index.php/dashboard/addCuisine
+---
+2016/05/16 13:48:13 [error] [exception.CException] exception 'CException' with message 'Property "Restaurant.url" is not defined.' in C:\xampp\yii\framework\base\CComponent.php:130
+Stack trace:
+#0 C:\xampp\yii\framework\db\ar\CActiveRecord.php(145): CComponent->__get('url')
+#1 C:\xampp\htdocs\dinersPHPnew\protected\controllers\DashboardController.php(26): CActiveRecord->__get('url')
+#2 C:\xampp\yii\framework\web\actions\CInlineAction.php(49): DashboardController->actionGetImage()
+#3 C:\xampp\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#4 C:\xampp\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#5 C:\xampp\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#6 C:\xampp\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#7 C:\xampp\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#8 C:\xampp\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#9 C:\xampp\yii\framework\web\CController.php(291): CFilterChain->run()
+#10 C:\xampp\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 C:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('getImage')
+#12 C:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('dashboard/getIm...')
+#13 C:\xampp\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#14 C:\xampp\htdocs\dinersPHPnew\index.php(13): CApplication->run()
+#15 {main}
+REQUEST_URI=/dinersPHPnew/index.php/dashboard/getImage
+HTTP_REFERER=http://localhost/dinersPHPnew/index.php/dashboard/addCuisine
+---
+2016/05/16 14:34:50 [error] [php] Undefined variable: user (C:\xampp\htdocs\dinersPHPnew\protected\views\dashboard\edit-cuisine.php:14)
+Stack trace:
+#0 C:\xampp\yii\framework\web\CController.php(869): DashboardController->renderFile()
+#1 C:\xampp\yii\framework\web\CController.php(782): DashboardController->renderPartial()
+#2 C:\xampp\htdocs\dinersPHPnew\protected\controllers\DashboardController.php(174): DashboardController->render()
+#3 unknown(0): DashboardController->actionEditCuisineForm()
+#4 C:\xampp\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs()
+#5 C:\xampp\yii\framework\web\actions\CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#6 C:\xampp\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#7 C:\xampp\yii\framework\web\filters\CFilterChain.php(133): DashboardController->runAction()
+#8 C:\xampp\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#9 C:\xampp\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#10 C:\xampp\yii\framework\web\filters\CInlineFilter.php(58): DashboardController->filterAccessControl()
+#11 C:\xampp\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#12 C:\xampp\yii\framework\web\CController.php(291): CFilterChain->run()
+#13 C:\xampp\yii\framework\web\CController.php(265): DashboardController->runActionWithFilters()
+#14 C:\xampp\yii\framework\web\CWebApplication.php(282): DashboardController->run()
+#15 C:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#16 C:\xampp\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#17 C:\xampp\htdocs\dinersPHPnew\index.php(13): CWebApplication->run()
+REQUEST_URI=/dinersPHPnew/index.php/dashboard/editCuisineForm/4
+in C:\xampp\htdocs\dinersPHPnew\protected\views\dashboard\edit-cuisine.php (14)
+in C:\xampp\htdocs\dinersPHPnew\protected\controllers\DashboardController.php (174)
+in C:\xampp\htdocs\dinersPHPnew\index.php (13)
+2016/05/16 14:34:58 [error] [php] Undefined variable: user (C:\xampp\htdocs\dinersPHPnew\protected\views\dashboard\edit-cuisine.php:14)
+Stack trace:
+#0 C:\xampp\yii\framework\web\CController.php(869): DashboardController->renderFile()
+#1 C:\xampp\yii\framework\web\CController.php(782): DashboardController->renderPartial()
+#2 C:\xampp\htdocs\dinersPHPnew\protected\controllers\DashboardController.php(174): DashboardController->render()
+#3 unknown(0): DashboardController->actionEditCuisineForm()
+#4 C:\xampp\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs()
+#5 C:\xampp\yii\framework\web\actions\CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#6 C:\xampp\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#7 C:\xampp\yii\framework\web\filters\CFilterChain.php(133): DashboardController->runAction()
+#8 C:\xampp\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#9 C:\xampp\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#10 C:\xampp\yii\framework\web\filters\CInlineFilter.php(58): DashboardController->filterAccessControl()
+#11 C:\xampp\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#12 C:\xampp\yii\framework\web\CController.php(291): CFilterChain->run()
+#13 C:\xampp\yii\framework\web\CController.php(265): DashboardController->runActionWithFilters()
+#14 C:\xampp\yii\framework\web\CWebApplication.php(282): DashboardController->run()
+#15 C:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#16 C:\xampp\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#17 C:\xampp\htdocs\dinersPHPnew\index.php(13): CWebApplication->run()
+REQUEST_URI=/dinersPHPnew/index.php/dashboard/editCuisineForm/4
+in C:\xampp\htdocs\dinersPHPnew\protected\views\dashboard\edit-cuisine.php (14)
+in C:\xampp\htdocs\dinersPHPnew\protected\controllers\DashboardController.php (174)
+in C:\xampp\htdocs\dinersPHPnew\index.php (13)
+2016/05/16 15:13:38 [error] [php] Undefined index: logo (C:\xampp\htdocs\dinersPHPnew\protected\controllers\DashboardController.php:186)
+Stack trace:
+#0 C:\xampp\yii\framework\web\filters\CFilterChain.php(133): DashboardController->runAction()
+#1 C:\xampp\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#2 C:\xampp\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#3 C:\xampp\yii\framework\web\filters\CInlineFilter.php(58): DashboardController->filterAccessControl()
+#4 C:\xampp\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#5 C:\xampp\yii\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\yii\framework\web\CController.php(265): DashboardController->runActionWithFilters()
+#7 C:\xampp\yii\framework\web\CWebApplication.php(282): DashboardController->run()
+#8 C:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#9 C:\xampp\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\dinersPHPnew\index.php(13): CWebApplication->run()
+REQUEST_URI=/dinersPHPnew/index.php/dashboard/userAccountSettings
+in C:\xampp\htdocs\dinersPHPnew\protected\controllers\DashboardController.php (186)
+in C:\xampp\htdocs\dinersPHPnew\index.php (13)
+2016/05/16 15:23:45 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "img".' in C:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\yii\framework\web\CController.php(270): CController->missingAction('img')
+#1 C:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('img')
+#2 C:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/img/sample...')
+#3 C:\xampp\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\dinersPHPnew\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/dinersPHPnew/index.php/site/img/sampleFood.jpg
+HTTP_REFERER=http://localhost/dinersPHPnew/index.php/site/viewOrders
+---
+2016/05/16 15:23:45 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in C:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 C:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 C:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/js/jquery-...')
+#3 C:\xampp\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\dinersPHPnew\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/dinersPHPnew/index.php/site/js/jquery-2.1.1.js
+HTTP_REFERER=http://localhost/dinersPHPnew/index.php/site/viewOrders
+---
+2016/05/16 15:26:39 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "js".' in C:\xampp\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\yii\framework\web\CController.php(270): CController->missingAction('js')
+#1 C:\xampp\yii\framework\web\CWebApplication.php(282): CController->run('js')
+#2 C:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/js/jquery-...')
+#3 C:\xampp\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\dinersPHPnew\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/dinersPHPnew/index.php/site/js/jquery-2.1.1.js
+HTTP_REFERER=http://localhost/dinersPHPnew/index.php/site/viewOrders
+---
+2016/05/16 15:27:44 [error] [php] Undefined variable: response (C:\xampp\htdocs\dinersPHPnew\protected\controllers\DashboardController.php:226)
+Stack trace:
+#0 C:\xampp\yii\framework\web\filters\CFilterChain.php(133): DashboardController->runAction()
+#1 C:\xampp\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#2 C:\xampp\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#3 C:\xampp\yii\framework\web\filters\CInlineFilter.php(58): DashboardController->filterAccessControl()
+#4 C:\xampp\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#5 C:\xampp\yii\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\yii\framework\web\CController.php(265): DashboardController->runActionWithFilters()
+#7 C:\xampp\yii\framework\web\CWebApplication.php(282): DashboardController->run()
+#8 C:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#9 C:\xampp\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\dinersPHPnew\index.php(13): CWebApplication->run()
+REQUEST_URI=/dinersPHPnew/index.php/dashboard/loadOrders
+in C:\xampp\htdocs\dinersPHPnew\protected\controllers\DashboardController.php (226)
+in C:\xampp\htdocs\dinersPHPnew\index.php (13)
+2016/05/16 15:27:54 [error] [php] Undefined variable: response (C:\xampp\htdocs\dinersPHPnew\protected\controllers\DashboardController.php:226)
+Stack trace:
+#0 C:\xampp\yii\framework\web\filters\CFilterChain.php(133): DashboardController->runAction()
+#1 C:\xampp\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#2 C:\xampp\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#3 C:\xampp\yii\framework\web\filters\CInlineFilter.php(58): DashboardController->filterAccessControl()
+#4 C:\xampp\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#5 C:\xampp\yii\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\yii\framework\web\CController.php(265): DashboardController->runActionWithFilters()
+#7 C:\xampp\yii\framework\web\CWebApplication.php(282): DashboardController->run()
+#8 C:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#9 C:\xampp\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\dinersPHPnew\index.php(13): CWebApplication->run()
+REQUEST_URI=/dinersPHPnew/index.php/dashboard/loadOrders
+in C:\xampp\htdocs\dinersPHPnew\protected\controllers\DashboardController.php (226)
+in C:\xampp\htdocs\dinersPHPnew\index.php (13)
+2016/05/16 15:28:23 [error] [php] Undefined variable: response (C:\xampp\htdocs\dinersPHPnew\protected\controllers\DashboardController.php:226)
+Stack trace:
+#0 C:\xampp\yii\framework\web\filters\CFilterChain.php(133): DashboardController->runAction()
+#1 C:\xampp\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#2 C:\xampp\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#3 C:\xampp\yii\framework\web\filters\CInlineFilter.php(58): DashboardController->filterAccessControl()
+#4 C:\xampp\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#5 C:\xampp\yii\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\yii\framework\web\CController.php(265): DashboardController->runActionWithFilters()
+#7 C:\xampp\yii\framework\web\CWebApplication.php(282): DashboardController->run()
+#8 C:\xampp\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#9 C:\xampp\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\dinersPHPnew\index.php(13): CWebApplication->run()
+REQUEST_URI=/dinersPHPnew/index.php/dashboard/loadOrders
+in C:\xampp\htdocs\dinersPHPnew\protected\controllers\DashboardController.php (226)
+in C:\xampp\htdocs\dinersPHPnew\index.php (13)

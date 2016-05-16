@@ -1,85 +1,55 @@
-<?php
-/* @var $this SiteController */
-/* @var $model ContactForm */
-/* @var $form CActiveForm */
-
-$this->pageTitle=Yii::app()->name . ' - Contact Us';
-$this->breadcrumbs=array(
-	'Contact',
-);
-?>
-
-<h1>Contact Us</h1>
-
-<?php if(Yii::app()->user->hasFlash('contact')): ?>
-
-<div class="flash-success">
-	<?php echo Yii::app()->user->getFlash('contact'); ?>
-</div>
-
-<?php else: ?>
-
-<p>
-If you have business inquiries or other questions, please fill out the following form to contact us. Thank you.
-</p>
-
-<div class="form">
-
-<?php $form=$this->beginWidget('CActiveForm', array(
-	'id'=>'contact-form',
-	'enableClientValidation'=>true,
-	'clientOptions'=>array(
-		'validateOnSubmit'=>true,
-	),
-)); ?>
-
-	<p class="note">Fields with <span class="required">*</span> are required.</p>
-
-	<?php echo $form->errorSummary($model); ?>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'name'); ?>
-		<?php echo $form->textField($model,'name'); ?>
-		<?php echo $form->error($model,'name'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'email'); ?>
-		<?php echo $form->textField($model,'email'); ?>
-		<?php echo $form->error($model,'email'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'subject'); ?>
-		<?php echo $form->textField($model,'subject',array('size'=>60,'maxlength'=>128)); ?>
-		<?php echo $form->error($model,'subject'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'body'); ?>
-		<?php echo $form->textArea($model,'body',array('rows'=>6, 'cols'=>50)); ?>
-		<?php echo $form->error($model,'body'); ?>
-	</div>
-
-	<?php if(CCaptcha::checkRequirements()): ?>
-	<div class="row">
-		<?php echo $form->labelEx($model,'verifyCode'); ?>
-		<div>
-		<?php $this->widget('CCaptcha'); ?>
-		<?php echo $form->textField($model,'verifyCode'); ?>
+<header class="container-fluid contact">
+	<div class="marginate">
+		<div class="row">
+			<h2>Drop us a line here</h2>
 		</div>
-		<div class="hint">Please enter the letters as they are shown in the image above.
-		<br/>Letters are not case-sensitive.</div>
-		<?php echo $form->error($model,'verifyCode'); ?>
+		<form class="contact-box" method="post" action="<?php echo Yii::app()->createUrl('site/contact'); ?>">
+			<div class="row">
+				<div class="colGLG-6 colGMD-6 colGSM-12">
+					<label for="name">Full Name</label>
+					<input name="name" type="text">
+				</div>
+				<div class="colGLG-6 colGMD-6 colGSM-12">
+					<label for="name">Mobile Number</label>
+					<input name="mobile" type="text">
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="colGLG-12 colGMD-12 colGSM-12">
+					<label for="subject">Subject</label>
+					<input type="text" name="subject">
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="colGLG-12 colGMD-12 colGSM-12">
+					<label>Matter</label>
+					<textarea name="matter">
+
+					</textarea>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="colGSM-12 colGLG-12 colGMD-12">
+					<input type="submit" value="Submit">
+				</div>
+			</div>
+		</form>
 	</div>
-	<?php endif; ?>
+</header>
 
-	<div class="row buttons">
-		<?php echo CHtml::submitButton('Submit'); ?>
-	</div>
-
-<?php $this->endWidget(); ?>
-
-</div><!-- form -->
-
-<?php endif; ?>
+<script src="<?php echo Yii::app()->request->baseUrl;?>/js/jquery-2.1.1.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$('input[type="text"], textarea').on('focus',function() {
+			var elem = $(this);
+			elem.parent().find('label').addClass('label-off');
+		})
+		$('input[type="text"], textarea').on('focusout',function() {
+			var elem = $(this);
+			elem.parent().find('label').removeClass('label-off');
+		})
+	})
+</script>

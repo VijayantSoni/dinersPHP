@@ -2,7 +2,8 @@
 	<header class="row">
 		<form class="row" id="add_restaurant">
 			<figure class="colGLG-3 colGSM-12">
-				<i class="fa fa-user fa-5x"></i>
+				<i class="fa fa-user fa-5x" id="default" style="cursor: pointer;"></i>
+				<input type="hidden" name="logo" id="logo">
 			</figure>
 			<div class="colGLG-9 colGSM-12">
 				<div class="row">
@@ -44,9 +45,28 @@
 		</form>
 	</header>
 </main>
+<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl;?>/js/filepicker.js"></script>
 <script src="<?php echo Yii::app()->request->baseUrl;?>/js/jquery-2.1.1.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
+		$('#default').on('click',function() {
+			filepicker.setKey("AfyDwACYjTPaC2oAavYkQz");
+			filepicker.pick({
+			services: ['COMPUTER', 'FACEBOOK', 'CLOUDAPP'],
+			mimetype:'image/*',
+			cropRatio:1,
+			cropForce:true,
+			},
+			function onSuccess(Blob){
+				$('#logo').val(Blob.url);
+				var parent = $('#default').parent();
+				$('#default').remove();
+				parent.append('<div class="image-box">\
+									<img src="'+Blob.url+'" style="max-width: 100%;">\
+								</div>');
+			})
+		});
+
 		$("#main-location").change(function(){
 			var id = $("#main-location option:selected").prop('id');
 			var dat = 'id='+id;

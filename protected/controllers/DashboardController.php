@@ -19,6 +19,18 @@ class DashboardController extends Controller {
 		}
 	}
 
+	public function actionGetImage() {
+		if(isset($_POST['rest'])) {
+			$id = $_POST['id'];
+			$rest = Restaurant::model()->findByAttributes(array('id'=>$id));
+			echo  $rest->logo ? json_encode(array('url'=>$rest->logo)) : json_encode(array('url'=>null));
+			// echo json_encode(array('url'=>$id));
+		}
+		else if(isset($_POST['cus'])) {
+
+		}
+	}
+
 	public function actionIndex() {
 		$this->render('dashboardindex');
 	}
@@ -37,6 +49,7 @@ class DashboardController extends Controller {
 
 		} else if(isset($_POST['restaurant_name'])) {
 			$restaurant = new Restaurant;
+			$restaurant->logo = $_POST['logo'];
 			$restaurant->name = $_POST['restaurant_name'];
 			$restaurant->location_id = $_POST['sub-location'];
 			$restaurant->vendor_id = Yii::app()->user->id;
@@ -60,6 +73,7 @@ class DashboardController extends Controller {
 	public function actionAddCuisine() {
 		if (isset($_POST['cuisine_name'])) {
 			$item = new Item;
+			$item->logo = $_POST['logo'];
 			$item->restaurant_id = $_POST['restaurant-option'];
 			$item->category_id = $_POST['category'];
 			$item->name = $_POST['cuisine_name'];
@@ -89,10 +103,11 @@ class DashboardController extends Controller {
 	public function actionEditRestaurant() {
 		if(isset($_POST['restId'])) {
 			$restaurant = Restaurant::model()->with('location','location.parentLocation')->findByAttributes(array('id'=>$_POST['restId']));
-			echo json_encode(array('id'=>$restaurant->id,'name'=>$restaurant->name,'parent_location_id'=>$restaurant->location->parentLocation->id,'parent_location_name'=>$restaurant->location->parentLocation->name,'sub_location_id'=>$restaurant->location->id,'sub_location_name'=>$restaurant->location->name,'contact'=>$restaurant->mobile_number,'address'=>$restaurant->street_address));
+			echo json_encode(array('logo'=>$restaurant->logo, 'id'=>$restaurant->id,'name'=>$restaurant->name,'parent_location_id'=>$restaurant->location->parentLocation->id,'parent_location_name'=>$restaurant->location->parentLocation->name,'sub_location_id'=>$restaurant->location->id,'sub_location_name'=>$restaurant->location->name,'contact'=>$restaurant->mobile_number,'address'=>$restaurant->street_address));
 
 		} else if(isset($_POST['restaurant-option'])) {
 			$res = Restaurant::model()->findByAttributes(array('id'=>$_POST['restaurant-option']));
+			$res->logo = $_POST['logo'];
 			$res->name = $_POST['restaurant_name'];
 			$res->mobile_number = $_POST['mobile'];
 			$res->street_address = $_POST['street_addr'];
@@ -136,6 +151,7 @@ class DashboardController extends Controller {
 		if(isset($_POST['cuisine_name']) && $id != 0) {
 			$item = Item::model()->findByPk($id);
 			if(!empty($item)) {
+				$item->logo = $_POST['logo'];
 				$item->name = $_POST['cuisine_name'];
 				$item->category_id = $_POST['category'];
 				$item->price = $_POST['cuisine_price'];
@@ -167,6 +183,7 @@ class DashboardController extends Controller {
 			$user->first_name = $_POST['first_name'];
 			$user->last_name = $_POST['last_name'];
 			$user->email = $_POST['user_email'];
+			$user->profile_image = $_POST['profile_image'];
 			$user->mobile_number = $_POST['user_mobile'];
 			if(isset($_POST['user_pass']) && isset($_POST['user_confirm_pass'])) {
 				$user->password = base64_encode($_POST['user_confirm_pass']);

@@ -6,7 +6,15 @@
 			<main class="main-show row">
 				<figure class="colGLG-3 colGSM-12">
 					<!-- <img src="#"> -->
-					<i class="fa fa-user fa-5x"></i>
+					<?php if(!$item->logo): ?>
+						<i class="fa fa-user fa-5x" id="default" style="cursor: pointer;"></i>
+						<input type="hidden" name="logo" id="logo">
+					<?php else: ?>
+						<div class="image-box">
+							<img src="<?php echo $item->logo; ?>" style="max-width: 100%;">
+							<input type="hidden" name="logo" id="logo" value="$item->logo">
+						</div>
+					<?php endif; ?>
 				</figure>
 				<div class="colGLG-9 colGSM-12">
 					<div class="row">
@@ -103,9 +111,28 @@
 </main>
 
 <!-- All scripts goes here -->
+<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl;?>/js/filepicker.js"></script>
 <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery-2.1.1.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
+		$('#default').on('click',function() {
+			filepicker.setKey("AfyDwACYjTPaC2oAavYkQz");
+			filepicker.pick({
+			services: ['COMPUTER', 'FACEBOOK', 'CLOUDAPP'],
+			mimetype:'image/*',
+			cropRatio:1,
+			cropForce:true,
+			},
+			function onSuccess(Blob){
+				$('#logo').val(Blob.url);
+				var parent = $('#default').parent();
+				$('#default').remove();
+				parent.append('<div class="image-box">\
+									<img src="'+Blob.url+'" style="max-width: 100%;">\
+								</div>');
+			})
+		});
+
 		$('#updateCuisineForm').submit(function(){
 			$("#errors").removeClass('failed').removeClass('success').html("");
 			$.ajax({

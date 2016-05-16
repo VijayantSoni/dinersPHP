@@ -2,8 +2,15 @@
 	<header class="row">
 		<form class="row" id="user-settings">
 			<figure class="colGLG-3 colGSM-12">
-				<!-- <img src="#"> -->
-				<i class="fa fa-user fa-5x"></i>
+				<div class="image-box">
+				<?php if(!$user->profile_image): ?>
+					<a href="#" class="user-image" id="image-pick"><i class="fa fa-user fa-5x"></i></a>
+					<input type="hidden" id="profile_image" name="profile_image">
+				<?php else: ?>
+					<img src="<?php echo $user->profile_image; ?>" style="max-width: 100%;">
+					<input type="hidden" id="profile_image" name="profile_image" value="<?php $user->profile_image; ?>">
+				<?php endif; ?>
+				</div>
 			</figure>
 			<div class="colGLG-9 colGSM-12">
 				<div class="row">
@@ -26,13 +33,13 @@
 			<div class="colGLG-6 colGSM-12">
 				<div class="row">
 					<i class="fa fa-key"></i>
-					<input type="password" name="user_pass" placeholder="Password" required>
+					<input type="password" name="user_pass" placeholder="Password" value="<?php echo base64_decode($user->password); ?>" required>
 				</div>
 			</div>
 			<div class="colGLG-6 colGSM-12">
 				<div class="row">
 					<i class="fa fa-key"></i>
-					<input type="password" name="user_confirm_pass" placeholder="Confirm Password" required>
+					<input type="password" name="user_confirm_pass" placeholder="Confirm Password" value="<?php echo base64_decode($user->password); ?>" required>
 				</div>
 			</div>
 			<div class="colGLG-6 colGSM-12 push-right">
@@ -44,9 +51,29 @@
 		</form>
 	</header>
 </main>
+<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl;?>/js/filepicker.js"></script>
 <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery-2.1.1.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
+		var key = "AxEAO62SlRhuJ7tUJw73Dz"
+		filepicker.setKey(key);
+		$('#image-pick').click(function(){
+			filepicker.setKey("AfyDwACYjTPaC2oAavYkQz");
+			filepicker.pick({
+			services: ['COMPUTER', 'FACEBOOK', 'CLOUDAPP'],
+			mimetype:'image/*',
+			cropRatio:1,
+			cropForce:true,
+			},
+			function onSuccess(Blob){
+				alert('Updated');
+				$('#profile_image').val(Blob.url);
+				$('.image-box').empty();
+				$('.image-box').append('<img src="'+Blob.url+'" style="max-width: 100%;">\
+				                       <input><input type="hidden" id="profile_image" name="profile_image" value="'+Blob.url+'">');
+			})
+		});
+
 		$("#user-settings").submit(function(){
 			$.ajax({
 				type:'POST',

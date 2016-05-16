@@ -12,7 +12,8 @@
 			<main class="main-hide row">
 				<figure class="colGLG-3 colGSM-12">
 					<!-- <img src="#"> -->
-					<i class="fa fa-user fa-5x"></i>
+					<i class="fa fa-user fa-5x" id="default" style="cursor: pointer;"></i>
+					<input type="hidden" name="logo" id="logo">
 				</figure>
 				<div class="colGLG-9 colGSM-12">
 					<div class="row">
@@ -87,6 +88,7 @@
 </main>
 
 <!-- All scripts goes here -->
+<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl;?>/js/filepicker.js"></script>
 <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery-2.1.1.js"></script>
 <script type="text/javascript">
 	$('document').ready(function(){
@@ -95,6 +97,24 @@
 		$('#non-spicy').prop('checked',true);
 		$('#yes_delivery').prop('checked',true);
 		$('label[for="aside-trigger"] > i').removeClass('fa-times').addClass('fa-bars');
+
+		$('#default').on('click',function() {
+			filepicker.setKey("AfyDwACYjTPaC2oAavYkQz");
+			filepicker.pick({
+			services: ['COMPUTER', 'FACEBOOK', 'CLOUDAPP'],
+			mimetype:'image/*',
+			cropRatio:1,
+			cropForce:true,
+			},
+			function onSuccess(Blob){
+				$('#logo').val(Blob.url);
+				var parent = $('#default').parent();
+				$('#default').remove();
+				parent.append('<div class="image-box">\
+									<img src="'+Blob.url+'" style="max-width: 100%;">\
+								</div>');
+			})
+		});
 
 		$('#add-cuisines').submit(function(){
 			$.ajax({
@@ -126,6 +146,27 @@
 	$('#restaurant-option').change(function(){
 		if( $('#restaurant-option option:selected').val() != 'NULL') {
 			$('.dash-content-add-cus main').removeClass('main-hide').addClass('main-show');
+			$.ajax({
+				type:'POST',
+				data: 'id='+$('#restaurant-option option:selected').val()+'&rest=1',
+				url: '<?php echo Yii::app()->createUrl('dashboard/getImage'); ?>',
+				success: function(data) {
+					var response = $.parseJSON(data);
+					if(response.url == null) {
+						;
+					} else {
+						var parent = $('#default').parent();
+						$('#default').remove();
+						parent.append('<div class="image-box">\
+											<img src="#" style="max-width: 100%;">\
+										</div>\
+										<input type="hidden" name="logo" id="logo">');
+					}
+				},
+				error: function() {
+					alert('Some errors happened');
+				}
+			})
 		} else {
 			$('.dash-content-add-cus main').removeClass('main-show').addClass('main-hide');
 		}

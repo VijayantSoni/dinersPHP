@@ -1,3 +1,18 @@
+.img-box {
+	width: 150px;
+	height: 150px;
+	overflow: hidden;
+	border: 1px solid rgba(0,0,0,0.2);
+	box-shadow: 0 2px 4px rgba(0,0,0,0.4), 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.img-box-big {
+	width: 200px;
+	height: 200px;
+	overflow: hidden;
+	border: 1px solid rgba(0,0,0,0.2);
+	box-shadow: 0 2px 4px rgba(0,0,0,0.2), 0 4px 8px rgba(0,0,0,0.1);
+}
 /*********************************
 Footer style goes here
 *********************************/
@@ -2145,4 +2160,156 @@ Make Payment styles goes here
 .payment .marginate > form.row .card-details > div > div button:hover {
 	color: #fff;
 	background: #f07762;
+}
+
+/*************************************************
+About page style goes here
+*************************************************/
+.about .marginate{
+	width: 65%;
+	min-height: 100vh;
+	margin: 0 auto;
+	padding: 1em 1em;
+	margin-top: 5.4em;
+}
+
+.about .marginate > div.row:first-of-type h2 {
+	font-family: Foo;
+	font-size: 2.5em;
+	color: #f07762;
+}
+
+.about-box {
+	padding: 1em 0.3em;
+	border: 1px solid #f2f2f2;
+}
+
+.about-box p{
+	text-align: justify;
+	line-height: 2em;
+}
+
+.about-box h4 {
+	margin-top: 1em;
+}
+
+.team {
+	margin-top: 3em;
+}
+
+.team h2 {
+	font-family: Foo;
+	font-size: 2.5em;
+	color: #f07762;
+}
+
+.team > div {
+	display: flex;
+	justify-content: center;
+}
+
+/*******************************
+Partner Styles goes here
+*******************************/
+.partners .marginate{
+	width: 65%;
+	min-height: 100vh;
+	margin: 0 auto;
+	padding: 1em 1em;
+	margin-top: 5.4em;
+}
+
+.partners .marginate > div.row:first-of-type h2 {
+	font-family: Foo;
+	font-size: 2.5em;
+	color: #f07762;
+}
+
+.partner-box {
+	padding: 1em 0em;
+}
+
+/**********************************
+Contact us styles goes here
+**********************************/
+
+.contact .marginate{
+	width: 65%;
+	min-height: 100vh;
+	margin: 0 auto;
+	padding: 1em 1em;
+	margin-top: 5.4em;
+}
+
+.contact .marginate > div.row:first-of-type h2 {
+	font-family: Foo;
+	font-size: 2.5em;
+	color: #f07762;
+}
+
+.contact-box {
+	padding: 1em 0em;
+	border: 1px solid rgba(0,0,0,0.2);
+}
+
+.contact-box > div > div label,
+.contact-box > div > div input {
+	display: block;
+}
+
+.contact-box > div > div label {
+	font-size: 0.7em;
+	margin-bottom: -10px;
+	transition: all 0.2s ease;
+}
+
+.contact-box > div > div .label-off {
+	color: #7ececa;
+	transform-origin: 0 0 0;
+	transform: scale(0.7) translateY(-8px);
+}
+
+.contact-box > div > div input {
+	border: 0;
+	width: 100%;
+	padding: 0.5em 0;
+	border-bottom: 1px solid rgba(0,0,0,0.8);
+	transition: all 0.2s ease;
+}
+
+.contact-box > div > div input:focus {
+	border-bottom: 1px solid #7ececa;
+}
+
+.contact-box > div > div textarea {
+	border: 0;
+	width: 100%;
+	margin-top: 20px;
+	resize: none;
+	border-bottom: 1px solid rgba(0,0,0,0.8);
+	transition: all 0.2s ease;
+}
+
+.contact-box > div > div input[type="submit"] {
+	color: #fff;
+	max-width: 100px;
+	background: #f07762;
+	border: 1px solid rgba(0,0,0,0.2);
+}
+
+/*******************************
+Success contact style goes here
+*******************************/
+.contact-succ .marginate{
+	width: 65%;
+	min-height: 100vh;
+	margin: 0 auto;
+	padding: 1em 1em;
+	margin-top: 5.4em;
+}
+
+.contact-succ .marginate > div.row:first-of-type h2 {
+	font-family: Foo;
+	font-size: 2.5em;
+	color: #f07762;
 }

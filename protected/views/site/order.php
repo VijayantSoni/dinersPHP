@@ -16,7 +16,7 @@
 				</header>
 				<section class="row">
 					<figure class="colGLG-3 colGSM-12">
-						<img src="img/sampleFood.jpg">
+						<img src="<?php echo $order->package->item->logo ? $order->package->item->logo : Yii::app()->request->baseUrl."/img/sampleFood.jpg"; ?>" style="max-width: 100%;">
 					</figure>
 					<div class="colGLG-4 colGSM-12">
 						<p><?php echo $order->package->item->name; ?></p>
